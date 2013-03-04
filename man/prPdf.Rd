@@ -2,10 +2,10 @@
 \alias{prPdf}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+sortie au format pdf
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Enregistre un graphique au format ".pdf"
 }
 \usage{
 prPdf(name)
@@ -13,11 +13,12 @@ prPdf(name)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-%%     ~~Describe \code{name} here~~
+nom du fichier à générer (sans l'extension ".pdf")
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Le fichier est enregistré dans le dossier "output". Une fois que le graphique est terminé, il faut exécuter
+la commande \code{dev.off()} (voir exemple ci-dessous).
 }
 \value{
 %%  ~Describe the value returned
@@ -42,16 +43,10 @@ prPdf(name)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (name) 
-{
-    file <- sprintf("output/\%s.pdf", name)
-    pdf(file, 14.2, 10.7, pointsize = 18)
-  }
+createProject("test")
+prPdf("test")
+plot(rnorm(100))
+dev.off()
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

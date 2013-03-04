@@ -2,10 +2,10 @@
 \alias{prSource}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+Source un script
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Source un script dans le projet courant ou n'importe quel autre projet.
 }
 \usage{
 prSource(name, project = getOption("currentProject"))
@@ -13,10 +13,10 @@ prSource(name, project = getOption("currentProject"))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-%%     ~~Describe \code{name} here~~
+nom du script (sans l'extension ".R")
 }
   \item{project}{
-%%     ~~Describe \code{project} here~~
+Dans quel projet chercher le script (par défaut le projet courant).
 }
 }
 \details{
@@ -45,17 +45,9 @@ prSource(name, project = getOption("currentProject"))
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (name, project = getOption("currentProject")) 
-{
-    path <- sprintf("\%s/\%s/scripts/\%s.R", getOption("projectHome"), 
-        project, name)
-    source(path)
-  }
+createProject("test")
+cat("cat('Hello world')", file = "scripts/helloworld.R")
+prSource("helloworld")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

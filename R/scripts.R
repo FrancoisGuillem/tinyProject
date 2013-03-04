@@ -1,21 +1,20 @@
-script <- function(name, project= getOption("currentProject")) {
+script <- function(name, project= ".") {
   if(missing(name)) {
   	files <- lsScripts()
+    names(files) <- files
   	print(files)
   	cat("Choix :\n")
   	i <- scan(n = 1)
   	name <- files[i]
   }
-  path <- sprintf("%s/%s/scripts/%s.R", 
-                   getOption("projectHome"),
+  path <- sprintf("%s/scripts/%s.R",
                    project,
                    name)
   if(!file.exists(path)) {
     file.create(path)
-    cat(sprintf("################################################################################
+    cat(sprintf("#///////////////////////////////////////////////////////////////////////////////
 # %s %s
-################################################################################
-#
+#///////////////////////////////////////////////////////////////////////////////
 # Objectif:
 #
 # Démarche:
@@ -23,7 +22,7 @@ script <- function(name, project= getOption("currentProject")) {
 # Résultats:
 #
 #
-################################################################################
+#///////////////////////////////////////////////////////////////////////////////
 ",              ifelse(name == "main", "PROJECT", "SCRIPT"), 
                 ifelse(name == "main", project, name)), file = path)
   }

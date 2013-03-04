@@ -2,7 +2,7 @@
 \alias{lsScripts}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+liste des scripts disponibles
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
@@ -44,9 +44,7 @@ lsScripts()
 ## The function is currently defined as
 function () 
 {
-    files <- list.files("scripts")
-    files <- gsub(".R$", "", files)
-    files
+    list.files("scripts")
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

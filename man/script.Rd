@@ -2,10 +2,11 @@
 \alias{script}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+création et ouverture de script.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Cette fonction crée et ouvre un nouveau script. Si le script existe déjà, elle l'ouvre dans l'éditeur
+de script. 
 }
 \usage{
 script(name, project = getOption("currentProject"))
@@ -13,14 +14,15 @@ script(name, project = getOption("currentProject"))
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-%%     ~~Describe \code{name} here~~
+(facultatif) nom du script
 }
   \item{project}{
-%%     ~~Describe \code{project} here~~
+Dans quel projet chercher le script ? (par défaut, projet courant)
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Si l'argument "name" n'est pas renseigné, alors la liste des scripts existants est affichée. L'utilisateur
+doit alors taper le numéro du script qu'il désire ouvrir.
 }
 \value{
 %%  ~Describe the value returned
@@ -45,30 +47,8 @@ script(name, project = getOption("currentProject"))
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (name, project = getOption("currentProject")) 
-{
-    if (missing(name)) {
-        files <- lsScripts()
-        print(files)
-        cat("Choix :\n")
-        i <- scan(n = 1)
-        name <- files[i]
-    }
-    path <- sprintf("\%s/\%s/scripts/\%s.R", getOption("projectHome"), 
-        project, name)
-    if (!file.exists(path)) {
-        file.create(path)
-        cat(sprintf("################################################################################\n# \%s \%s\n################################################################################\n#\n# Objectif:\n#\n# D\303\251marche:\n#\n# R\303\251sultats:\n#\n#\n################################################################################\n", 
-            ifelse(name == "main", "PROJECT", "SCRIPT"), ifelse(name == 
-                "main", project, name)), file = path)
-    }
-    file.edit(path)
-  }
+createProject("test")
+script("test")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

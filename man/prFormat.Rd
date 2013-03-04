@@ -1,11 +1,13 @@
 \name{prFormat}
 \alias{prFormat}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Génération de texte dynamique
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+\code{prFormat} génère du texte dynamiquement comme \code{\link{sprintf}},
+mais avec cette fonction, au lieu d'utiliser des "\%s", on écrit directement le
+nom de la variable dans le texte de la façon suivante : "#\{var\}" (voir exemple).
 }
 \usage{
 prFormat(._x, collapse = ", ")
@@ -13,27 +15,24 @@ prFormat(._x, collapse = ", ")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{._x}{
-%%     ~~Describe \code{._x} here~~
+  un vecteur de type "character"
 }
-  \item{collapse}{
-%%     ~~Describe \code{collapse} here~~
+\item{collapse}{
+character passé à paste. Si une variable a une longueur supérieure à un, alors les différents éléments de la variable seront séparés par cette chaine de caractère dans le texte final.
 }
+
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+un vecteur de type "character" de la même longeur que "._x".
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~who you are~~
+Francois Guillem
 }
 \note{
 %%  ~~further notes~~
@@ -45,29 +44,12 @@ prFormat(._x, collapse = ", ")
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (._x, collapse = ", ") 
-{
-    e <- parent.frame()
-    ._m <- gregexpr("#\\{(.*?)\\}", ._x)
-    ._var <- lapply(regmatches(._x, ._m), function(._x) {
-        gsub("(#\\{|})", "", ._x)
-    })
-    regmatches(._x, ._m) <- lapply(._var, function(._x) {
-        sapply(._x, function(._y) {
-            ._z <- get(._y, envir = e)
-            if (!is.atomic(._z)) 
-                stop("La variable '", ._y, "' n'est pas un vecteur", 
-                  call. = FALSE)
-            paste(._z, collapse = collapse)
-        })
-    })
-    ._x
-  }
+x <- 1:4
+y <- "abcd"
+prFormat(c("x = #{x}", 
+           "y = #{y}", 
+           "x = #{x} and y = #{y}", 
+           "z = 1"))
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

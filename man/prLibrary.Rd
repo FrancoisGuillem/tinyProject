@@ -2,10 +2,11 @@
 \alias{prLibrary}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+chargement et installation d'extensions
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+La fonction charge tous les packages passés en argument et s'ils ne sont pas présents, tente de les
+installer.
 }
 \usage{
 prLibrary(package)
@@ -13,7 +14,7 @@ prLibrary(package)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{package}{
-%%     ~~Describe \code{package} here~~
+vecteur contenant les noms des packages à charger.
 }
 }
 \details{
@@ -42,21 +43,7 @@ prLibrary(package)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (package) 
-{
-    args <- lapply(as.list(match.call())[-1L], eval, parent.frame())
-    names <- if (is.null(names(args))) 
-        character(length(args))
-    else names(args)
-    dovec <- names \%in\% vectorize.args
-    do.call("mapply", c(FUN = FUN, args[dovec], MoreArgs = list(args[!dovec]), 
-        SIMPLIFY = SIMPLIFY, USE.NAMES = USE.NAMES))
-  }
+prLibrary(c("doBy", "data.table", "RODBC")
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

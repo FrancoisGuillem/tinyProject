@@ -2,25 +2,27 @@
 \alias{prPng}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+sortie au format png
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Enregistre un graphique au format ".png".
 }
 \usage{
-prPng(name, theme = "white")
+prPng(name, theme = "black")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-%%     ~~Describe \code{name} here~~
+nom du fichier dans lequel enregistrer le graphique (sans l'extension ".png")
 }
-  \item{theme}{
-%%     ~~Describe \code{theme} here~~
+\item{theme}{Si "black", alors le graphique est affiché en blanc sur fond noir (ne fonctionne que pour
+les graphiques de base. Ne fonctionne pas par exemple avec ggplot2 ou latice). Sinon il est affiché
+normalement.
 }
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
+Le fichier est enregistré dans le dossier "output". Une fois que le graphique est terminé, il faut exécuter
+la commande \code{dev.off()} (voir exemple ci-dessous).
 }
 \value{
 %%  ~Describe the value returned
@@ -45,23 +47,11 @@ prPng(name, theme = "white")
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+createProject("test")
+prPng("test")
+plot(rnorm(100))
+dev.off()
 
-## The function is currently defined as
-function (name, theme = "white") 
-{
-    file <- sprintf("output/\%s.png", name)
-    png(file, 1024, 768, pointsize = 18)
-    if (theme == "black") {
-        par(bg = "black", col = "white", fg = "white", col.axis = "white", 
-            col.lab = "white", col.main = "white", lwd = 2)
-    }
-    else {
-        par(lwd = 2)
-    }
-  }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

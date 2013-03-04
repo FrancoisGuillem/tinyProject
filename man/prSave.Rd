@@ -1,26 +1,33 @@
 \name{prSave}
 \alias{prSave}
+\alias{prLoad}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+sauvegarde et chargement de données.
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Ces fonctions enregistrent et chargent des données dans le dossier "data" du projet. Chaque objet
+est enregistré dans un fichier portant le même nom et avec l'extension ".rda".
 }
 \usage{
 prSave(name, replace = FALSE, subdir)
+prLoad(name, project = getOption("currentProject"))
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{name}{
-%%     ~~Describe \code{name} here~~
+Nom de l'objet à enregistrer (entre guillemets)
 }
   \item{replace}{
-%%     ~~Describe \code{replace} here~~
+Si le fichier existe déjà, faut-il l'écraser. Permet d'éviter des drames.
 }
   \item{subdir}{
-%%     ~~Describe \code{subdir} here~~
+(facultatif). Dans quel souss-répertoire de "data" faut-il sauvegarder l'objet ?
 }
+  \item{project}{
+Dans quel projet chercher le fichier ? Par défaut, il s'agit du projet courant.  
+}
+
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
@@ -48,24 +55,13 @@ prSave(name, replace = FALSE, subdir)
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+createProject("test")
+test <- rnorm(100)
+prSave("test")
+rm(test) # on supprime test
 
-## The function is currently defined as
-function (name, replace = FALSE, subdir) 
-{
-    if (missing(subdir)) {
-        file <- sprintf("data/\%s.rda", name)
-    }
-    else {
-        file <- sprintf("data/\%s/\%s.rda", subdir, name)
-    }
-    if (!replace & file.exists(file)) {
-        stop("File already exists")
-    }
-    save(list = name, file = file)
-  }
+prLoad("test")
+test # il est réapparu !
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

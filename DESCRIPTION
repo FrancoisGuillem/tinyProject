@@ -1,9 +1,11 @@
 Package: project
 Type: Package
-Title: What the package does (short line)
-Version: 1.0
+Title: simple R project manager
+Version: 0.2
 Date: 2013-03-04
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Francois Guillem
+Maintainer: Francois Guillem <guillem.francois@gmail.com>
+Description: The package provides functions that helps users to keep things organized in their R projects. It should be used with RStudio and its project feature.
+License: Everybody
+LazyLoad: yes
+Encoding: UTF-8
