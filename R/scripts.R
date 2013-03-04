@@ -35,9 +35,8 @@ lsScripts <- function() {
   files
 }
 
-prSource <- function(name, project= getOption("currentProject")) {
-  path <- sprintf("%s/%s/scripts/%s.R", 
-                   getOption("projectHome"),
+prSource <- function(name, project= ".") {
+  path <- sprintf("%s/scripts/%s.R", 
                    project,
                    name)
   source(path)
