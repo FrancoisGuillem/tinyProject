@@ -1,4 +1,4 @@
-prSave <- function(name, replace = FALSE, subdir) {
+prSave <- function(name, replace = FALSE, desc = "No description", subdir) {
   if (missing(subdir)) {
     file <- sprintf("data/%s.rda", name)
   } else {
@@ -7,13 +7,15 @@ prSave <- function(name, replace = FALSE, subdir) {
   if(!replace & file.exists(file)) {
     stop("File already exists")
   }
+  eval(parse(text = prFormat("attr(#{name}, 'desc') <- desc")))
   save(list = name, file = file)
 }
 
-prLoad <- function(name, project= getOption("currentProject")) {
-  file <- sprintf("%s/%s/data/%s.rda", 
-                   getOption("projectHome"),
+prLoad <- function(name, project= ".") {
+  file <- sprintf("%s/data/%s.rda", 
                    project,
                    name)
   load(file, envir=.GlobalEnv)
+  message("Object '", name, "' has been loaded :")
+  message("   ", attr(get(name), "desc"))
 }
