@@ -1,4 +1,4 @@
-script <- function(name, project= ".") {
+script <- function(name, template="analysis") {
   if(missing(name)) {
   	files <- lsScripts()
     names(files) <- files
@@ -7,24 +7,13 @@ script <- function(name, project= ".") {
   	i <- scan(n = 1)
   	name <- files[i]
   }
-  path <- sprintf("%s/scripts/%s.R",
-                   project,
+  path <- sprintf("scripts/%s.R",
                    name)
   if(!file.exists(path)) {
-    file.create(path)
-    cat(sprintf("#///////////////////////////////////////////////////////////////////////////////
-# %s %s
-#///////////////////////////////////////////////////////////////////////////////
-# Objectif:
-#
-# Démarche:
-#
-# Résultats:
-#
-#
-#///////////////////////////////////////////////////////////////////////////////
-",              ifelse(name == "main", "PROJECT", "SCRIPT"), 
-                ifelse(name == "main", project, name)), file = path)
+    brew(system.file(sprintf("scriptTemplates/%s.brew", template),
+                     package = "project"), 
+         path)
+    
   }
   file.edit(path)
 }
@@ -35,9 +24,7 @@ lsScripts <- function() {
   files
 }
 
-prSource <- function(name, project= ".") {
-  path <- sprintf("%s/scripts/%s.R", 
-                   project,
-                   name)
+prSource <- function(name) {
+  path <- sprintf("scripts/%s.R", name)
   source(path)
 }

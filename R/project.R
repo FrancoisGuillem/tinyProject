@@ -1,4 +1,9 @@
 initProject <- function() {
+  # Project Name
+  project <- getwd()
+  project <- str_match(project, "/([^/]+)$")[,2]
+  
+  # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
     if(! file.exists(x)) dir.create(x) else warning("Directory '", x, "' already exists.")
   }
@@ -7,7 +12,7 @@ initProject <- function() {
   dirCreate ("scripts")
 
   script("data")
-  script("main")
+  script("main", template = "main")
   script("start")
   
   cat('library(project)
