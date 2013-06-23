@@ -1,13 +1,13 @@
 #///////////////////////////////////////////////////////////////////////////////
-# SCRIPT <%= project %>
+# SCRIPT <%= name %>
 #///////////////////////////////////////////////////////////////////////////////
 #
-# This script is sourced when you open the project. Load libraries (prLibrary)
-# and data (prLoad). Source files (prSource).
+# This script is sourced when you open the project. Load libraries with 
+# "prLibrary". Load data with "prLoad" and source files with "prSource".
 #
 #////////
 # DETAILS:
-# Anything special
+# Anything special ?
 #
 #///////////////////////////////////////////////////////////////////////////////
 

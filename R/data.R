@@ -16,6 +16,6 @@ prLoad <- function(name, project= ".") {
                    project,
                    name)
   load(file, envir=.GlobalEnv)
-  message("Object '", name, "' has been loaded :")
-  message("   ", attr(get(name), "desc"))
+  cat(sprintf("%s '%s' has been loaded :\n", class(get(name))[1], name))
+  cat("   ", attr(get(name), "desc"), "\n")
 }

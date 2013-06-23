@@ -11,9 +11,9 @@ initProject <- function() {
   dirCreate ("output")
   dirCreate ("scripts")
 
-  script("data")
+  script("data", template = "data")
   script("main", template = "main")
-  script("start")
+  script("start", template = "start")
   
   cat('library(project)
   
