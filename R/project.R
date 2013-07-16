@@ -17,7 +17,7 @@ initProject <- function() {
   
   cat('library(project)
   
-tools <- lsScripts()
+tools <- lsScripts()$Script
 tools <- tools[grep("^tools", tools)]
 if(length(tools) > 0) {
   sapply(sprintf("scripts/%s.R",tools), source)
@@ -32,7 +32,7 @@ source("scripts/start.R")
 prLibrary <- function(...) {
   packages <- unlist(list(...))
   for (p in packages) {
-    if(!require(p, character.only = TRUE)) {
+    if(!require(p, character.only = TRUE, quietly=TRUE)) {
       try(install.packages(p))
       try(library(p, character.only = TRUE))
     }
