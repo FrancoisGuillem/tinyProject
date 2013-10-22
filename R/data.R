@@ -1,5 +1,5 @@
 prSave <- function(name, replace = FALSE, desc = "No description", subdir) {
-  if (!is.character(name) || length(name) > 1) error("Argument 'name' should be a character vector of length one. Have you forgot quotes ?")
+  if (!is.character(name) || length(name) > 1) stop("Argument 'name' should be a character vector of length one. Have you forgotten quotes ?")
   
   if (missing(subdir)) {
     file <- sprintf("data/%s.rda", name)
