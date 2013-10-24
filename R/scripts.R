@@ -1,8 +1,8 @@
-script <- function(name, template="analysis") {
+prScript <- function(name, template="analysis") {
   if(missing(name)) {
-  	files <- lsScripts()
+  	files <- .lsScripts()
   	print(files)
-  	cat("Enter the number or the name of the script you want to open :\n")
+  	cat("Enter the number or the name of the script you want to open:\n")
   	i <- type.convert(scan(n = 1, what=character()))
     if (is.numeric(i)) {
       name <- files[i, "Script"]
@@ -21,7 +21,7 @@ script <- function(name, template="analysis") {
   file.edit(path)
 }
 
-lsScripts <- function() {
+.lsScripts <- function() {
   files <- list.files("scripts")
   files <- files[str_detect(files, "\\.R$")]
   files <- str_replace(files, "\\.R$","")

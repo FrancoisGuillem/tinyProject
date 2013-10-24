@@ -1,4 +1,4 @@
-initProject <- function() {
+prInit <- function() {
   # Project Name
   project <- getwd()
   project <- str_match(project, "/([^/]+)$")[,2]
@@ -11,13 +11,13 @@ initProject <- function() {
   dirCreate ("output")
   dirCreate ("scripts")
 
-  script("data", template = "data")
-  script("main", template = "main")
-  script("start", template = "start")
+  prScript("data", template = "data")
+  prScript("main", template = "main")
+  prScript("start", template = "start")
   
   cat('library(project)
   
-tools <- lsScripts()$Script
+tools <- list.files("scripts")
 tools <- tools[grep("^tools", tools)]
 if(length(tools) > 0) {
   sapply(sprintf("scripts/%s.R",tools), source)
