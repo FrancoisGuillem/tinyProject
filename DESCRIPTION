@@ -1,8 +1,8 @@
 Package: project
 Type: Package
 Title: simple R project manager
-Version: 0.3
-Date: 2013-06-22
+Version: 0.4
+Date: 2013-11-07
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
 Description: The package provides functions that helps users to keep things organized in their R projects. It should be used with RStudio and its project feature.

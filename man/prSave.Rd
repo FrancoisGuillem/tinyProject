@@ -10,8 +10,8 @@ Ces fonctions enregistrent et chargent des données dans le dossier "data" du pr
 est enregistré dans un fichier portant le même nom et avec l'extension ".rda".
 }
 \usage{
-prSave(name, replace = FALSE, subdir)
-prLoad(name, project = getOption("currentProject"))
+prSave(name, replace = FALSE, desc = "No description", subdir)
+prLoad(name, trace = TRUE, description = TRUE, creationTime = TRUE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -19,45 +19,34 @@ prLoad(name, project = getOption("currentProject"))
 Nom de l'objet à enregistrer (entre guillemets)
 }
   \item{replace}{
-Si le fichier existe déjà, faut-il l'écraser. Permet d'éviter des drames.
+Si le fichier existe déjà, faut-il l'écraser ? Permet d'éviter des drames !
 }
+  \item{desc}{Description de l'objet sauvegardé}
   \item{subdir}{
-(facultatif). Dans quel souss-répertoire de "data" faut-il sauvegarder l'objet ?
+(facultatif). Dans quel sous-répertoire de "data" faut-il sauvegarder l'objet ?
 }
-  \item{project}{
-Dans quel projet chercher le fichier ? Par défaut, il s'agit du projet courant.  
-}
-
+  \item{trace}{Faut-il afficher des informations sur l'objet chargé}
+  \item{description}{Faut-il afficher la description de l'objet chargé}
+  \item{creationTime}{Faut-il afficher la date de création de l'objet chargé}
 }
 \details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+Les objets sont enregistrés au format ".rda" dans le dossier data dans un
+fichier portant le même nom que l'objet.
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\author{
+François Guillem <guillem.francois@gmail.com>
+}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{prLibrary}}, \code{\link{prSource}}
 }
 \examples{
-createProject("test")
+prInit()
+
 test <- rnorm(100)
 prSave("test")
+prSave("test", TRUE, "Juste un test !")
 rm(test) # on supprime test
 
 prLoad("test")
