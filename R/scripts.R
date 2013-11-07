@@ -1,4 +1,7 @@
-prScript <- function(name, template="analysis") {
+prScript <- function(name, template=c("analysis", "data", "function")) {
+  template <- match.arg(template, 
+                        c("analysis", "data", "function", "main", "start"),
+                        several.ok = TRUE)
   if(missing(name)) {
   	files <- .lsScripts()
   	print(files)
