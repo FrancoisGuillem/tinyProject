@@ -18,7 +18,7 @@ prInit <- function() {
   cat('library(project)
   
 tools <- list.files("scripts")
-tools <- tools[grep("^tools.*\\.R$", tools)]
+tools <- tools[grep("^tools.*\\\\.R$", tools)]
 if(length(tools) > 0) {
   sapply(sprintf("scripts/%s",tools), source)
 }
@@ -33,7 +33,7 @@ prLibrary <- function(...) {
   packages <- unlist(list(...))
   for (p in packages) {
     if(!require(p, character.only = TRUE, quietly=TRUE)) {
-      try(install.packages(p))
+      try(utils::install.packages(p))
       try(library(p, character.only = TRUE))
     }
   }
