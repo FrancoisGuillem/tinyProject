@@ -1,3 +1,54 @@
+#' Easily save and load data
+#' 
+#' \code{prSave} and \code{prLoad} save and load data in the folder \code{data} 
+#' of the project. Each object is saved in distinct file with the same name as
+#' the object and the extension \code{rda}.
+#' 
+#' @param name
+#'   Name of the object to save or to load. It has to be quoted. Optionaly, one
+#'   can also specify the subfolder where to save or load the object. 
+#' @param replace
+#'   If the file already exists, should it be overwrited ? The prupose of this
+#'   parameter is to avoid some dramas. Use it with caution.
+#' @param desc
+#'   Short description of the object.
+#' @param subdir
+#'   subdirectory where to save or load the object. 
+#' @param trace
+#'   Should information about the loaded object be printed ?
+#' @param envir
+#'   the environment where the object should be loaded. By default, it is the
+#'   global environement so that the object should be easily accessible in all
+#'   settings
+#'   
+#' @seealso 
+#' \code{\link{prLibrary}}, \code{\link{prSource}}
+#' 
+#' @examples 
+#' \dontrun{
+#' 
+#' # Assume that project has been setup with prInit
+#' 
+#' test <- rnorm(100)
+#' prSave("test")
+#' 
+#' # Save again but add a description
+#' prSave("test", replace = TRUE, desc = "Just a test !")
+#' 
+#' prLoad("test")
+#' 
+#' # It is also possible to save/load in subfolders
+#' prSave("test", subdir = "testdir", desc = "Saved in subfolder")
+#' 
+#' # Or equivalently
+#' prSave("testdir/test", desc = "Saved in subfolder")
+#' 
+#' prLoad("test", subdir="testdir")
+#' prLoad("testdir/test")
+#' }
+#'   
+#' @export
+#'
 prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".") {
   if (!is.character(name) || length(name) > 1) stop("Argument 'name' should be a character vector of length one. Have you forgotten quotes ?")
   
@@ -19,6 +70,9 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
   save(list = name, file = file)
 }
 
+#' @rdname prSave
+#' @export
+#' 
 prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
   file <- sprintf("data/%s/%s.rda", subdir, name)
   load(file, envir=envir)

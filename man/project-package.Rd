@@ -3,41 +3,53 @@
 \alias{project}
 \docType{package}
 \title{
-Organiser les fichiers d'un projet statistique.
+Organise a R data analysis project
 }
 \description{
-Lorsqu'on travaille avec R sur de gros projets, les fichiers de données, de scripts et de sorties se multiplient très rapidement. 
+When working with R on big project, data files, scripts and output files multiply very quickly.
 
-Ce package a pour objectif d'accélérer le développement sous R en réduisant le temps passé à chercher, charger, sauvegarder et exécuter des fichiers. Il permet à l'utilisateur de créer pour chacun de ses projets une arborescence et d'enregistrer facilement ses fichiers au bon endroit.
+The purpose of this package is to help the user to keep things organised and improve readibility, maintainability an reusability of its R projects. Moreover it improves the productivity by saving a few seconds very often: it reduces the time spent searching, loading and saving data and scripts.
 
-Il doit être utilisé conjointement au système de projets de Rstudio.
+This package is designed to be used with the Rstudio projects system.
+
 }
 \details{
 \tabular{ll}{
 Package: \tab project\cr
 Type: \tab Package\cr
-Version: \tab 0.4\cr
-Date: \tab 2013-11-07\cr
+Version: \tab 0.5\cr
+Date: \tab 2016-05-19\cr
 License: \tab GPL (>= 2)\cr
 }
 
-Pour commencer, il faut créer un projet vide dans Rstudio. Une fois fait, on peut générer une arborescence avec la fonction \code{\link{prInit}}. Plus précisément, cette fonction crée trois répertoires : "data" pour les données, "scripts" pour les scripts et "output" pour les sorties. 
+A data analysis project uses one or several data sources and a bunch of scripts to answer questions about some subject and to generate material that will help the diffusion of the results of the project. Ths quality of the answers is not the only critorion of quality of a project: it should also be easy to read and the results should be easy to reproduce. 
 
-En plus de ces fichiers trois fichiers sont créés et ouverts dans l'éditeur :
-"data" pour les opérations d'importation et de traitement de données, "main" pour les principales opérations d'analyse et "start" pour toutes les commandes qui doivent être éxécutées chaque fois que le projet est ouvert (chargement des bibliothèques et des données, définition des constantes...).
+The purpose of this package is to improve these two aspects by encouraging the user to adopt some simple conventions: every project has the same structure, the scripts always do the same type of operations and are heavily commented, the data is always in the same folder and is also documented, etc.
 
-Pour ouvrir un projet déjà existant, il suffit d'utiliser l'interface de Rstudio. 
-Lors de l'ouverture. Le script "start" est automatiquement exécuté, de même que tous les scripts dont le nom commence par "tools". Cela peut être utile pour charger des données et des fonctions personnelles.
+\subsection{Project setup}{
+To begin with this package, one has to first create an empty project in Rstudio. Then one can use function \code{\link{prInit}} to setup the project and create a file tree. More precisely \code{\link{prInit}} generates three directories: \code{data} for storing data files, \code{scripts} for storing R scripts and \code{output} for storing output files.
 
-\subsection{Gestion des scripts}{
-La commande \code{\link{prScript}} permet de créer un script ou de l'ouvrir s'il existe déjà. Il suffit de passer en argument le nom du script (sans l'extension ".R") à créer ou à ouvrir. Si la fonction est appelée sans argument, alors une liste des fichiers disponibles est affichée et l'utilisateur peut ouvrir le fichier désiré en tapant le numéro ou le nom  correspondant. Si un fichier doit être sourcé 
-automatiquement à l'ouverture du projet, alors il suffit de rajouter à son nom le préfixe "tools". 
-Enfin pour sourcer facilement un script on peut utiliser la fonction \code{\link{prSource}}. 
+Additionally, three scripts are created and opened in the script editor: \code{data.R} for the import and processing of data, \code{main} for the analysis of the data and \code{start} for all instructions that have to be exetuted everytime the project is opened (load libraries, define constants and functions, etc.).
+
+When the user opens the project in Rstudio, the script \code{start} is automatically executed. By convention, all scripts starting with the prefix "tools" are also executed. It can be useful to automatically load important specific functions, constants or data.
 }
 
-\subsection{Gestion des données}{
-N'importe quel objet peut être sauvegardé à l'aide de la fonction \code{\link{prSave}}. Il suffit de passer en argument à la fonction le nom de l'objet à sauvegarder (entre guillemets). Par défaut, si l'objet existe déjà, un message d'erreur est affiché, afin d'éviter d'écraser un fichier déjà existant par erreur. Dans ce cas, il faut rajouter l'argument \code{replace = TRUE}. Pour charger des données,
-il suffit d'utiliser la fonction \code{\link{prLoad}}.
+\subsection{Script management}{
+The user can open and/or create scripts with the function \code{\link{prScript}}. He just has to give to the function the name of the script (without the extention ".R") and eventually a subdirectory. The fucntion searches in the folder "scripts" the corresponding file. If it does not exists, it is created. In all cases it is opened in the script editor.
+
+The scripts created by \code{\link{prScript}} contains some comments that encourages the user to explain what the script does and eventually what were the results.
+
+although it is not mandatory, the user should use some conventions in the naming of its scripts: a script that process data should start with the prefix "data" while a script that analyses data should start with prefix "analysis". Other scripts generally contain helper functions and their name should start with "tools". They will be sourced when the project is opened.
+
+When possible, data operations and analysis operations should be put in different scripts. If the data operations are long, then the data script should save the final data objects and the analysis script should load the saved data.
+
+Scripts can be sourced with function \code{\link{prSource}}. It is a wrapper to the function \code{\link{source}} but with the same interface as \code{\link{prScript}}.
+}
+
+\subsection{Data management}{
+Every R object can be saved with \code{\link{prSave}}. The function just needs the name of the object (quoted) and it will save it in the right place so one has not to remember the location where objects are saved. \code{\link{prSave}} can also attach to an object a description that will be displayed when the object is loaded. 
+
+To load data, simply use \code{\link{prLoad}}.
 }
 }
 

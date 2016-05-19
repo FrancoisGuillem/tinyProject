@@ -5,10 +5,15 @@ Version: 0.4
 Date: 2013-11-07
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
-Description: The package provides functions that helps users to keep things organized in their R projects. It should be used with RStudio and its project feature.
+Description: The package provides functions that helps users to keep things
+    organized in their R projects. It should be used with RStudio and its project
+    feature.
 License: GPL (>= 2)
 LazyLoad: yes
 Encoding: UTF-8
-Depends: brew, stringr
-Suggests: testthat
-
+Depends:
+    brew,
+    stringr
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
