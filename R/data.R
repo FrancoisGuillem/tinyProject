@@ -19,9 +19,9 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
   save(list = name, file = file)
 }
 
-prLoad <- function(name, trace = TRUE) {
-  file <- sprintf("data/%s.rda", name)
-  load(file, envir=.GlobalEnv)
+prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
+  file <- sprintf("data/%s/%s.rda", subdir, name)
+  load(file, envir=envir)
   
   name <- basename(name)
   
