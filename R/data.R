@@ -1,15 +1,16 @@
-prSave <- function(name, replace = FALSE, desc = "No description", subdir) {
+prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".") {
   if (!is.character(name) || length(name) > 1) stop("Argument 'name' should be a character vector of length one. Have you forgotten quotes ?")
   
   if(!file.exists("data")) {
     stop("Directory 'data' does not exist. Have you initialized the project with prInit ?")
   }
   
-  if (missing(subdir)) {
-    file <- sprintf("data/%s.rda", name)
-  } else {
-    file <- sprintf("data/%s/%s.rda", subdir, name)
-  }
+  subdir <- file.path("data", subdir, dirname(name))
+  name <- basename(name)
+  if (!dir.exists(subdir)) dir.create(subdir, recursive = TRUE)
+  
+  file <- sprintf("%s/%s.rda", subdir, name)
+  
   if(!replace & file.exists(file)) {
     stop("File already exists. Use 'replace=TRUE' if you want to overwrite.")
   }
@@ -18,9 +19,12 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir) {
   save(list = name, file = file)
 }
 
-prLoad <- function(name, trace = TRUE, description = TRUE, creationTime = TRUE) {
+prLoad <- function(name, trace = TRUE) {
   file <- sprintf("data/%s.rda", name)
   load(file, envir=.GlobalEnv)
+  
+  name <- basename(name)
+  
   if (trace) {
     if (class(get(name))[1] %in% c("numeric", "integer", "character", "logical")) {
       objClass <- paste(class(get(name))[1], 
@@ -33,13 +37,9 @@ prLoad <- function(name, trace = TRUE, description = TRUE, creationTime = TRUE) 
     cat(sprintf("%s '%s' has been loaded%s%s\n", 
                 objClass, 
                 name,
-                ifelse(creationTime, 
-                       sprintf(" (saved on %s)", attr(get(name), "._creationTime")),
-                       ""),
-                ifelse(description, ":", ".")))
+                sprintf(" (saved on %s)", attr(get(name), "._creationTime")),
+                ":", "."))
     
-    if(description) {
-      cat("   ", attr(get(name), "._desc"), "\n")
-    }
+    cat("   ", attr(get(name), "._desc"), "\n")
   }
 }
