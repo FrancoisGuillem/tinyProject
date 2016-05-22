@@ -68,7 +68,7 @@ prInit <- function() {
   prScript("main", template = "main")
   prScript("start", template = "start")
   
-  file.copy(system.file(".Rprofile", package = "project"), ".")
+  file.copy(system.file("Rprofile", package = "project"), "./.Rprofile")
 }
 
 
