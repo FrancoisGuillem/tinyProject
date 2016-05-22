@@ -68,16 +68,7 @@ prInit <- function() {
   prScript("main", template = "main")
   prScript("start", template = "start")
   
-  cat('library(project)
-  
-tools <- list.files("scripts")
-tools <- tools[grep("^tools.*\\\\.R$", tools)]
-if(length(tools) > 0) {
-  sapply(sprintf("scripts/%s",tools), source)
-}
-rm(tools)
-source("scripts/start.R")
-', file = ".Rprofile")
+  file.copy(system.file(".Rprofile", package = "project"), ".")
 }
 
 
