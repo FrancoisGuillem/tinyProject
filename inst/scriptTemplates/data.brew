@@ -8,11 +8,12 @@
 #
 #////////
 # OUTPUT:
-# what objects will the script create ?
+# what data objects will the script create ?
 #
 #////////
 # DETAILS:
-# Anything else ?
+# Anything else ? Where did you get the data ? Did you do some manual
+# transformation ?
 #
 #///////////////////////////////////////////////////////////////////////////////
 

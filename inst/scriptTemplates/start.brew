@@ -5,10 +5,6 @@
 # This script is sourced when you open the project. Load libraries with 
 # "prLibrary". Load data with "prLoad" and source files with "prSource".
 #
-#////////
-# DETAILS:
-# Anything special ?
-#
 #///////////////////////////////////////////////////////////////////////////////
 
 
