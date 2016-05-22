@@ -140,8 +140,8 @@ prDeleteScript <- function(name, subdir = ".") {
 #' @noRd
 .lsScripts <- function() {
   files <- list.files("scripts", recursive = TRUE)
-  files <- files[stringr::str_detect(files, "\\.R$")]
-  files <- stringr::str_replace(files, "\\.R$","")
+  files <- files[grep("\\.R$", files)]
+  files <- gsub("\\.R$","", files)
   data.frame(Script = files)
 }
 
