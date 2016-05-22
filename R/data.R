@@ -100,6 +100,32 @@ prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
 }
 
 #' Move and delete data files.
+#' 
+#' The functions can be used to programmatically move or delete data files.
+#' 
+#' @param name 
+#'   Name of the data file one want to move or delete (without extension)
+#' @param subdir
+#'   Subdirectory of the data file. It can also be indicated directly in the 
+#'   \code{name} parameter.
+#' @param newDir
+#'   Subdirectory where to move a data file
+#'   
+#' @examples 
+#' \dontrun{
+#' x <- rnorm(100)
+#' 
+#' prSave("x")
+#' 
+#' prMoveData("x", "testdir")
+#' 
+#' prDeleteScript("testdir/x")
+#' 
+#' }
+#'
+#' @seealso 
+#' \code{\link{prScript}}
+#' 
 #' @export
 prMoveData <- function(name, newDir, subdir = ".") {
   .prMoveFile(name, newDir, subdir, "rda", "data", "Data file")

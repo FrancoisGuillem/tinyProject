@@ -78,7 +78,8 @@ prScript <- function(name, template=c("analysis", "data", "function"), subdir = 
 
 #' Move, rename and delete scripts
 #' 
-#' These functions can be used to move, rename and delete scripts files.
+#' These functions can be used to pragrammatically move, rename and delete 
+#' scripts files.
 #' 
 #' @param name 
 #'   Name of the script on which one wants to perform an action.

@@ -23,7 +23,8 @@ also be indicated directly in the \code{name} parameter.}
 \item{newName}{New name of the script.}
 }
 \description{
-These functions can be used to move, rename and delete scripts files.
+These functions can be used to pragrammatically move, rename and delete 
+scripts files.
 }
 \examples{
 \dontrun{
