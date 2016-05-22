@@ -6,7 +6,7 @@
 Organise a R data analysis project
 }
 \description{
-When working with R on big project, data files, scripts and output files multiply very quickly.
+When working with R on a data analysis project, data files, scripts and output files multiply very quickly.
 
 The purpose of this package is to help the user to keep things organised and improve readibility, maintainability an reusability of its R projects. Moreover it improves the productivity by saving a few seconds very often: it reduces the time spent searching, loading and saving data and scripts.
 
