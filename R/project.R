@@ -90,9 +90,9 @@ prInit <- function() {
 prLibrary <- function(...) {
   packages <- unlist(list(...))
   for (p in packages) {
-    if(!require(p, character.only = TRUE, quietly=TRUE)) {
+    if(!suppressWarnings(require(p, character.only = TRUE, quietly=TRUE))) {
       try(utils::install.packages(p))
-      try(library(p, character.only = TRUE))
+      require(p, character.only = TRUE, quietly = TRUE)
     }
   }
 }
