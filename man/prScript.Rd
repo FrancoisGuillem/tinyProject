@@ -42,6 +42,7 @@ prScript("testdir/test")
 
 }
 \seealso{
-\code{\link{prSource}}
+\code{\link{prSource}}, \code{\link{prMoveScript}}, \code{\link{prRenameScript}}, 
+\code{\link{prDeleteScript}}
 }
 

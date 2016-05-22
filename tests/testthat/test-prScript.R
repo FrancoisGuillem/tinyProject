@@ -45,6 +45,15 @@ test_that("One can rename scripts", {
   expect_true(file.exists("scripts/dir6/newtest6.R"))
 })
 
+test_that("One cannot overwrite an existing script", {
+  prScript("test1")
+  prScript("test2")
+  prScript("dir/test1")
+  
+  expect_error(prRenameScript("test1", "test2"), "already exists")
+  expect_error(prMoveScript("test1", "dir"), "already exists")
+})
+
 test_that("One can delete scripts", {
   prScript("test5")
   prDeleteScript("test5")

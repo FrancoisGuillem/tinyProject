@@ -20,7 +20,8 @@
 #' name of the script he wants to open.
 #' 
 #' @seealso 
-#' \code{\link{prSource}}
+#' \code{\link{prSource}}, \code{\link{prMoveScript}}, \code{\link{prRenameScript}}, 
+#' \code{\link{prDeleteScript}}
 #' 
 #' @examples
 #' \dontrun{
@@ -74,6 +75,70 @@ prScript <- function(name, template=c("analysis", "data", "function"), subdir = 
   file.edit(path)
 }
 
+
+#' Move, rename and delete scripts
+#' 
+#' These functions can be used to move, rename and delete scripts files.
+#' 
+#' @param name 
+#'   Name of the script on which one wants to perform an action.
+#' @param subdir
+#'   Subdirectory of the script on which one wants to perform an action. It can 
+#'   also be indicated directly in the \code{name} parameter.
+#' @param newDir
+#'   Subdirectory where to move a script.
+#' @param newName
+#'   New name of the script.
+#'   
+#' @examples 
+#' \dontrun{
+#' prScript("test")
+#' 
+#' prMoveScript("test", "testdir")
+#' 
+#' prRenameScript("testdir/test", "myTest")
+#' 
+#' prDeleteScript("testdir/myTest")
+#' 
+#' }
+#'
+#' @seealso 
+#' \code{\link{prScript}}
+#' @export
+prMoveScript <- function(name, newDir, subdir = ".") {
+  path <- sprintf("scripts/%s/%s.R", subdir, name)
+  newDir <- file.path("scripts", newDir)
+  newPath <- sprintf("%s/%s.R", newDir, basename(name))
+  
+  if (!dir.exists(newDir)) dir.create(newDir, recursive = TRUE)
+  
+  if (file.exists(newPath)) stop("Script ", newPath, "already exists.")
+  
+  file.rename(path, newPath)
+}
+
+
+#' @rdname prMoveScript
+#' @export
+prRenameScript <- function(name, newName, subdir = ".") {
+  path <- sprintf("scripts/%s/%s.R", subdir, name)
+  newPath <- sprintf("%s/%s.R", dirname(path), newName)
+  
+  if (file.exists(newPath)) stop("Script ", newPath, "already exists.")
+  
+  file.rename(path, newPath)
+}
+
+
+#' @rdname prMoveScript
+#' @export
+prDeleteScript <- function(name, subdir = ".") {
+  path <- sprintf("scripts/%s/%s.R", subdir, name)
+  file.remove(path)
+}
+
+
+
 #' private function that list scripts in the 'script' folder.
 #' 
 #' @return 
@@ -87,6 +152,8 @@ prScript <- function(name, template=c("analysis", "data", "function"), subdir = 
   files <- str_replace(files, "\\.R$","")
   data.frame(Script = files)
 }
+
+
 
 #' Source a R script
 #' 
