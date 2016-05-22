@@ -69,10 +69,10 @@ prScript <- function(name, template=c("analysis", "data", "function"), subdir = 
     # Create the file according to a template
     templatePath <- system.file(sprintf("scriptTemplates/%s.brew", template), 
                                 package = "project")
-    brew(templatePath, path)
+    brew::brew(templatePath, path)
     
   }
-  file.edit(path)
+  if (interactive()) file.edit(path)
 }
 
 
@@ -140,8 +140,8 @@ prDeleteScript <- function(name, subdir = ".") {
 #' @noRd
 .lsScripts <- function() {
   files <- list.files("scripts", recursive = TRUE)
-  files <- files[str_detect(files, "\\.R$")]
-  files <- str_replace(files, "\\.R$","")
+  files <- files[stringr::str_detect(files, "\\.R$")]
+  files <- stringr::str_replace(files, "\\.R$","")
   data.frame(Script = files)
 }
 

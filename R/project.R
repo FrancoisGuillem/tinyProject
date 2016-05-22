@@ -54,7 +54,7 @@
 prInit <- function() {
   # Project Name
   project <- getwd()
-  project <- str_match(project, "/([^/]+)$")[,2]
+  project <- stringr::str_match(project, "/([^/]+)$")[,2]
   
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {

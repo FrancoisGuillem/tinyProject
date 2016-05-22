@@ -11,7 +11,7 @@ Description: The package provides functions that helps users to keep things
 License: GPL (>= 2)
 LazyLoad: yes
 Encoding: UTF-8
-Depends:
+Imports:
     brew,
     stringr
 Suggests:
