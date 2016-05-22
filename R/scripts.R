@@ -106,15 +106,7 @@ prScript <- function(name, template=c("analysis", "data", "function"), subdir = 
 #' \code{\link{prScript}}
 #' @export
 prMoveScript <- function(name, newDir, subdir = ".") {
-  path <- sprintf("scripts/%s/%s.R", subdir, name)
-  newDir <- file.path("scripts", newDir)
-  newPath <- sprintf("%s/%s.R", newDir, basename(name))
-  
-  if (!dir.exists(newDir)) dir.create(newDir, recursive = TRUE)
-  
-  if (file.exists(newPath)) stop("Script ", newPath, "already exists.")
-  
-  file.rename(path, newPath)
+  .prMoveFile(name, newDir, subdir, "R", "scripts", "Script")
 }
 
 
@@ -133,8 +125,7 @@ prRenameScript <- function(name, newName, subdir = ".") {
 #' @rdname prMoveScript
 #' @export
 prDeleteScript <- function(name, subdir = ".") {
-  path <- sprintf("scripts/%s/%s.R", subdir, name)
-  file.remove(path)
+  .prDeleteFile(name, subdir, "R", "scripts")
 }
 
 

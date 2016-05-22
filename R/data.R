@@ -57,6 +57,7 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
   }
   
   subdir <- file.path("data", subdir, dirname(name))
+  subdir <- gsub("/.$", "", subdir)
   name <- basename(name)
   if (!dir.exists(subdir)) dir.create(subdir, recursive = TRUE)
   
@@ -97,3 +98,17 @@ prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
     cat("   ", attr(get(name), "._desc"), "\n")
   }
 }
+
+#' Move and delete data files.
+#' @export
+prMoveData <- function(name, newDir, subdir = ".") {
+  .prMoveFile(name, newDir, subdir, "rda", "data", "Data file")
+}
+
+#' @rdname prMoveData
+#' @export
+prDeleteData <- function(name, subdir = ".") {
+  .prDeleteFile(name, subdir, "rda", "data")
+}
+
+
