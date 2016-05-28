@@ -69,30 +69,3 @@ prInit <- function() {
   
   file.copy(system.file("Rprofile", package = "project"), "./.Rprofile")
 }
-
-
-#' Load and install libraries
-#' 
-#' The function tries to load all libraries passed as argument. For those that
-#' are not installed, it tries to install them and then load them.
-#' 
-#' @param ...
-#' name of the libraries to load. The names need to be quoted.
-#' 
-#' @seealso 
-#' \code{\link{prSource}}
-#' 
-#' @examples 
-#' prLibrary("data.table", "plyr")
-#' 
-#' @export
-#' 
-prLibrary <- function(...) {
-  packages <- unlist(list(...))
-  for (p in packages) {
-    if(!suppressWarnings(require(p, character.only = TRUE, quietly=TRUE))) {
-      try(utils::install.packages(p))
-      require(p, character.only = TRUE, quietly = TRUE)
-    }
-  }
-}
