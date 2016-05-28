@@ -16,13 +16,8 @@
 #' @noRd
 #' 
 .prMoveFile <- function(name, newDir, subdir = ".", extension, mainDir, errorName) {
-  path <- sprintf("%s/%s/%s.%s", mainDir, subdir, name, extension)
-  
-  newDir <- file.path(mainDir, newDir)
-  newDir <- gsub("/.$", "", newDir)
-  if (!dir.exists(newDir)) dir.create(newDir, recursive = TRUE)
-  
-  newPath <- sprintf("%s/%s.%s", newDir, basename(name), extension)
+  path <- .getPath(name, subdir, extension, mainDir)
+  newPath <- .getPath(basename(name), newDir, extension, mainDir)
   
   if (file.exists(newPath)) stop(errorName, " ", newPath, "already exists.")
   
@@ -33,3 +28,25 @@
   path <- sprintf("%s/%s/%s.%s", mainDir, subdir, name, extension)
   file.remove(path)
 }
+
+
+# Get subdirectory of an object and create it if it does not exist
+.getPath <- function(name, subdir = ".", extension, mainDir, stopIfExists = FALSE) {
+  subdir <- file.path(mainDir, subdir, dirname(name))
+  subdir <- gsub("/\\./", "/", subdir)
+  subdir <- gsub("/\\.?$", "", subdir)
+  
+  path <- sprintf("%s/%s.%s", subdir, basename(name), extension)
+  
+  if (stopIfExists & file.exists(path))
+    stop("File already exists. Use 'replace=TRUE' if you want to overwrite.")
+  
+  if (!dir.exists(subdir)) dir.create(subdir, recursive = TRUE)
+  
+  path
+}
+
+
+
+
+

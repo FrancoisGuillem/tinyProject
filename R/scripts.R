@@ -66,20 +66,13 @@ prScript <- function(name, template, subdir = ".") {
     }
   }
   
-  # Relative path of the script to create/edit
-  path <- sprintf("scripts/%s/%s.R", subdir, name)
+  path <- .getPath(name, subdir, "R", "scripts")
   
   # If script does not exist, create it
   if(!file.exists(path)) {
-    # If the folder does not exists, create it
-    dir <- dirname(path)
-    if (!dir.exists(dir)) dir.create(dir, recursive = TRUE)
-    
-    # Create the file according to a template
     templatePath <- system.file(sprintf("scriptTemplates/%s.brew", template), 
                                 package = "project")
     brew::brew(templatePath, path)
-    
   }
   if (interactive()) file.edit(path)
 }

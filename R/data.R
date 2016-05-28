@@ -55,17 +55,10 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
   if(!file.exists("data")) {
     stop("Directory 'data' does not exist. Have you initialized the project with prInit ?")
   }
-  
-  subdir <- file.path("data", subdir, dirname(name))
-  subdir <- gsub("/.$", "", subdir)
+
+  file <- .getPath(name, subdir, "rda", "data", stopIfExists = !replace)
   name <- basename(name)
-  if (!dir.exists(subdir)) dir.create(subdir, recursive = TRUE)
   
-  file <- sprintf("%s/%s.rda", subdir, name)
-  
-  if(!replace & file.exists(file)) {
-    stop("File already exists. Use 'replace=TRUE' if you want to overwrite.")
-  }
   eval(parse(text = sprintf("attr(%s, '._desc') <- desc", name)))
   eval(parse(text = sprintf("attr(%s, '._creationTime') <- Sys.time()", name)))
   save(list = name, file = file)
@@ -75,10 +68,10 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
 #' @export
 #' 
 prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
-  file <- sprintf("data/%s/%s.rda", subdir, name)
-  load(file, envir=envir)
-  
+  file <- .getPath(name, subdir, "rda", "data")
   name <- basename(name)
+  
+  load(file, envir=envir)
   
   if (trace) {
     if (class(get(name))[1] %in% c("numeric", "integer", "character", "logical")) {
