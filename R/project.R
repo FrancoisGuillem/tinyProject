@@ -52,9 +52,6 @@
 #' @export
 #' 
 prInit <- function() {
-  # Project Name
-  project <- basename(getwd())
-  
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
     if(! file.exists(x)) dir.create(x) else warning("Directory '", x, "' already exists.")
