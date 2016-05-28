@@ -4,7 +4,11 @@
 #' are not installed, it tries to install them and then load them.
 #' 
 #' @param ...
-#' name of the libraries to load. The names need to be quoted.
+#' name of the libraries to load. The names need to be quoted. If a package is
+#' missing, the function tries to install it from CRAN by defaults. If a package 
+#' needs to be installed from github, it can be declared with the following format:
+#' \code{"github:username/pkgname"}. This way, if the package is not installed,
+#' the function knows how to install it.
 #' 
 #' @seealso 
 #' \code{\link{prSource}}
@@ -22,16 +26,21 @@ prLibrary <- function(...) {
   
   # Load packages. If they are not installed, try to install them
   for (p in packages) {
-    available <- suppressWarnings(require(basename(p), character.only = TRUE, 
-                                          quietly=TRUE))
+    available <- .loadPkg(p)
     
     if(available) {
       loadedPackages <- append(loadedPackages, basename(p))
     } else {
       message("Trying to install ", p)
-      suppressWarnings(utils::install.packages(p, quiet = TRUE))
-      installed <- suppressWarnings(require(p, character.only = TRUE, 
-                                            quietly = TRUE))
+      
+      if (grepl("^github:", p)) {
+        p <- gsub("^github:", "", p)
+        try(devtools::install_github(p, quiet = TRUE), silent = TRUE)
+      } else {
+        suppressWarnings(utils::install.packages(p, quiet = TRUE))
+      }
+      
+      installed <- .loadPkg(p)
       
       if (installed) {
         installedPackages <- append(installedPackages, basename(p))
@@ -59,4 +68,10 @@ prLibrary <- function(...) {
         paste(missingPackages, collapse = ", "), "\n")
   }
   
+}
+
+# Private function that silently tries to load a package. Returns TRUE id the
+# packages has been loaded.
+.loadPkg <- function(p) {
+  suppressWarnings(require(basename(p), character.only = TRUE, quietly=TRUE))
 }

@@ -4,15 +4,18 @@
 \alias{prScript}
 \title{create and/or open R scripts}
 \usage{
-prScript(name, template = c("analysis", "data", "function"), subdir = ".")
+prScript(name, template, subdir = ".")
 }
 \arguments{
 \item{name}{(optional) name of the script to create and/or open. This parameter can also include
 the subfolder where to save the script (see examples).}
 
-\item{template}{One of "analysis", "data" or "function". For new scripts, template to use.
-prScript adds a few comments that encourage you to add comments and explain
-what the script will do. These comments depend on the choosen template.}
+\item{template}{(Optional) One of "analysis", "data" or "function". Template to use for the
+creation of a script. \code{prScript} adds a few comments that encourage the user to add
+comments and explain what the script will do. These comments depend on the
+choosen template. If the argument is missing, the choosen template depends
+on the name of the script: "data" if the name begins with "data", "function"
+if it start with "tools" and "analysis" in all other cases.}
 
 \item{subdir}{subdirectory where the scripts needs to be created or opened. The 
 subdirectory can also be directly specified in the parameter \code{name}.}
