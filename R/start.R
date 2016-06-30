@@ -14,6 +14,9 @@
 #' \dontrun{
 #' prStart()
 #' }
+#' 
+#' @export
+#' 
 prStart <- function(trace = TRUE) {
   ok <- FALSE
   
