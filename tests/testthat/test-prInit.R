@@ -19,7 +19,7 @@ test_that("prInit creates folders and files", {
 })
 
 test_that("The .Rprofile scripts can be sourced", {
-  expect_silent(source(".Rprofile"))
+  expect_output(source(".Rprofile"), "Sourcing start.R")
 })
 
 test_that(".Rprofile runs start.R script", {
