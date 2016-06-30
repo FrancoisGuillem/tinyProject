@@ -5,14 +5,22 @@
 #' useful for instance to set in one and only one location the default size
 #' of output images, the default font...
 #' 
-#' @param ...
-#'   named arguments. The name of the arguments must be "table" to set the
-#'   defaults of \code{\link{prWriteTable}}, \code{\link{prWriteCsv}} or
-#'   \code{\link{prWriteCsv2}} or the name of the output function: "png" for
-#'   \code{\link{prPng}}, "pdf" for \code{\link{prDdf}}. The value of each
-#'   argument is a named list containing the new default value of the
-#'   parameters one wants to modify (see examples). To reset the defaults values
-#'   of a function, set the value to \code{NULL}.
+#' @param table
+#'   Named list. The names correspond to argument names of \code{write.table} and
+#'   the values to the new default values of these parameters. If this argument
+#'   is \code{NULL} the defaults are reset to their original values
+#' @param image
+#'   Named list. The names correspond to argument names of \code{png} and
+#'   the values to the new default values of these parameters. If this argument
+#'   is \code{NULL} the defaults are reset to their original values
+#' @param pdf
+#'   Named list. The names correspond to argument names of \code{pdf} and
+#'   the values to the new default values of these parameters. If this argument
+#'   is \code{NULL} the defaults are reset to their original values
+#' @param cairo
+#'   Named list. The names correspond to argument names of \code{cairo_pdf} and
+#'   the values to the new default values of these parameters. If this argument
+#'   is \code{NULL} the defaults are reset to their original values
 #'
 #' @return
 #'   \code{prOutputDefaults} invisibly returns the list of modified defaults
@@ -31,37 +39,32 @@
 #' }
 #' 
 #' @export
-prOutputDefaults <- function(...) {
+prOutputDefaults <- function(table = NA, image = NA, pdf = NA, cairo = NA) {
   opts <- .getDefaults()
   if (is.null(opts)) opts <- list()
   
-  args <- list(...)
-  
-  for (n in names(args)) {
-    opts <- .setDefaults(opts, args[[n]], n)
-  }
+  opts$table <- .setDefaults(opts$table, table, formalArgs("write.table"))
+  opts$image <- .setDefaults(opts$image, image, formalArgs("png"))
+  opts$pdf <- .setDefaults(opts$pdf, pdf, formalArgs("pdf"))
+  opts$cairo <- .setDefaults(opts$cairo, cairo, formalArgs("cairo_pdf"))
   
   options(prOutput = opts)
   
   invisible(opts)
 }
 
-.setDefaults <- function(opts, defaults, of) {
-  if (is.null(defaults)) {
-    opts[[of]] <- NULL
-    return(opts)
-  }
+.setDefaults <- function(opts, defaults, validArgs) {
+  if (is.null(defaults)) return(NULL)
+  if (identical(defaults, NA)) return(opts)
   
   # Check args belong to the target function
   argName <- names(defaults)
-  argNotInFun <- setdiff(argName, formalArgs(ifelse(of == "table", "write.table", of)))
+  
+  argNotInFun <- setdiff(argName, validArgs)
   if (length(argNotInFun) > 0) 
-    stop("Invalid argument ", paste(argNotInFun, collapse = ", ")) 
+    stop("Invalid arguments ", paste(argNotInFun, collapse = ", ")) 
   
-  args <- c(defaults, opts[[of]])
-  opts[[of]] <- .mergeArgs(defaults, opts[[of]])
-  
-  return(opts)
+  .mergeArgs(defaults, opts)
 }
 
 .getDefaults <- function(x) {

@@ -4,16 +4,24 @@
 \alias{prOutputDefaults}
 \title{Set default values of output functions}
 \usage{
-prOutputDefaults(...)
+prOutputDefaults(table = NA, image = NA, pdf = NA, cairo = NA)
 }
 \arguments{
-\item{...}{named arguments. The name of the arguments must be "table" to set the
-defaults of \code{\link{prWriteTable}}, \code{\link{prWriteCsv}} or
-\code{\link{prWriteCsv2}} or the name of the output function: "png" for
-\code{\link{prPng}}, "pdf" for \code{\link{prDdf}}. The value of each
-argument is a named list containing the new default value of the
-parameters one wants to modify (see examples). To reset the defaults values
-of a function, set the value to \code{NULL}.}
+\item{table}{Named list. The names correspond to argument names of \code{write.table} and
+the values to the new default values of these parameters. If this argument
+is \code{NULL} the defaults are reset to their original values}
+
+\item{image}{Named list. The names correspond to argument names of \code{png} and
+the values to the new default values of these parameters. If this argument
+is \code{NULL} the defaults are reset to their original values}
+
+\item{pdf}{Named list. The names correspond to argument names of \code{pdf} and
+the values to the new default values of these parameters. If this argument
+is \code{NULL} the defaults are reset to their original values}
+
+\item{cairo}{Named list. The names correspond to argument names of \code{cairo_pdf} and
+the values to the new default values of these parameters. If this argument
+is \code{NULL} the defaults are reset to their original values}
 }
 \value{
 \code{prOutputDefaults} invisibly returns the list of modified defaults
