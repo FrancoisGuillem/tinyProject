@@ -66,3 +66,16 @@ test_that("One cannot overwrite a data file", {
   expect_error(prSave("x6"))
   expect_error(prMoveData("x6", "dir6"))
 })
+
+test_that("prSave and prLoad work in other directories", {
+  setwd("..")
+  
+  assign("x7", rnorm(100), envir = .GlobalEnv)
+  y <- x7
+  prSave("x7")
+  expect_true(file.exists("project-test/data/x7.rda"))
+  rm(x7, envir = .GlobalEnv)
+  expect_output(prLoad("x7"), "Numeric vector 'x7' has been loaded")
+  expect_true(exists("x7"))
+  expect_equivalent(x7, y)
+})

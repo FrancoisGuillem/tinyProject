@@ -4,6 +4,9 @@
 #' the basic structure of a data analysis project that will help you keep your
 #' your work organised and increase your productivity.
 #' 
+#' @param dir Directory where project files will be stored. By default, it is 
+#'   the current working directory.
+#' 
 #' @details 
 #' The function creates three folders :
 #' 
@@ -51,18 +54,25 @@
 #' 
 #' @export
 #' 
-prInit <- function() {
+prInit <- function(dir = ".") {
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
+    x <- file.path(dir, x)
     if(! file.exists(x)) dir.create(x) else warning("Directory '", x, "' already exists.")
   }
+  
+  if (dir != ".") dirCreate("")
+  
   dirCreate ("data")
   dirCreate ("output")
   dirCreate ("scripts")
 
+  file.copy(system.file("Rprofile", package = "project"), 
+            file.path(dir,"./.Rprofile"))
+  
+  options(projectRoot = normalizePath(dir))
+  
   prScript("data", template = "data")
   prScript("main", template = "main")
   prScript("start", template = "start")
-  
-  file.copy(system.file("Rprofile", package = "project"), "./.Rprofile")
 }

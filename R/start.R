@@ -4,8 +4,8 @@
 #' subdirectory called \code{tools}, then it sources the \code{start.R} script.
 #' It is automatically called when a project is opened.
 #' 
-#' @param trace
-#' Should the function print what it is doing ?
+#' @param dir Path of the directory where the project is stored.
+#' @param trace Should the function print what it is doing ?
 #' 
 #' @return 
 #' TRUE if all scripts had been sourced without error and false otherwise.
@@ -17,28 +17,33 @@
 #' 
 #' @export
 #' 
-prStart <- function(trace = TRUE) {
+prStart <- function(dir = ".", trace = TRUE) {
+  oldProjectRoot <- getOption("projectRoot")
+  options("projectRoot" = normalizePath(dir))
   ok <- FALSE
   
   tryCatch({
     # Source scripts with prefix "tools" or in dir "tools"
     tools <- union(
-      list.files("scripts", pattern = "^tools.*\\.R$", recursive = TRUE),
-      file.path("tools", list.files("scripts/tools", pattern = "\\.R$", recursive = TRUE))
+      list.files(.getPath("scripts"), pattern = "^tools.*\\.R$", recursive = TRUE),
+      file.path("tools", list.files(.getPath("scripts/tools"), pattern = "\\.R$", 
+                                    recursive = TRUE))
     )
     
     if(length(tools) > 0) {
       sapply(tools, function(s) {
         if(trace) cat("Sourcing", s, "\n")
-        source(sprintf("scripts/%s",s))
+        source(.getPath(sprintf("scripts/%s",s)))
       })
     }
     
     # Source "start.R" script
     if(trace) cat("Sourcing start.R\n")
-    source("scripts/start.R")
+    source(.getPath("scripts/start.R"))
     ok <- TRUE
-  }, error = function(e) return())
+  }, error = function(e) {
+    options(projectRoot = oldProjectRoot)
+  })
   
   invisible(ok)
 }

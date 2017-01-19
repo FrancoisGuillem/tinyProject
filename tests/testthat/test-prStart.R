@@ -11,13 +11,13 @@ prInit()
 
 describe("prStart", {
   it("return TRUE if everything is alright", {
-    expect_true(prStart(FALSE))
+    expect_true(prStart(trace=FALSE))
   })
   
   it("sources the start.R script", {
     value <- sample(1e6, 1)
     cat("startVar <-", value, file = "scripts/start.R")
-    prStart(FALSE)
+    prStart(trace=FALSE)
     expect_equal(value, startVar)
   })
   
@@ -26,7 +26,7 @@ describe("prStart", {
     cat("var1 <-", value[1], file = "scripts/toolsTest.R")
     dir.create("scripts/test")
     cat("var2 <-", value[2], file = "scripts/test/toolsTest.R")
-    prStart(FALSE)
+    prStart(trace=FALSE)
     expect_equal(value[1], var1)
     expect_equal(value[2], var2)
   })
@@ -35,13 +35,19 @@ describe("prStart", {
     value <- sample(1e6, 1)
     dir.create("scripts/tools")
     cat("var3 <-", value, file = "scripts/tools/test.R")
-    prStart(FALSE)
+    prStart(trace=FALSE)
     expect_equal(value, var3)
   })
   
   it("returns FALSE if something has gone wrong", {
     cat("stop()", file = "scripts/toolsError.R")
-    expect_false(prStart(FALSE))
+    expect_false(prStart(trace=FALSE))
+  })
+  
+  it("also works in a subdirectory", {
+    file.remove("scripts/toolsError.R")
+    setwd("..")
+    expect_true(prStart("project-test", trace=FALSE))
   })
   
 })

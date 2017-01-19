@@ -31,3 +31,14 @@ test_that(".Rprofile runs scripts with prefix 'tools'", {
   cat('print("Tools")\n', file = "scripts/toolsTest.R")
   expect_output(source(".Rprofile"), "Tools")
 })
+
+test_that("prInit can init a project in a another folder", {
+  expect_silent(prInit("project_dir"))
+  expect_true(dir.exists("project_dir/data"))
+  expect_true(dir.exists("project_dir/scripts"))
+  expect_true(dir.exists("project_dir/output"))
+  expect_true(file.exists("project_dir/.Rprofile"))
+  expect_true(file.exists("project_dir/scripts/start.R"))
+  expect_true(file.exists("project_dir/scripts/data.R"))
+  expect_true(file.exists("project_dir/scripts/main.R"))
+})
