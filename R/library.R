@@ -7,19 +7,19 @@
 #' name of the libraries to load. The names need to be quoted. If a package is
 #' missing, the function tries to install it from CRAN by defaults. If a package 
 #' needs to be installed from github, it can be declared with the following format:
-#' \code{"github:username/pkgname"}. This way, if the package is not installed,
+#' \code{"github:username/pkgname"}. This way, if the package is not installed yet,
 #' the function knows how to install it.
 #' 
 #' @seealso 
 #' \code{\link{prSource}}
 #' 
 #' @examples 
-#' prLibrary("data.table", "plyr")
+#' prLibrary(data.table, plyr)
 #' 
 #' @export
 #' 
 prLibrary <- function(...) {
-  packages <- unique(c(...))
+  packages <- sapply( substitute(list(...)), .getName )[-1] 
   missingPackages <- c()
   installedPackages <- c()
   loadedPackages <- c()
