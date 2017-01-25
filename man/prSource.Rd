@@ -31,7 +31,6 @@ prSource("myScript", subdir = "testdir")
 # Or equivalently
 prSource("testdir/myScript")
 }
-  
 }
 \seealso{
 \code{\link{prLibrary}}, \code{\link{prLoad}}, \code{\link{prSave}}

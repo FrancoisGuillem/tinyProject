@@ -4,7 +4,11 @@
 \alias{prInit}
 \title{Initialise a project}
 \usage{
-prInit()
+prInit(dir = ".")
+}
+\arguments{
+\item{dir}{Directory where project files will be stored. By default, it is 
+the current working directory.}
 }
 \description{
 \code{prInit} should be used in a Rstudio project. The function creates

@@ -4,9 +4,11 @@
 \alias{prStart}
 \title{Source start and tools scripts}
 \usage{
-prStart(trace = TRUE)
+prStart(dir = ".", trace = TRUE)
 }
 \arguments{
+\item{dir}{Path of the directory where the project is stored.}
+
 \item{trace}{Should the function print what it is doing ?}
 }
 \value{
