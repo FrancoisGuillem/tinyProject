@@ -5,8 +5,8 @@
 #' file in the output folder. The file created has the same name as the object.
 #' 
 #' @param name
-#'   Name of the object to write. This argument can also specify the subdirectory
-#'   of folder "output" where to write the file.
+#'   Name of the object to write. Quotes are optional. This argument can also 
+#'   specify the subdirectory of folder "output" where to write the file.
 #' @param ...
 #'   arguments to \code{write.table}
 #'   
@@ -14,7 +14,7 @@
 #' \dontrun{
 #' mydata <- data.frame(x = 1:10, y = rnorm(10))
 #' 
-#' prWriteTable("mydata")
+#' prWriteTable(mydata)
 #' 
 #' # Write in a subdirectory of "output"
 #' prWriteTable("mydir/mydata")
@@ -23,25 +23,25 @@
 #' @export
 #' 
 prWriteTable <- function(name, ..., replace = FALSE) {
+  name <- .getName(substitute(name))
   .prWriteTable(name, replace, write.table, "txt", ...)
 }
 
 #' @rdname prWriteTable
 #' @export
 prWriteCsv <- function(name, ..., replace = FALSE) {
+  name <- .getName(substitute(name))
   .prWriteTable(name, replace, write.csv, "csv", ...)
 }
 
 #' @rdname prWriteTable
 #' @export
 prWriteCsv2 <- function(name, ..., replace = FALSE) {
+  name <- .getName(substitute(name))
   .prWriteTable(name, replace, write.csv2, "csv", ...)
 }
 
 .prWriteTable <- function(name, replace, fun, extension, ...) {
-  if (!is.character(name) || length(name) > 1) 
-    stop("Argument 'name' should be a character vector of length one. Have you forgotten quotes ?")
-  
   path <- .getPath(name, ".", extension, "output", stopIfExists = !replace)
   
   x <- get(basename(name))
