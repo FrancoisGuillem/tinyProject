@@ -33,7 +33,7 @@
 #' Thanks to this function, quotes are optional in most functions of the package.
 #' 
 #' @param x result of the function "substitute"
-#' @returns character string
+#' @return character string
 #' @noRd
 .getName <- function(x) {
   x <- deparse(x)

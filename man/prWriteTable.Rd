@@ -13,8 +13,8 @@ prWriteCsv(name, ..., replace = FALSE)
 prWriteCsv2(name, ..., replace = FALSE)
 }
 \arguments{
-\item{name}{Name of the object to write. This argument can also specify the subdirectory
-of folder "output" where to write the file.}
+\item{name}{Name of the object to write. Quotes are optional. This argument can also 
+specify the subdirectory of folder "output" where to write the file.}
 
 \item{...}{arguments to \code{write.table}}
 }
@@ -27,7 +27,7 @@ file in the output folder. The file created has the same name as the object.
 \dontrun{
 mydata <- data.frame(x = 1:10, y = rnorm(10))
 
-prWriteTable("mydata")
+prWriteTable(mydata)
 
 # Write in a subdirectory of "output"
 prWriteTable("mydir/mydata")
