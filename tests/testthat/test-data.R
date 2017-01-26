@@ -79,3 +79,14 @@ test_that("prSave and prLoad work in other directories", {
   expect_true(exists("x7"))
   expect_equivalent(x7, y)
 })
+
+test_that("Quotes are optional in prSave and prLoad", {
+  assign("x8", rnorm(100), envir = .GlobalEnv)
+  y <- x8
+  prSave(x8)
+  expect_true(file.exists("project-test/data/x8.rda"))
+  rm(x8, envir = .GlobalEnv)
+  expect_output(prLoad(x8), "Numeric vector 'x8' has been loaded")
+  expect_true(exists("x8"))
+  expect_equivalent(x8, y)
+})

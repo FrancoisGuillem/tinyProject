@@ -5,7 +5,7 @@
 #' the object and the extension \code{rda}.
 #' 
 #' @param name
-#'   Name of the object to save or to load. It has to be quoted. Optionaly, one
+#'   Name of the object to save or to load. Quotes are optional. Optionaly, one
 #'   can also specify the subfolder where to save or load the object. 
 #' @param replace
 #'   If the file already exists, should it be overwrited ? The prupose of this
@@ -30,26 +30,27 @@
 #' # Assume that project has been setup with prInit
 #' 
 #' test <- rnorm(100)
-#' prSave("test")
+#' prSave(test)
 #' 
 #' # Save again but add a description
-#' prSave("test", replace = TRUE, desc = "Just a test !")
+#' prSave(test, replace = TRUE, desc = "Just a test !")
 #' 
-#' prLoad("test")
+#' prLoad(test)
 #' 
 #' # It is also possible to save/load in subfolders
-#' prSave("test", subdir = "testdir", desc = "Saved in subfolder")
+#' prSave(test, subdir = "testdir", desc = "Saved in subfolder")
 #' 
 #' # Or equivalently
 #' prSave("testdir/test", desc = "Saved in subfolder")
 #' 
-#' prLoad("test", subdir="testdir")
+#' prLoad(test, subdir="testdir")
 #' prLoad("testdir/test")
 #' }
 #'   
 #' @export
 #'
 prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".") {
+  name <- .getName(substitute(name))
   if (!is.character(name) || length(name) > 1) stop("Argument 'name' should be a character vector of length one. Have you forgotten quotes ?")
   
   if(!file.exists(.getPath("data"))) {
@@ -68,6 +69,7 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
 #' @export
 #' 
 prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
+  name <- .getName(substitute(name))
   file <- .getPath(name, subdir, "rda", "data")
   name <- basename(name)
   
