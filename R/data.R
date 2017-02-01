@@ -60,9 +60,10 @@ prSave <- function(name, replace = FALSE, desc = "No description", subdir = ".")
   file <- .getPath(name, subdir, "rda", "data", stopIfExists = !replace)
   name <- basename(name)
   
-  eval(parse(text = sprintf("attr(%s, '._desc') <- desc", name)))
-  eval(parse(text = sprintf("attr(%s, '._creationTime') <- Sys.time()", name)))
-  save(list = name, file = file)
+  env <- new.env(parent = parent.frame())
+  env$._desc <- desc
+  env$._creationTime <- Sys.time()
+  save(list = c(name, "._desc", "._creationTime"), file = file, envir = env)
 }
 
 #' @rdname prSave
@@ -77,21 +78,22 @@ prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
   
   if (trace) {
     if (class(get(name))[1] %in% c("numeric", "integer", "character", "logical")) {
-      objClass <- paste(class(get(name))[1], 
-                        ifelse(length(get(name)) == 1, "value", "vector"))
+      objClass <- paste(class(get(name, envir=envir))[1], 
+                        ifelse(length(get(name, envir=envir)) == 1, "value", "vector"))
     } else {
-      objClass <- class(get(name))[1]
+      objClass <- class(get(name, envir=envir))[1]
     }
     objClass <- gsub("^(.)", "\\U\\1", objClass, perl = T)
     
     cat(sprintf("%s '%s' has been loaded%s%s\n", 
                 objClass, 
                 name,
-                sprintf(" (saved on %s)", attr(get(name), "._creationTime")),
+                sprintf(" (saved on %s)", get("._creationTime", envir = envir)),
                 ":", "."))
     
-    cat("   ", attr(get(name), "._desc"), "\n")
+    cat("   ", get("._desc", envir = envir), "\n")
   }
+  rm(list = c("._creationTime", "._desc"), envir = envir)
 }
 
 #' Move and delete data files.
