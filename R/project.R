@@ -54,7 +54,7 @@
 #' 
 #' @export
 #' 
-prInit <- function(dir = ".") {
+prInit <- function(dir = ".", instructions = TRUE) {
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
     x <- file.path(dir, x)
@@ -72,7 +72,7 @@ prInit <- function(dir = ".") {
   
   options(projectRoot = normalizePath(dir))
   
-  prScript("data", template = "data")
-  prScript("main", template = "main")
-  prScript("start", template = "start")
+  prScript("data", template = "data", instructions = instructions)
+  prScript("main", template = "main", instructions = instructions)
+  prScript("start", template = "start", instructions = instructions)
 }

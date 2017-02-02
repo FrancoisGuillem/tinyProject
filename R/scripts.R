@@ -42,7 +42,7 @@
 #' 
 #' @export
 #' 
-prScript <- function(name, template, subdir = ".") {
+prScript <- function(name, template, subdir = ".", instructions = TRUE) {
   if (missing(template)) {
     if (grepl("^data", name, ignore.case = TRUE)) template <- "data"
     else if (grepl("^tools", name, ignore.case = TRUE)) template <- "function"

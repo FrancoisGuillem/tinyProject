@@ -1,13 +1,20 @@
 #///////////////////////////////////////////////////////////////////////////////
 # SCRIPT <%= name %>
 #///////////////////////////////////////////////////////////////////////////////
-#
-# This script is sourced when you open the project. Load libraries with 
-# "prLibrary". Load data with "prLoad" and source files with "prSource".
-#
-#///////////////////////////////////////////////////////////////////////////////
+<% if (instructions) { %>#
+# This script is sourced when you open the project with Rstudio or with function
+# prStart. 
 
+# Load libraries and install them if necessary
+# prLibrary(dplyr, tidyr)
 
+# Set constants
+# COLOR_PAL <- c("red", "green", "blue")
 
+# Set default options for output functions
+# prOutputDefaults(image = list(width = 600, height = 400))
 
-
+# You can load data objects here to make them available for all analysis 
+# scripts. these objects should not be modified by analysis scripts.
+# prLoad("mydata")
+<% } %>
