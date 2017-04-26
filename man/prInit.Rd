@@ -4,7 +4,7 @@
 \alias{prInit}
 \title{Initialise a project}
 \usage{
-prInit(dir = ".")
+prInit(dir = ".", instructions = TRUE)
 }
 \arguments{
 \item{dir}{Directory where project files will be stored. By default, it is 
@@ -61,4 +61,3 @@ prInit()
 \code{\link{prLibrary}}, \code{\link{prSource}}, \code{\link{prSave}}, 
 \code{\link{prLoad}}, \code{\link{prScript}}
 }
-

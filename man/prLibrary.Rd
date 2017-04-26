@@ -24,4 +24,3 @@ prLibrary(data.table, plyr)
 \seealso{
 \code{\link{prSource}}
 }
-

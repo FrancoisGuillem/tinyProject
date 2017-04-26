@@ -4,7 +4,7 @@
 \alias{prScript}
 \title{create and/or open R scripts}
 \usage{
-prScript(name, template, subdir = ".")
+prScript(name, template, subdir = ".", instructions = TRUE)
 }
 \arguments{
 \item{name}{(optional) name of the script to create and/or open. This parameter can also include
@@ -48,4 +48,3 @@ prScript("testdir/test")
 \code{\link{prSource}}, \code{\link{prMoveScript}}, \code{\link{prRenameScript}}, 
 \code{\link{prDeleteScript}}
 }
-

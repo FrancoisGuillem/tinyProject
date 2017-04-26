@@ -46,4 +46,3 @@ prOutputDefaults(table = NULL, pdf = NULL)
 }
 
 }
-

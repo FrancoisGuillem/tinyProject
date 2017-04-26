@@ -35,4 +35,3 @@ prSource("testdir/myScript")
 \seealso{
 \code{\link{prLibrary}}, \code{\link{prLoad}}, \code{\link{prSave}}
 }
-

@@ -2,13 +2,13 @@
 % Please edit documentation in R/output.R
 \name{prBmp}
 \alias{prBmp}
+\alias{prJpeg}
+\alias{prPng}
+\alias{prTiff}
+\alias{prPdf}
+\alias{prSvg}
 \alias{prCairoPdf}
 \alias{prCairoPs}
-\alias{prJpeg}
-\alias{prPdf}
-\alias{prPng}
-\alias{prSvg}
-\alias{prTiff}
 \title{Save plots as image files}
 \usage{
 prBmp(name, ..., replace = FALSE)
@@ -70,4 +70,3 @@ These functions has three advantages over the base functions:
 }
 
 }
-
