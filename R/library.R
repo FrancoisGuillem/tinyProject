@@ -14,7 +14,9 @@
 #' \code{\link{prSource}}
 #' 
 #' @examples 
+#' \dontrun{
 #' prLibrary(data.table, plyr)
+#' }
 #' 
 #' @export
 #' 

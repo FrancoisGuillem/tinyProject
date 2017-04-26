@@ -18,7 +18,9 @@ The function tries to load all libraries passed as argument. For those that
 are not installed, it tries to install them and then load them.
 }
 \examples{
+\dontrun{
 prLibrary(data.table, plyr)
+}
 
 }
 \seealso{

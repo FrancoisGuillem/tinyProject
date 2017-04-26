@@ -69,7 +69,7 @@ prInit <- function(dir = ".", instructions = TRUE) {
   dirCreate ("output")
   dirCreate ("scripts")
 
-  file.copy(system.file("Rprofile", package = "project"), 
+  file.copy(system.file("Rprofile", package = "tinyProject"), 
             file.path(dir,"./.Rprofile"))
   
   options(projectRoot = normalizePath(dir))
