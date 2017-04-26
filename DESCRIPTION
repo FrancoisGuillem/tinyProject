@@ -12,7 +12,9 @@ License: GPL (>= 2)
 LazyLoad: yes
 Encoding: UTF-8
 Imports:
-    brew
+    brew,
+    devtools,
+    methods
 Suggests:
     testthat
 RoxygenNote: 6.0.1

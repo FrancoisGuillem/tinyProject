@@ -6,6 +6,8 @@
 #' 
 #' @param dir Directory where project files will be stored. By default, it is 
 #'   the current working directory.
+#' @param instructions Should instructions added in the scripts created by the
+#'   the function?
 #' 
 #' @details 
 #' The function creates three folders :

@@ -17,6 +17,8 @@ prWriteCsv2(name, ..., replace = FALSE)
 specify the subdirectory of folder "output" where to write the file.}
 
 \item{...}{arguments to \code{write.table}}
+
+\item{replace}{If the file already exists, should it be overwritten ?}
 }
 \description{
 These functions are wrappers to \code{write.table}, \code{write.csv} and 

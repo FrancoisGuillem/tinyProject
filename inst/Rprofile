@@ -6,6 +6,6 @@ library(methods)
 library(stats)
 library(utils)
 
-library(project)
+library(tinyProject)
 
 prStart()

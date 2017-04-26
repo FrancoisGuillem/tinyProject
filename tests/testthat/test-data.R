@@ -29,7 +29,7 @@ test_that("One can save and load objects in subdirectories", {
   expect_output(prLoad("dir2/x2"), "Numeric vector 'x2' has been loaded")
   expect_true(exists("x2"))
   expect_equivalent(x2, y)
-  
+
   x3 <- rnorm(100)
   y <- x3
   prSave("x3", subdir = "dir3")
@@ -44,7 +44,7 @@ test_that("One can move data files", {
   x4 <- rnorm(100)
   prSave("x4")
   prMoveData("x4", "dir4")
-  
+
   expect_false(file.exists("data/x4.rda"))
   expect_true(file.exists("data/dir4/x4.rda"))
 })
@@ -52,9 +52,9 @@ test_that("One can move data files", {
 test_that("One can delete data files", {
   x5 <- rnorm(100)
   prSave("x5")
-  
+
   prDeleteData("x5")
-  
+
   expect_false(file.exists("data/x5.rda"))
 })
 
@@ -62,14 +62,14 @@ test_that("One cannot overwrite a data file", {
   x6 <- rnorm(100)
   prSave("x6")
   prSave("dir6/x6")
-  
+
   expect_error(prSave("x6"))
   expect_error(prMoveData("x6", "dir6"))
 })
 
 test_that("prSave and prLoad work in other directories", {
   setwd("..")
-  
+
   x7 <- rnorm(100)
   y <- x7
   prSave("x7")

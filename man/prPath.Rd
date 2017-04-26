@@ -17,7 +17,7 @@ The function returns the absolute path of a file contained in the current
 project.
 }
 \examples{
-dontrun{
+\dontrun{
   prPath("data")
 }
 

@@ -1,4 +1,4 @@
 library(testthat)
-library(project)
+library(tinyProject)
 
-test_check("project")
+test_check("tinyProject")

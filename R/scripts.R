@@ -16,6 +16,7 @@
 #' @param subdir
 #'   subdirectory where the scripts needs to be created or opened. The 
 #'   subdirectory can also be directly specified in the parameter \code{name}.
+#' @param instructions Should the created script include some instructions?
 #'   
 #' @details 
 #' If the parameter \code{name} is missing, then a list of existing scripts is

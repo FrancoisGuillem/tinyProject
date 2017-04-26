@@ -9,7 +9,7 @@
 #' Absolute path of the file.
 #' 
 #' @examples 
-#' dontrun{
+#' \dontrun{
 #'   prPath("data")
 #' }
 #' 

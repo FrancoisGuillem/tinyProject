@@ -1,6 +1,6 @@
-\name{project-package}
-\alias{project-package}
-\alias{project}
+\name{tinyProject-package}
+\alias{tinyProject-package}
+\alias{tinyProject}
 \docType{package}
 \title{
 Organise a R data analysis project

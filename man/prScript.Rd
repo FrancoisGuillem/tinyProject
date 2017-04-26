@@ -19,6 +19,8 @@ if it start with "tools" and "analysis" in all other cases.}
 
 \item{subdir}{subdirectory where the scripts needs to be created or opened. The 
 subdirectory can also be directly specified in the parameter \code{name}.}
+
+\item{instructions}{Should the created script include some instructions?}
 }
 \description{
 \code{prScript} creates and opens a new script for edition. If the script

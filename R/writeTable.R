@@ -7,6 +7,7 @@
 #' @param name
 #'   Name of the object to write. Quotes are optional. This argument can also 
 #'   specify the subdirectory of folder "output" where to write the file.
+#' @param replace If the file already exists, should it be overwritten ?
 #' @param ...
 #'   arguments to \code{write.table}
 #'   
