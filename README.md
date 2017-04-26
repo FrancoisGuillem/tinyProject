@@ -1,3 +1,5 @@
+[![Travis-CI Build Status](https://travis-ci.org/FrancoisGuillem/tinyProject.svg?branch=master)](https://travis-ci.org/FrancoisGuillem/tinyProject)
+
 # R package "project"
 
 When working with R on a data analysis project, data files, scripts and output files multiply very quickly and it becomes hard to find your scripts and what they precisely do or which data is stored in which file.
