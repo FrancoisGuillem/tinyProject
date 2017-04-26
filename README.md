@@ -1,5 +1,6 @@
 [![Travis-CI Build Status](https://travis-ci.org/FrancoisGuillem/tinyProject.svg?branch=master)](https://travis-ci.org/FrancoisGuillem/tinyProject)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/FrancoisGuillem/tinyProject?branch=master&svg=true)](https://ci.appveyor.com/project/FrancoisGuillem/tinyProject)
+[![Coverage Status](https://img.shields.io/codecov/c/github/FrancoisGuillem/tinyProject/master.svg)](https://codecov.io/github/FrancoisGuillem/tinyProject?branch=master)
 
 # R package "project"
 
