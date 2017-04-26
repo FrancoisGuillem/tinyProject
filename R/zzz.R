@@ -1,5 +1,7 @@
 #' @import grDevices
 #' @importFrom methods formalArgs
-#' @importFrom utils file.edit type.convert write.csv write.csv2 write.table
+#' @importFrom utils type.convert write.csv write.csv2 write.table
 #' 
 NULL
+
+globalVariables(c("file.edit"))
