@@ -1,0 +1,19 @@
+# Load base packages
+library(datasets)
+library(graphics)
+library(grDevices)
+library(methods)
+library(stats)
+library(utils)
+
+library(tinyProject)
+
+options(prDirectories = list(
+  data =  "<%= dataFolder %>",
+  scripts = "<%= scriptFolder %>",
+  output = "<%= outputFolder %>"
+))
+
+options(prAutoSource = <%=deparse(autoSource) %>)
+
+prStart()

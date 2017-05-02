@@ -56,7 +56,10 @@
 #' 
 #' @export
 #' 
-prInit <- function(dir = ".", instructions = TRUE) {
+prInit <- function(dir = ".", dataFolder = "data", scriptFolder = "scripts", 
+                   outputFolder = "output", 
+                   autoSource = c("^tools"), 
+                   instructions = TRUE) {
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
     x <- file.path(dir, x)
@@ -65,14 +68,24 @@ prInit <- function(dir = ".", instructions = TRUE) {
   
   if (dir != ".") dirCreate("")
   
-  dirCreate ("data")
-  dirCreate ("output")
-  dirCreate ("scripts")
-
-  file.copy(system.file("Rprofile", package = "tinyProject"), 
-            file.path(dir,"./.Rprofile"))
+  dirCreate (dataFolder)
+  dirCreate (scriptFolder)
+  dirCreate (outputFolder)
+  
+  options(prDirectories = list(
+    data = dataFolder,
+    scripts = scriptFolder,
+    output = outputFolder
+  ))
+  
+  options(prAutoSource = autoSource)
   
   options(projectRoot = normalizePath(dir))
+  
+  brew::brew(
+    system.file("Rprofile.brew", package = "tinyProject"), 
+    file.path(dir,"./.Rprofile")
+  )
   
   prScript("data", template = "data", instructions = instructions)
   prScript("main", template = "main", instructions = instructions)

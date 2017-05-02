@@ -24,22 +24,27 @@ prStart <- function(dir = ".", trace = TRUE) {
   
   tryCatch({
     # Source scripts with prefix "tools" or in dir "tools"
-    tools <- union(
-      list.files(.getPath("scripts"), pattern = "^tools.*\\.R$", recursive = TRUE),
-      file.path("tools", list.files(.getPath("scripts/tools"), pattern = "\\.R$", 
-                                    recursive = TRUE))
-    )
-    
-    if(length(tools) > 0) {
-      sapply(tools, function(s) {
-        if(trace) cat("Sourcing", s, "\n")
-        source(.getPath(sprintf("scripts/%s",s)))
-      })
+    prStart <- function() {
+      tools <- union(
+        list.files(.getPath("scripts"), pattern = "^tools.*\\.R$", recursive = TRUE),
+        file.path("tools", list.files(.getPath("scripts/tools"), pattern = "\\.R$", 
+                                      recursive = TRUE))
+      )
+      
+      if(length(tools) > 0) {
+        sapply(tools, function(s) {
+          if(trace) cat("Sourcing", s, "\n")
+          source(.getPath(sprintf("scripts/%s",s)))
+        })
+      }
+      
+      # Source "start.R" script
+      if(trace) cat("Sourcing start.R\n")
+      source(.getPath("scripts/start.R"))
     }
     
-    # Source "start.R" script
-    if(trace) cat("Sourcing start.R\n")
-    source(.getPath("scripts/start.R"))
+    source(.getPath(".Rprofile"), local = TRUE)
+    
     ok <- TRUE
   }, error = function(e) {
     options(projectRoot = oldProjectRoot)

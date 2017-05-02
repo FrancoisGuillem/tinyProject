@@ -4,7 +4,8 @@
 \alias{prInit}
 \title{Initialise a project}
 \usage{
-prInit(dir = ".", instructions = TRUE)
+prInit(dir = ".", dataFolder = "data", scriptFolder = "scripts",
+  outputFolder = "output", autoSource = c("^tools"), instructions = TRUE)
 }
 \arguments{
 \item{dir}{Directory where project files will be stored. By default, it is 
