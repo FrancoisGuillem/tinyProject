@@ -1,0 +1,9 @@
+Binding: prInit
+Title: Data analysis project with tinyProject
+OpenFiles: scripts/start.R, scripts/data.R, scripts/main.R 
+
+Parameter: instructions
+Widget: CheckboxInput
+Label: Add instructions
+Default: On
+Position: left
