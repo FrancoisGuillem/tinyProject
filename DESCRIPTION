@@ -1,13 +1,13 @@
 Package: tinyProject
 Type: Package
-Title: A lightweight framework for data analysis projects
+Title: A lightweight template for data analysis projects
 Version: 0.5
 Date: 2016-05-22
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
-Description: The package provides functions that helps users to keep things
-    organized in their R projects. It should be used with RStudio and its project
-    feature.
+Description: This package creates useful files and folders for data analysis 
+    projects and provides functions to manage data, scripts and output files. 
+    It also provides a project template for Rstudio.
 License: GPL (>= 2)
 LazyLoad: yes
 Encoding: UTF-8
