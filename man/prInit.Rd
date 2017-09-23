@@ -46,7 +46,7 @@ Additionally, three scripts are created:
   should not contain code, but make reference to the scripts that do the job.
   
   \item start.R: script that is executed every time the project is opened. It
-  should load the libraries used in the project, define constant values, ... 
+  should load the packages used in the project, define constant values, ... 
   More generally it should include all technical instructions that do not
   directly participate to the creation, manipulation or analysis of data.
 }

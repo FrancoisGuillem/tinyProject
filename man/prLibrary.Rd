@@ -2,19 +2,19 @@
 % Please edit documentation in R/library.R
 \name{prLibrary}
 \alias{prLibrary}
-\title{Load and install libraries}
+\title{Load and install packages}
 \usage{
 prLibrary(...)
 }
 \arguments{
-\item{...}{name of the libraries to load. The names need to be quoted. If a package is
+\item{...}{name of the packages to load. The names need to be quoted. If a package is
 missing, the function tries to install it from CRAN by defaults. If a package 
 needs to be installed from github, it can be declared with the following format:
 \code{"github:username/pkgname"}. This way, if the package is not installed yet,
 the function knows how to install it.}
 }
 \description{
-The function tries to load all libraries passed as argument. For those that
+The function tries to load all packages passed as argument. For those that
 are not installed, it tries to install them and then load them.
 }
 \examples{

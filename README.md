@@ -30,7 +30,7 @@ prInit()
 
 By default, it creates three folders: `data` , `scripts` for `output` for respectively data, scripts and outputs storage. It also open three scripts filled with some instructions: `data.R` for data munging, `main.R` for data analysis and `start.R`. 
 
-This last script is executed each time the project is open either with Rstudio or with `prStart()`. This is useful to load libraries or to define constants.
+This last script is executed each time the project is open either with Rstudio or with `prStart()`. This is useful to load packages or to define constants.
 
 ## Accessing data
 Accessing data is super simple. you'll quickly become addict to functions `prSave()` and `prLoad()`!

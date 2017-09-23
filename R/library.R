@@ -1,10 +1,10 @@
-#' Load and install libraries
+#' Load and install packages
 #' 
-#' The function tries to load all libraries passed as argument. For those that
+#' The function tries to load all packages passed as argument. For those that
 #' are not installed, it tries to install them and then load them.
 #' 
 #' @param ...
-#' name of the libraries to load. The names need to be quoted. If a package is
+#' name of the packages to load. The names need to be quoted. If a package is
 #' missing, the function tries to install it from CRAN by defaults. If a package 
 #' needs to be installed from github, it can be declared with the following format:
 #' \code{"github:username/pkgname"}. This way, if the package is not installed yet,
