@@ -17,8 +17,9 @@ The function returns the absolute path of a file contained in the current
 project.
 }
 \examples{
-\dontrun{
-  prPath("data")
-}
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
+
+prPath("data")
 
 }

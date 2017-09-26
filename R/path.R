@@ -9,9 +9,10 @@
 #' Absolute path of the file.
 #' 
 #' @examples 
-#' \dontrun{
-#'   prPath("data")
-#' }
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
+#' 
+#' prPath("data")
 #' 
 #' @export
 prPath <- function(x) {

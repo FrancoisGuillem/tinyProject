@@ -27,7 +27,9 @@ These functions can be used to pragrammatically move, rename and delete
 scripts files.
 }
 \examples{
-\dontrun{
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
+
 prScript("test")
 
 prMoveScript("test", "testdir")
@@ -36,7 +38,6 @@ prRenameScript("testdir/test", "myTest")
 
 prDeleteScript("testdir/myTest")
 
-}
 
 }
 \seealso{

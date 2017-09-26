@@ -32,12 +32,14 @@ of the project. Each object is saved in distinct file with the same name as
 the object and the extension \code{rda}.
 }
 \examples{
-\dontrun{
 
-# Assume that project has been setup with prInit
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
 
 test <- rnorm(100)
 prSave(test)
+
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
 # Save again but add a description
 prSave(test, replace = TRUE, desc = "Just a test !")
@@ -45,14 +47,14 @@ prSave(test, replace = TRUE, desc = "Just a test !")
 prLoad(test)
 
 # It is also possible to save/load in subfolders
-prSave(test, subdir = "testdir", desc = "Saved in subfolder")
+prSave(test, TRUE, subdir = "testdir", desc = "Saved in subfolder")
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
 # Or equivalently
-prSave("testdir/test", desc = "Saved in subfolder")
+prSave("testdir/test", TRUE, desc = "Saved in subfolder")
 
 prLoad(test, subdir="testdir")
 prLoad("testdir/test")
-}
   
 }
 \seealso{

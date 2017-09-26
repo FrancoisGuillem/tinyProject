@@ -27,7 +27,7 @@
 #'   values.
 #'   
 #' @examples 
-#' \dontrun{
+#' 
 #' # Remove row names of table output:
 #' prOutputDefaults(table = list(row.names = FALSE))
 #' 
@@ -36,7 +36,6 @@
 #' 
 #' # Reset default values for pdf and table output
 #' prOutputDefaults(table = NULL, pdf = NULL)
-#' }
 #' 
 #' @export
 prOutputDefaults <- function(table = NA, image = NA, pdf = NA, cairo = NA) {

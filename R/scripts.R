@@ -28,9 +28,11 @@
 #' \code{\link{prDeleteScript}}
 #' 
 #' @examples
-#' \dontrun{
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
 #' 
 #' prScript("test")
+#' list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 #' 
 #' prScript("myFunction", template = "function")
 #' 
@@ -39,7 +41,6 @@
 #' 
 #' # Or equivalently
 #' prScript("testdir/test")
-#' }
 #' 
 #' @export
 #' 
@@ -95,7 +96,9 @@ prScript <- function(name, template, subdir = ".", instructions = TRUE) {
 #'   New name of the script.
 #'   
 #' @examples 
-#' \dontrun{
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
+#' 
 #' prScript("test")
 #' 
 #' prMoveScript("test", "testdir")
@@ -104,7 +107,6 @@ prScript <- function(name, template, subdir = ".", instructions = TRUE) {
 #' 
 #' prDeleteScript("testdir/myTest")
 #' 
-#' }
 #'
 #' @seealso 
 #' \code{\link{prScript}}
@@ -164,7 +166,8 @@ prDeleteScript <- function(name, subdir = ".") {
 #' \code{\link{prLibrary}}, \code{\link{prLoad}}, \code{\link{prSave}}
 #' 
 #' @examples 
-#' \dontrun{
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
 #' 
 #' prScript("helloWorld")
 #' 
@@ -173,11 +176,12 @@ prDeleteScript <- function(name, subdir = ".") {
 #' prSource("helloWorld")
 #' 
 #' # Source a file in a subdirectory
+#' prScript("myScript", subdir = "testdir")
 #' prSource("myScript", subdir = "testdir")
 #' 
 #' # Or equivalently
 #' prSource("testdir/myScript")
-#' }
+#' 
 #' @export   
 prSource <- function(name, subdir = ".") {
   path <- sprintf("scripts/%s/%s.R", subdir, name)

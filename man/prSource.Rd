@@ -17,7 +17,8 @@ subdirectory can also be directly specified in the parameter \code{name}.}
 Source a R script in the "scripts" folder of the project.
 }
 \examples{
-\dontrun{
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
 
 prScript("helloWorld")
 
@@ -26,11 +27,12 @@ prScript("helloWorld")
 prSource("helloWorld")
 
 # Source a file in a subdirectory
+prScript("myScript", subdir = "testdir")
 prSource("myScript", subdir = "testdir")
 
 # Or equivalently
 prSource("testdir/myScript")
-}
+
 }
 \seealso{
 \code{\link{prLibrary}}, \code{\link{prLoad}}, \code{\link{prSave}}

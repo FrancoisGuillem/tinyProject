@@ -47,12 +47,10 @@
 #' \code{\link{prLoad}}, \code{\link{prScript}}
 #' 
 #' @examples 
-#' \dontrun{
-#' # First create an empty project with Rstudio
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
 #' 
-#' prInit()
-#' 
-#' }
+#' list.files(tempdir(), recursive = TRUE, include.dirs = TRUE)
 #' 
 #' @export
 #' 

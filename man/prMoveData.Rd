@@ -21,16 +21,19 @@ prDeleteData(name, subdir = ".")
 The functions can be used to programmatically move or delete data files.
 }
 \examples{
-\dontrun{
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
+
 x <- rnorm(100)
 
-prSave("x")
+prSave(x)
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
-prMoveData("x", "testdir")
+prMoveData(x, "testdir")
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
-prDeleteScript("testdir/x")
-
-}
+prDeleteData("testdir/x")
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
 }
 \seealso{

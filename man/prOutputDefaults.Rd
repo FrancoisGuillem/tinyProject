@@ -34,7 +34,7 @@ useful for instance to set in one and only one location the default size
 of output images, the default font...
 }
 \examples{
-\dontrun{
+
 # Remove row names of table output:
 prOutputDefaults(table = list(row.names = FALSE))
 
@@ -43,6 +43,5 @@ prOutputDefaults(pdf = list(width = 8, height = 6))
 
 # Reset default values for pdf and table output
 prOutputDefaults(table = NULL, pdf = NULL)
-}
 
 }

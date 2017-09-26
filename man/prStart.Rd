@@ -20,8 +20,9 @@ subdirectory called \code{tools}, then it sources the \code{start.R} script.
 It is automatically called when a project is opened.
 }
 \examples{
-\dontrun{
-prStart()
-}
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
+
+prStart(projectPath)
 
 }

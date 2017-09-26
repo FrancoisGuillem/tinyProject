@@ -32,9 +32,11 @@ displayed. The user is then invited to choose one by typing the number or
 name of the script he wants to open.
 }
 \examples{
-\dontrun{
+projectPath <- file.path(tempdir(), "test")
+prInit(projectPath)
 
 prScript("test")
+list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
 prScript("myFunction", template = "function")
 
@@ -43,7 +45,6 @@ prScript("test", subdir = "testdir")
 
 # Or equivalently
 prScript("testdir/test")
-}
 
 }
 \seealso{

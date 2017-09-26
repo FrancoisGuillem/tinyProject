@@ -26,17 +26,20 @@
 #' These functions are used to open a plot device. Nothing is returned.
 #' 
 #' @examples 
-#' \dontrun{
-#'   prPng("test")
-#'   plot(rnrom(100))
-#'   dev.off()
-#'   # The plot is saved in "output/test.png"
-#'   
-#'   prPng("mysubdirectory/test")
-#'   plot(rnrom(100))
-#'   dev.off()
-#'   # The plot is saved in "output/mysubdirectory/test.png"
-#' }
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
+#' 
+#' prPng("test")
+#' plot(rnorm(100))
+#' dev.off()
+#' # The plot is saved in "output/test.png"
+#' list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
+#' 
+#' prPng("mysubdirectory/test")
+#' plot(rnorm(100))
+#' dev.off()
+#' # The plot is saved in "output/mysubdirectory/test.png"
+#' list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 #' 
 #' @export
 #' @rdname prOutput

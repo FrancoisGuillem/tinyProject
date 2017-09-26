@@ -11,9 +11,10 @@
 #' TRUE if all scripts had been sourced without error and false otherwise.
 #' 
 #' @examples 
-#' \dontrun{
-#' prStart()
-#' }
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
+#' 
+#' prStart(projectPath)
 #' 
 #' @export
 #' 
