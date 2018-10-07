@@ -3,12 +3,13 @@
 #' The function tries to load all packages passed as argument. For those that
 #' are not installed, it tries to install them and then load them.
 #' 
-#' @param ...
-#' name of the packages to load. The names need to be quoted. If a package is
-#' missing, the function tries to install it from CRAN by defaults. If a package 
-#' needs to be installed from github, it can be declared with the following format:
-#' \code{"github:username/pkgname"}. This way, if the package is not installed yet,
-#' the function knows how to install it.
+#' @param ... name of the packages to load. The names need to be quoted. If a
+#'   package is missing, the function tries to install it from CRAN by defaults.
+#'   If a package needs to be installed from github, it can be declared with the
+#'   following format: \code{"github:username/pkgname"}. This way, if the
+#'   package is not installed yet, the function knows how to install it.
+#' @param warnings Should the function display warnings?
+#'   
 #' 
 #' @seealso 
 #' \code{\link{prSource}}
@@ -20,7 +21,7 @@
 #' 
 #' @export
 #' 
-prLibrary <- function(...) {
+prLibrary <- function(..., warnings = FALSE) {
   packages <- sapply( substitute(list(...)), .getName )[-1] 
   missingPackages <- c()
   installedPackages <- c()
@@ -28,7 +29,7 @@ prLibrary <- function(...) {
   
   # Load packages. If they are not installed, try to install them
   for (p in packages) {
-    available <- .loadPkg(p)
+    available <- .loadPkg(p, warnings)
     
     if(available) {
       loadedPackages <- append(loadedPackages, basename(p))
@@ -42,7 +43,7 @@ prLibrary <- function(...) {
         suppressWarnings(utils::install.packages(p, quiet = TRUE))
       }
       
-      installed <- .loadPkg(p)
+      installed <- .loadPkg(p, warnings)
       
       if (installed) {
         installedPackages <- append(installedPackages, basename(p))
@@ -74,6 +75,10 @@ prLibrary <- function(...) {
 
 # Private function that silently tries to load a package. Returns TRUE id the
 # packages has been loaded.
-.loadPkg <- function(p) {
-  suppressWarnings(require(basename(p), character.only = TRUE, quietly=TRUE))
+.loadPkg <- function(p, warnings = FALSE) {
+  if (warnings) {
+    require(basename(p), character.only = TRUE, quietly=TRUE)
+  } else {
+    suppressWarnings(require(basename(p), character.only = TRUE, quietly=TRUE, warn.conflicts = FALSE))
+  }
 }
