@@ -1,0 +1,16 @@
+# Load base packages
+library(datasets)
+library(graphics)
+library(grDevices)
+library(methods)
+library(stats)
+library(utils)
+
+options(prDefaultRepos="<%= getOption("repos") %>")
+
+if (!require(tinyProject)) {
+  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= packageDescription("tinyProject")$Date %>")
+  library(tinyProject)
+}
+
+prStart()
