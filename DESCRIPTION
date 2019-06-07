@@ -1,8 +1,8 @@
 Package: tinyProject
 Type: Package
 Title: A Lightweight Template for Data Analysis Projects
-Version: 0.5
-Date: 2016-05-22
+Version: 0.6
+Date: 2019-06-07
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
 Description: Creates useful files and folders for data
@@ -14,9 +14,9 @@ LazyLoad: yes
 Encoding: UTF-8
 Imports:
     brew,
-    devtools,
     methods
 Suggests:
     testthat,
+    devtools,
     covr
 RoxygenNote: 6.1.1

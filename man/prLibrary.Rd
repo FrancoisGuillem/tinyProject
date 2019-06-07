@@ -4,14 +4,16 @@
 \alias{prLibrary}
 \title{Load and install packages}
 \usage{
-prLibrary(...)
+prLibrary(..., warnings = FALSE)
 }
 \arguments{
-\item{...}{name of the packages to load. The names need to be quoted. If a package is
-missing, the function tries to install it from CRAN by defaults. If a package 
-needs to be installed from github, it can be declared with the following format:
-\code{"github:username/pkgname"}. This way, if the package is not installed yet,
-the function knows how to install it.}
+\item{...}{name of the packages to load. The names need to be quoted. If a
+package is missing, the function tries to install it from CRAN by defaults.
+If a package needs to be installed from github, it can be declared with the
+following format: \code{"github:username/pkgname"}. This way, if the
+package is not installed yet, the function knows how to install it.}
+
+\item{warnings}{Should the function display warnings?}
 }
 \description{
 The function tries to load all packages passed as argument. For those that

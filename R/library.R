@@ -38,7 +38,11 @@ prLibrary <- function(..., warnings = FALSE) {
       
       if (grepl("^github:", p)) {
         p <- gsub("^github:", "", p)
-        try(devtools::install_github(p, quiet = TRUE), silent = TRUE)
+        if (requireNamespace("devtools")) {
+          try(devtools::install_github(p, quiet = TRUE), silent = TRUE)
+        } else {
+          warning("Installing github packages requires the 'devtools' package")
+        }
       } else {
         suppressWarnings(utils::install.packages(p, quiet = TRUE))
       }
