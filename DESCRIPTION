@@ -2,7 +2,6 @@ Package: tinyProject
 Type: Package
 Title: A Lightweight Template for Data Analysis Projects
 Version: 0.6
-Date: 2019-06-07
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
 Description: Creates useful files and folders for data
