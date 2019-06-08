@@ -18,6 +18,6 @@ Imports:
     R.utils
 Suggests:
     testthat,
-    devtools,
+    remotes,
     covr
 RoxygenNote: 6.1.1
