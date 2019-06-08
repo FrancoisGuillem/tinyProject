@@ -14,7 +14,8 @@ LazyLoad: yes
 Encoding: UTF-8
 Imports:
     brew,
-    methods
+    methods,
+    R.utils
 Suggests:
     testthat,
     devtools,
