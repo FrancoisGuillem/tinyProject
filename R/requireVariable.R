@@ -16,17 +16,26 @@
 #' @return Used for side effects
 #' 
 #' @export
-requireVariable <- function(name, desc = paste("Enter value for variable", name), 
+requireVariable <- function(name, desc = NULL, 
                             default = NULL,
                             what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv) {
   if (interactive()) {
     if (!exists(name) || alwaysAsk) {
-      cat(desc, '\n')
+      cat("Enter value for variable", name)
+      if (!is.null(default)) {
+        cat(" ( default:", as.character(default), ")")
+      }
+      cat(":\n")
+      if (!is.null(desc)) cat("(", desc, ")\n")
       value <- scan(what = what, nmax = nmax)
+      if (length(value) == 0) {
+        if (!is.null(default)) value <- default
+        else stop ("Missing value for variable ", name)
+      }
       assign(name, value, envir = env)
     }
   } else {
     # Read value from command args
-    assign(name, getCommandArg(name, default), envir = env)
+    assign(name, getCommandArg(name, default, desc), envir = env)
   }
 }
