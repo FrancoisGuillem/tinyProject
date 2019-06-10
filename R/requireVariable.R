@@ -6,6 +6,7 @@
 #' 
 #' @param name Name of the required variable
 #' @param desc Description to display
+#' @param default Default value for the variable
 #' @param what Type of data to read in interactive mode.
 #' @param nmax Number of values to read in interactive mode.
 #' @param alwaysAsk If the variable already exists, should the function ask a
@@ -16,6 +17,7 @@
 #' 
 #' @export
 requireVariable <- function(name, desc = paste("Enter value for variable", name), 
+                            default = NULL,
                             what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv) {
   if (interactive()) {
     if (!exists(name) || alwaysAsk) {
@@ -25,6 +27,6 @@ requireVariable <- function(name, desc = paste("Enter value for variable", name)
     }
   } else {
     # Read value from command args
-    assign(name, getCommandArg(name), envir = env)
+    assign(name, getCommandArg(name, default), envir = env)
   }
 }

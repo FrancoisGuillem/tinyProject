@@ -14,7 +14,7 @@ readCommandArgs <- function() {
   args
 }
 
-getCommandArg <- function(name) {
+getCommandArg <- function(name, default = NULL) {
   args <- getOption("prAgrs")
   if (is.null(args)) {
     args <- readCommandArgs()
@@ -36,6 +36,9 @@ getCommandArg <- function(name) {
     
     return(value)
   }
+  
+  # Return default if set
+  if (!is.null(default)) return(default)
   
   stop ("Missing value for parameter ", name)
 }

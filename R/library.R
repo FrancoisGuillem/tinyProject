@@ -50,7 +50,7 @@ prLibrary <- function(..., warnings = FALSE) {
       } else {
         suppressWarnings(utils::install.packages(p, quiet = TRUE, repos = repos))
       }
-      Sys.unsestenv("R_PROFILE_USER")
+      Sys.unsetenv("R_PROFILE_USER")
       
       installed <- .loadPkg(p, warnings)
       
