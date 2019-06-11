@@ -4,13 +4,15 @@
 \alias{requireVariable}
 \title{Ask user the value of a variable}
 \usage{
-requireVariable(name, desc = paste("Enter value for variable", name),
+requireVariable(name, desc = NULL, default = NULL,
   what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv)
 }
 \arguments{
 \item{name}{Name of the required variable}
 
 \item{desc}{Description to display}
+
+\item{default}{Default value for the variable}
 
 \item{what}{Type of data to read in interactive mode.}
 
