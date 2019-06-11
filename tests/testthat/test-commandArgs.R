@@ -32,5 +32,10 @@ with_mock(
       expect_equal(getCommandArg("Name1"), "value1")
       expect_equal(getCommandArg("unnamed1"), "unnamed1")
     })
+    
+    test_that("getCommandArg() supports default value", {
+      expect_error(getCommandArg("unnamed3"), "Missing value")
+      expect_equal(getCommandArg("unnamed3", "defaultValue"), "defaultValue")
+    })
   }
 )
