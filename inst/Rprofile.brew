@@ -9,7 +9,7 @@ library(utils)
 options(prDefaultRepos="<%= getOption("repos") %>")
 
 if (!require(tinyProject)) {
-  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= packageDescription("tinyProject")$Date %>")
+  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= pkgDate %>")
   library(tinyProject)
 }
 
