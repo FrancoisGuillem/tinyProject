@@ -70,7 +70,7 @@ prInit <- function(dir = ".", instructions = TRUE) {
   if (!is.null(packageDescription("tinyProject")$Date)) {
     pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
   } else {
-    pkgDate <- Sys.Date()
+    pkgDate <- as.character(Sys.Date())
   }
   brew::brew(system.file("Rprofile.brew", package = "tinyProject"), 
              file.path(dir,"./.Rprofile"))

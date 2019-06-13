@@ -1,3 +1,8 @@
+# tinyProject 0.6.1 (2019-06-11)
+
+## Bugfixes
+* The execution of .Rprofile was resulting in an error when tinyProject was not already installed.
+
 # tinyProject 0.6 (2019-06-11)
 
 ## New features
