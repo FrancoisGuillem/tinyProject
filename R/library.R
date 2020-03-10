@@ -27,6 +27,9 @@ prLibrary <- function(..., warnings = FALSE) {
   installedPackages <- c()
   loadedPackages <- c()
   
+  repos <- getOption("repos")
+  if (is.null(repos) || !grepl("^http", repos)) repos <- getOption("prDefaultRepos")
+
   # Load packages. If they are not installed, try to install them
   for (p in packages) {
     available <- .loadPkg(p, warnings)
@@ -36,12 +39,18 @@ prLibrary <- function(..., warnings = FALSE) {
     } else {
       message("Trying to install ", p)
       
+      Sys.setenv(R_PROFILE_USER = "")
       if (grepl("^github:", p)) {
         p <- gsub("^github:", "", p)
-        try(devtools::install_github(p, quiet = TRUE), silent = TRUE)
+        if (requireNamespace("remotes")) {
+          try(remotes::install_github(p, quiet = TRUE), silent = TRUE)
+        } else {
+          warning("Installing github packages requires the 'remotes' package")
+        }
       } else {
-        suppressWarnings(utils::install.packages(p, quiet = TRUE))
+        suppressWarnings(utils::install.packages(p, quiet = TRUE, repos = repos))
       }
+      Sys.unsetenv("R_PROFILE_USER")
       
       installed <- .loadPkg(p, warnings)
       

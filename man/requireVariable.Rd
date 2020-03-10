@@ -4,13 +4,15 @@
 \alias{requireVariable}
 \title{Ask user the value of a variable}
 \usage{
-requireVariable(name, desc = paste("Enter value for variable", name),
-  what = character(), nmax = 1, alwaysAsk = TRUE)
+requireVariable(name, desc = NULL, default = NULL,
+  what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv)
 }
 \arguments{
 \item{name}{Name of the required variable}
 
 \item{desc}{Description to display}
+
+\item{default}{Default value for the variable}
 
 \item{what}{Type of data to read in interactive mode.}
 
@@ -18,6 +20,8 @@ requireVariable(name, desc = paste("Enter value for variable", name),
 
 \item{alwaysAsk}{If the variable already exists, should the function ask a
 new value?}
+
+\item{env}{Environment where the variable should be defined}
 }
 \value{
 Used for side effects

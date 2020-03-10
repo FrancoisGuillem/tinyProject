@@ -67,8 +67,13 @@ prInit <- function(dir = ".", instructions = TRUE) {
   dirCreate ("output")
   dirCreate ("scripts")
 
-  file.copy(system.file("Rprofile", package = "tinyProject"), 
-            file.path(dir,"./.Rprofile"))
+  if (!is.null(packageDescription("tinyProject")$Date)) {
+    pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
+  } else {
+    pkgDate <- as.character(Sys.Date())
+  }
+  brew::brew(system.file("Rprofile.brew", package = "tinyProject"), 
+             file.path(dir,"./.Rprofile"))
   
   options(projectRoot = normalizePath(dir))
   

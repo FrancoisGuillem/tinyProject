@@ -1,0 +1,21 @@
+# Load base packages
+library(datasets)
+library(graphics)
+library(grDevices)
+library(methods)
+library(stats)
+library(utils)
+
+options(prDefaultRepos="<%= getOption("repos") %>")
+
+if (!require(tinyProject)) {
+  f <- tempfile()
+  cat("", file = f)
+  Sys.setenv(R_PROFILE_USER = f)
+  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= pkgDate %>")
+  Sys.unsetenv("R_PROFILE_USER")
+  file.remove(f)
+  library(tinyProject)
+}
+
+prStart()
