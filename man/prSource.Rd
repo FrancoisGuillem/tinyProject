@@ -10,7 +10,7 @@ prSource(name, subdir = ".")
 \item{name}{Name of the script to execute. It can also contain the subfolder where the
 script is stored.}
 
-\item{subdir}{subdirectory where the script is located. The 
+\item{subdir}{subdirectory where the script is located. The
 subdirectory can also be directly specified in the parameter \code{name}.}
 }
 \description{

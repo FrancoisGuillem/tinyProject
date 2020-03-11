@@ -17,7 +17,7 @@ choosen template. If the argument is missing, the choosen template depends
 on the name of the script: "data" if the name begins with "data", "function"
 if it start with "tools" and "analysis" in all other cases.}
 
-\item{subdir}{subdirectory where the scripts needs to be created or opened. The 
+\item{subdir}{subdirectory where the scripts needs to be created or opened. The
 subdirectory can also be directly specified in the parameter \code{name}.}
 
 \item{instructions}{Should the created script include some instructions?}
@@ -28,7 +28,7 @@ already exists, it opens it in the Rstudio editor.
 }
 \details{
 If the parameter \code{name} is missing, then a list of existing scripts is
-displayed. The user is then invited to choose one by typing the number or 
+displayed. The user is then invited to choose one by typing the number or
 name of the script he wants to open.
 }
 \examples{
@@ -48,6 +48,9 @@ prScript("testdir/test")
 
 }
 \seealso{
-\code{\link{prSource}}, \code{\link{prMoveScript}}, \code{\link{prRenameScript}}, 
+\code{\link{prSource}}, \code{\link{prMoveScript}}, \code{\link{prRenameScript}},
 \code{\link{prDeleteScript}}
+}
+\author{
+Francois Guillem
 }

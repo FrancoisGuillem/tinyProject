@@ -1,22 +1,20 @@
-Package: tinyProject
+Package: envimatFrame
 Type: Package
-Title: A Lightweight Template for Data Analysis Projects
-Version: 0.6.1
-Author: Francois Guillem
-Maintainer: Francois Guillem <guillem.francois@gmail.com>
-Description: Creates useful files and folders for data
-  analysis  projects and provides functions to manage data,
-  scripts and output files. Also provides a project
-  template for 'Rstudio'.
-License: GPL (>= 2)
-LazyLoad: yes
+Title: Utility functions to configure standard project environments in labs
+Version: 0.1.0
+Authors@R: c(person("Chris", "Reudenbach", email = "reudenbach@uni-marburg.de", role = c("cre", "aut")),
+             person("Thomas", "Nauss", email = "reudenbach@uni-marburg.de>", role = c("aut")),
+             person("Francois Guillem", "Guillem", email = "guillem.francois@gmail.com>", role = c("aut"))
+             )
+Maintainer: Chris Reudenbach <reudenbach@uni-marburg.de>
+Description: Helpers for setting up working environments which focus on using 
+    the same initialization parameters across different computers and team 
+    members.
+License: GPL (>= 2) | file LICENSE
+Imports: brew, methods, R.utils
+Suggests: testthat, remotes, covr,data.tree,devtools
 Encoding: UTF-8
-Imports:
-    brew,
-    methods,
-    R.utils
-Suggests:
-    testthat,
-    remotes,
-    covr
-RoxygenNote: 6.1.1
+LazyData: true
+RoxygenNote: 7.0.2
+Roxygen: list(markdown = TRUE)
+

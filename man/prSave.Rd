@@ -27,7 +27,7 @@ global environement so that the object should be easily accessible in all
 settings}
 }
 \description{
-\code{prSave} and \code{prLoad} save and load data in the folder \code{data} 
+\code{prSave} and \code{prLoad} save and load data in the folder \code{data}
 of the project. Each object is saved in distinct file with the same name as
 the object and the extension \code{rda}.
 }
@@ -55,8 +55,11 @@ prSave("testdir/test", TRUE, desc = "Saved in subfolder")
 
 prLoad(test, subdir="testdir")
 prLoad("testdir/test")
-  
+
 }
 \seealso{
 \code{\link{prLibrary}}, \code{\link{prSource}}
+}
+\author{
+Francois Guillem
 }

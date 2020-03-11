@@ -47,13 +47,13 @@ to save plots as image files.
 \details{
 These functions has three advantages over the base functions:
 \itemize{
-  \item Files are automatically created in the output folder of the project
-    even if the working directory has changed. Subdirectories are automatically
-    created if they do not exist.
-  \item By default, these functions do not erase an existing file. This avoids
-    accidents.
-  \item The default values of the parameters (width, height, etc.) can be
-    modified with function \code{\link{prOutputDefaults}}.
+\item Files are automatically created in the output folder of the project
+even if the working directory has changed. Subdirectories are automatically
+created if they do not exist.
+\item By default, these functions do not erase an existing file. This avoids
+accidents.
+\item The default values of the parameters (width, height, etc.) can be
+modified with function \code{\link{prOutputDefaults}}.
 }
 }
 \examples{
@@ -72,4 +72,7 @@ dev.off()
 # The plot is saved in "output/mysubdirectory/test.png"
 list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
+}
+\author{
+Francois Guillem
 }

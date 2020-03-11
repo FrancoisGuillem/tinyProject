@@ -4,8 +4,15 @@
 \alias{requireVariable}
 \title{Ask user the value of a variable}
 \usage{
-requireVariable(name, desc = NULL, default = NULL,
-  what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv)
+requireVariable(
+  name,
+  desc = NULL,
+  default = NULL,
+  what = character(),
+  nmax = 1,
+  alwaysAsk = TRUE,
+  env = .GlobalEnv
+)
 }
 \arguments{
 \item{name}{Name of the required variable}
@@ -30,4 +37,7 @@ Used for side effects
 In interactive mode, this functions asks the user to type the value of a given
 variable. In non-interactive mode, it searchs the value in the command line
 arguments and it returns an error if the value does not exist.
+}
+\author{
+Francois Guillem
 }

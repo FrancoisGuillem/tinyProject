@@ -1,22 +1,22 @@
 #' Ask user the value of a variable
-#' 
+#'
 #' In interactive mode, this functions asks the user to type the value of a given
 #' variable. In non-interactive mode, it searchs the value in the command line
 #' arguments and it returns an error if the value does not exist.
-#' 
+#'
 #' @param name Name of the required variable
 #' @param desc Description to display
 #' @param default Default value for the variable
 #' @param what Type of data to read in interactive mode.
 #' @param nmax Number of values to read in interactive mode.
 #' @param alwaysAsk If the variable already exists, should the function ask a
-#'   new value? 
+#'   new value?
 #' @param env Environment where the variable should be defined
-#' 
+#'
 #' @return Used for side effects
-#' 
+#' @author Francois Guillem
 #' @export
-requireVariable <- function(name, desc = NULL, 
+requireVariable <- function(name, desc = NULL,
                             default = NULL,
                             what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv) {
   if (interactive()) {

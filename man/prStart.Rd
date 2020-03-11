@@ -15,7 +15,7 @@ prStart(dir = ".", trace = TRUE)
 TRUE if all scripts had been sourced without error and false otherwise.
 }
 \description{
-This function sources all scripts prefixed by \code{tools} or situated in a 
+This function sources all scripts prefixed by \code{tools} or situated in a
 subdirectory called \code{tools}, then it sources the \code{start.R} script.
 It is automatically called when a project is opened.
 }
@@ -25,4 +25,7 @@ prInit(projectPath)
 
 prStart(projectPath)
 
+}
+\author{
+Francois Guillem
 }

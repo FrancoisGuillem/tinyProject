@@ -14,7 +14,7 @@ prDeleteData(name, subdir = ".")
 
 \item{newDir}{Subdirectory where to move a data file}
 
-\item{subdir}{Subdirectory of the data file. It can also be indicated directly in the 
+\item{subdir}{Subdirectory of the data file. It can also be indicated directly in the
 \code{name} parameter.}
 }
 \description{

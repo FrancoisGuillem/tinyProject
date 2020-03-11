@@ -1,5 +1,5 @@
 #' Private functions that move or delete a file
-#' 
+#'
 #' @param name
 #'   Name of the file (without extension)
 #' @param newDir
@@ -12,15 +12,17 @@
 #'   Main directory ("scripts", "data" or "output")
 #' @param errorName
 #'   Name to display in error messages when file already exists
-#' 
+#'
+#' @author Francois Guillem
+#'
 #' @noRd
-#' 
+#'
 .prMoveFile <- function(name, newDir, subdir = ".", extension, mainDir, errorName) {
   path <- .getPath(name, subdir, extension, mainDir)
   newPath <- .getPath(basename(name), newDir, extension, mainDir)
-  
+
   if (file.exists(newPath)) stop(errorName, " ", newPath, "already exists.")
-  
+
   file.rename(path, newPath)
 }
 
@@ -29,9 +31,9 @@
 }
 
 #' Private function that returns the file name of a "substitute" expression.
-#' 
+#'
 #' Thanks to this function, quotes are optional in most functions of the package.
-#' 
+#'
 #' @param x result of the function "substitute"
 #' @return character string
 #' @noRd

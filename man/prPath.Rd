@@ -21,5 +21,7 @@ projectPath <- file.path(tempdir(), "test")
 prInit(projectPath)
 
 prPath("data")
-
+}
+\author{
+Francois Guillem
 }

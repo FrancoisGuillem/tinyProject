@@ -25,7 +25,7 @@ is \code{NULL} the defaults are reset to their original values}
 }
 \value{
 \code{prOutputDefaults} invisibly returns the list of modified defaults
-  values.
+values.
 }
 \description{
 This function can modify the default values of the parameters of output

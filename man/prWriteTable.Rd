@@ -13,7 +13,7 @@ prWriteCsv(name, ..., replace = FALSE)
 prWriteCsv2(name, ..., replace = FALSE)
 }
 \arguments{
-\item{name}{Name of the object to write. Quotes are optional. This argument can also 
+\item{name}{Name of the object to write. Quotes are optional. This argument can also
 specify the subdirectory of folder "output" where to write the file.}
 
 \item{...}{arguments to \code{write.table}}
@@ -21,7 +21,7 @@ specify the subdirectory of folder "output" where to write the file.}
 \item{replace}{If the file already exists, should it be overwritten ?}
 }
 \description{
-These functions are wrappers to \code{write.table}, \code{write.csv} and 
+These functions are wrappers to \code{write.table}, \code{write.csv} and
 \code{write.csv2}. They write a matrix or a data.table in a ".txt" or ".csv"
 file in the output folder. The file created has the same name as the object.
 }
@@ -38,4 +38,7 @@ list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 prWriteTable("mydir/mydata")
 list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
 
+}
+\author{
+Francois Guillem
 }

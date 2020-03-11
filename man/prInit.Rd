@@ -7,7 +7,7 @@
 prInit(dir = ".", instructions = TRUE)
 }
 \arguments{
-\item{dir}{Directory where project files will be stored. By default, it is 
+\item{dir}{Directory where project files will be stored. By default, it is
 the current working directory.}
 
 \item{instructions}{Should instructions added in the scripts created by the
@@ -22,9 +22,9 @@ your work organised and increase your productivity.
 The function creates three folders :
 
 \itemize{
-  \item scripts: Folder where the scripts are stored
-  \item data: Folder where the source and intermediate data files are stored
-  \item output: Folder where the output of the project are stored
+\item scripts: Folder where the scripts are stored
+\item data: Folder where the source and intermediate data files are stored
+\item output: Folder where the output of the project are stored
 }
 
 These three folders are essential so do not remove them. But you can add any
@@ -33,22 +33,22 @@ other folders you desire ("latex", "presentation", etc.)
 Additionally, three scripts are created:
 
 \itemize{
-  \item main.R: This is the main script of your project. Ideally, just by 
-  looking at this script you should remember how your project is organised
-  For small projects most code can go in this script. But for larger project, 
-  it should mostly contain comments what each script is supposed to do. You 
-  can use the function \code{\link{prScript}} to programatically open the 
-  scripts you are referring to.
-  
-  \item data.R: This script should contain inscruction to import data in the
-  project and/or transform the source data in processed data that will be
-  studied/analysed. As for the script "main", for large project, this script
-  should not contain code, but make reference to the scripts that do the job.
-  
-  \item start.R: script that is executed every time the project is opened. It
-  should load the packages used in the project, define constant values, ... 
-  More generally it should include all technical instructions that do not
-  directly participate to the creation, manipulation or analysis of data.
+\item main.R: This is the main script of your project. Ideally, just by
+looking at this script you should remember how your project is organised
+For small projects most code can go in this script. But for larger project,
+it should mostly contain comments what each script is supposed to do. You
+can use the function \code{\link{prScript}} to programatically open the
+scripts you are referring to.
+
+\item data.R: This script should contain inscruction to import data in the
+project and/or transform the source data in processed data that will be
+studied/analysed. As for the script "main", for large project, this script
+should not contain code, but make reference to the scripts that do the job.
+
+\item start.R: script that is executed every time the project is opened. It
+should load the packages used in the project, define constant values, ...
+More generally it should include all technical instructions that do not
+directly participate to the creation, manipulation or analysis of data.
 }
 }
 \examples{
@@ -59,6 +59,9 @@ list.files(tempdir(), recursive = TRUE, include.dirs = TRUE)
 
 }
 \seealso{
-\code{\link{prLibrary}}, \code{\link{prSource}}, \code{\link{prSave}}, 
+\code{\link{prLibrary}}, \code{\link{prSource}}, \code{\link{prSave}},
 \code{\link{prLoad}}, \code{\link{prScript}}
+}
+\author{
+Francois Guillem
 }

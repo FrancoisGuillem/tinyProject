@@ -17,13 +17,13 @@ prDeleteScript(name, subdir = ".")
 
 \item{newDir}{Subdirectory where to move a script.}
 
-\item{subdir}{Subdirectory of the script on which one wants to perform an action. It can 
+\item{subdir}{Subdirectory of the script on which one wants to perform an action. It can
 also be indicated directly in the \code{name} parameter.}
 
 \item{newName}{New name of the script.}
 }
 \description{
-These functions can be used to pragrammatically move, rename and delete 
+These functions can be used to pragrammatically move, rename and delete
 scripts files.
 }
 \examples{

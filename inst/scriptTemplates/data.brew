@@ -1,23 +1,8 @@
-#///////////////////////////////////////////////////////////////////////////////
+#-----------------------------------------------------------------------
 # SCRIPT <%= gsub("\\.R$", "", basename(path)) %>
-#///////////////////////////////////////////////////////////////////////////////
-#
-#////////
-# INPUT:
-# what is the source data ?
-#
-#////////
-# OUTPUT:
-# what data objects will the script create ?
-#
-#////////
-# DETAILS:
-# Anything else ? Where did you get the data ? Did you do some manual
-# transformation ?
-#
-#///////////////////////////////////////////////////////////////////////////////
-<% if (instructions) { -%>
-#
+#-----------------------------------------------------------------------
+#-
+#--- NOTE
 # In this file, you should the code that imports data and prepare it for
 # analysis.
 #
@@ -25,11 +10,29 @@
 # 'prLoad' either at the beggining of your other scripts or in script 'start'.
 #
 # If the operations performed here take a long time, you may also want to save
-# intermediary objects with 'prSave' so they are not lost in case of error or 
+# intermediary objects with 'prSave' so they are not lost in case of error or
 # crash.
 #
 # Finally if this script becomes too large, you can split your code in multiple
 # scripts and create a link to them with function 'prScript'.
+
+#--- INPUT:
+# what is the source data ?
+
+
+#--- OUTPUT:
+# what data objects will the script create and whatfore?
+
+
+#--- DETAILS:
+# Anything else ? Where did you get the data ? Did you do some manual
+# transformation ?
+
+#--- DATA PREPROCESSING
+
+<% if (instructions) { -%>
+#
+# Here we go
 #
 <% } -%>
 

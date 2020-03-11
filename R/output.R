@@ -1,16 +1,16 @@
 #' Save plots as image files
-#' 
+#'
 #' These functions can be used in place of their corresponding base R functions
 #' to save plots as image files.
-#' 
+#'
 #' @param name Name of the output file, without extension. One can also specify
 #'   subdirectory where to save the file.
 #' @param ... parameters passed to the corresponding base R function. For
 #'   instance, for \code{prPng}, these parameters will be passed to function
-#'   \code{\link[grDevices]{png}} 
+#'   \code{\link[grDevices]{png}}
 #' @param replace If the file already exists, should it be overwritten ?
-#' 
-#' @details 
+#' @author Francois Guillem
+#' @details
 #' These functions has three advantages over the base functions:
 #' \itemize{
 #'   \item Files are automatically created in the output folder of the project
@@ -21,26 +21,26 @@
 #'   \item The default values of the parameters (width, height, etc.) can be
 #'     modified with function \code{\link{prOutputDefaults}}.
 #' }
-#' 
-#' @return 
+#'
+#' @return
 #' These functions are used to open a plot device. Nothing is returned.
-#' 
-#' @examples 
+#'
+#' @examples
 #' projectPath <- file.path(tempdir(), "test")
 #' prInit(projectPath)
-#' 
+#'
 #' prPng("test")
 #' plot(rnorm(100))
 #' dev.off()
 #' # The plot is saved in "output/test.png"
 #' list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
-#' 
+#'
 #' prPng("mysubdirectory/test")
 #' plot(rnorm(100))
 #' dev.off()
 #' # The plot is saved in "output/mysubdirectory/test.png"
 #' list.files(projectPath, recursive = TRUE, include.dirs = TRUE)
-#' 
+#'
 #' @export
 #' @rdname prOutput
 prBmp <- function(name, ..., replace = FALSE) {
@@ -91,9 +91,9 @@ prCairoPs <- function(name, ..., replace = FALSE) {
 
 .prOutput <- function(name, extension, fun, defaultsName, replace, ...) {
   args <- .mergeArgs(list(...), .getDefaults(defaultsName))
-  
+
   args$file <- .getPath(name, ".", extension, "output", stopIfExists = !replace)
-  
+
   do.call(fun, args)
-  
+
 }

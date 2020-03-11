@@ -1,28 +1,15 @@
-#///////////////////////////////////////////////////////////////////////////////
+#-----------------------------------------------------------------------
 # PROJECT <%= basename(getOption("projectRoot")) %>
-#///////////////////////////////////////////////////////////////////////////////
+#-----------------------------------------------------------------------
 #
-#////////
-# GOAL:
-# what is the goal of this project ?
-#
-#////////
-# APPROACH:
-# How will you reach this goal ?
-#
-#////////
-# DETAILS:
-# Anything else ?
-#
-#///////////////////////////////////////////////////////////////////////////////
-<% if (instructions) { -%>
+#--- NOTE
 #
 # This is the main script of the project. It should contain all the information
-# necessary to understand the goal of the project and the different steps of 
-# your analysis. 
+# necessary to understand the goal of the project and the different steps of
+# your analysis.
 #
 # It should not contain data manipulation code or long technical blocks of code
-# because they tend to hide your statistical reasoning. 
+# because they tend to hide your statistical reasoning.
 # - data code should go in script 'data'.
 # - technical code should be written as functions and should go in scripts
 #   contained in a subfolder "tools" (use prScript("tools/function_name")) to
@@ -31,13 +18,24 @@
 # For small projects, statistical analysis of your data should be performed in
 # this file. For larger projects, you should put your analysis code in other
 # scripts and describe here what each script does. You can create a link to them
-# with function 'prScript'. For instance:
+# with function 'prScript'.
 
-#> # Descriptive statistics and principal component analysis
-#> prScript("descriptiveStats")
-#>
-#> # Predictive model
-#> prScript("predictiveModel")
-#>
-#> ...
+#--- GOAL:
+
+
+
+#--- APPROACH:
+
+
+
+#--- DETAILS:
+
+
+#- 01
+#--- RUN ANALYSIS
+
+<% if (instructions) { -%>
+
+# Here we go
+
 <% } %>
