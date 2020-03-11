@@ -1,5 +1,5 @@
 Binding: prInit
-Title: Data analysis project with tinyProject
+Title: Data analysis project with envimatFrame
 OpenFiles: scripts/start.R, scripts/data.R, scripts/main.R 
 
 Parameter: instructions

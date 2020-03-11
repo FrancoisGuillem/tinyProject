@@ -80,8 +80,6 @@ createEnvi = function(root_folder = tempdir(), folders = c("data", "data/tmp"),
   # Set global environment if necessary
   if(global) makeGlobalVariable(names = names(folders), values = folders)
 
-  # Load and install libraries
-  loadLibraries(libs)
 
   # Source functions
   if(source_functions) sourceFunctions(fcts_folder)

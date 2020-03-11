@@ -1,4 +1,4 @@
 library(testthat)
-library(tinyProject)
+library(envimatFrame)
 
-test_check("tinyProject")
+test_check("prInit")

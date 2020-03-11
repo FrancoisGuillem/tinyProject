@@ -73,7 +73,7 @@ prScript <- function(name, template, subdir = ".", instructions = TRUE) {
   # If script does not exist, create it
   if(!file.exists(path)) {
     templatePath <- system.file(sprintf("scriptTemplates/%s.brew", template),
-                                package = "envimaR")
+                                package = "envimatFrame")
     brew::brew(templatePath, path)
   }
   if (interactive()) file.edit(path)

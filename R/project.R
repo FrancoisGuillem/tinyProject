@@ -54,30 +54,65 @@
 #'
 #' @export
 #'
-prInit <- function(dir = ".", instructions = TRUE) {
+prInit <- function(dir = ".", instructions = TRUE,
+                   folders = c("data/", "scripts/","output","run"),
+                   folder_names = NULL,
+                   git_repository = NULL,
+                   git_subfolders = c("src", "doc"),
+                   path_prefix = "path_",
+                   global = FALSE,
+                   fcts_folder = NULL,
+                   source_functions = !is.null(fcts_folder),
+                   alt_env_id = NULL,
+                   alt_env_value = NULL,
+                   alt_env_root_folder = NULL,
+                   lut_mode = FALSE,
+                   create_folders = TRUE){
+
   # Create directories and scripts if they do not exist
-  dirCreate <- function(x) {
-    x <- file.path(dir, x)
-    if(! file.exists(x)) dir.create(x) else warning("Directory '", x, "' already exists.")
-  }
+  # dirCreate <- function(x) {
+  #   x <- file.path(dir, x)
+  #   if(! file.exists(x)) dir.create(x) else warning("Directory '", x, "' already exists.")
+  # }
 
-  if (dir != ".") dirCreate("")
 
-  dirCreate ("data")
-  dirCreate ("output")
-  dirCreate ("scripts")
+  proj_env<-createEnvi(root_folder = dir,
+                       folders = folders,
+                        folder_names = folder_names,
+                        git_repository = git_repository,
+                        git_subfolders = git_subfolders,
+                        path_prefix = path_prefix,
+                        global = global,
+                        libs = libs,
+                        fcts_folder =fcts_folder,
+                        source_functions = source_functions,
+                        alt_env_id = alt_env_id,
+                        alt_env_value = alt_env_value,
+                        alt_env_root_folder = alt_env_root_folder,
+                        lut_mode = lut_mode,
+                        create_folders = create_folders)
+  templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "projfile"),
+                              package = "envimatFrame")
+  brew::brew(templatePath, file.path(dir,paste0(basename(dir),".Rproj")))
 
-  if (!is.null(packageDescription("tinyProject")$Date)) {
-    pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
+    #if (dir != ".") dirCreate("")
+
+  # dirCreate ("data")
+  # dirCreate ("output")
+  # dirCreate ("scripts")
+
+  if (!is.null(packageDescription("envimatFrame")$Date)) {
+    pkgDate <- as.Date(packageDescription("envimatFrame")$Date) + 1
   } else {
     pkgDate <- as.character(Sys.Date())
   }
-  brew::brew(system.file("Rprofile.brew", package = "envimaR"),
+
+  brew::brew(system.file("Rprofile.brew", package = "envimatFrame"),
              file.path(dir,"./.Rprofile"))
 
   options(projectRoot = normalizePath(dir))
 
-  envimaR::prScript("data", template = "data", instructions = instructions)
-  envimaR::prScript("main", template = "main", instructions = instructions)
-  envimaR::prScript("start", template = "start", instructions = instructions)
+  envimatFrame::prScript("data", template = "data", instructions = instructions)
+  envimatFrame::prScript("main", template = "main", instructions = instructions)
+  envimatFrame::prScript("start", template = "start", instructions = instructions)
 }

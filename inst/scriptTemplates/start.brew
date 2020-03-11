@@ -20,7 +20,7 @@
 #'                      "scripts/",            # scripts
 #'                      "doc/")                # documentation markdown etc.
 
-#' libsToLoad<- c("tinyProject","stars", "rgdal", "rnaturalearth","here","dplyr","ggplot2",
+#' libsToLoad<- c("stars", "rgdal", "rnaturalearth","here","dplyr","ggplot2",
 #'                "ggnewscale","scico","ggrepel","hrbrthemes","OpenImageR","velox","raster","sf",
 #'                "SuperpixelImageSegmentation","envimaR","link2GI","SegOptim","caret")
 
@@ -37,8 +37,9 @@
 #' prStart(projectPath)
 #'
 
-rootdir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
- envrmt = envimaR::createEnvi(root_folder = rootdir,
+rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
+ 
+envrmt = envimaR::createEnvi(root_folder = rootdir,
                               path_prefix = "path_",
                               fcts_folder = "scripts",
                               alt_env_id = "COMPUTERNAME",
