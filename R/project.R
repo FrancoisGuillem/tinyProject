@@ -115,4 +115,5 @@ prInit <- function(dir = ".", instructions = TRUE,
   envimatFrame::prScript("data", template = "data", instructions = instructions)
   envimatFrame::prScript("main", template = "main", instructions = instructions)
   envimatFrame::prScript("start", template = "start", instructions = instructions)
+  prSave(proj_env,replace=TRUE)
 }

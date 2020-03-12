@@ -27,8 +27,6 @@
 #'                "ggnewscale","scico","ggrepel","hrbrthemes","OpenImageR","velox","raster","sf",
 #'                "SuperpixelImageSegmentation","envimaR","link2GI","SegOptim","caret")
 
-cat("NOTE: By default no workspace will be saved or reloaded. Take care of your tempfiles\n")
-
 rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
 
 prLibrary("stars", "rgdal", "tidyverse","here",
