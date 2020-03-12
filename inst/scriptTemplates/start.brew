@@ -11,39 +11,12 @@
 #' TRUE if all scripts had been sourced without error and false otherwise.
 #'
 #' @examples
-#' projectPath <- file.path(tempdir(), "test")
-#' Set project specific subfolders
-#' projectDirList   = c("data/", "data/auxdata/","data/aerial/","data/segoptim/","data
-#'                      "/data_mof","data/tmp/",
-#'                      "run/",                # folder for runtime data storage
-#'                      "output/",             # output folder
-#'                      "scripts/",            # scripts
-#'                      "doc/")                # documentation markdown etc.
-
-#' libsToLoad<- c("stars", "rgdal", "rnaturalearth","here","dplyr","ggplot2",
+#' prLibrary("stars", "rgdal", "rnaturalearth","here","dplyr","ggplot2",
 #'                "ggnewscale","scico","ggrepel","hrbrthemes","OpenImageR","velox","raster","sf",
 #'                "SuperpixelImageSegmentation","envimaR","link2GI","SegOptim","caret")
 
-#' # Automatically set root direcory, folder structure and load libraries
-#' envrmt = envimaR::createEnvi(root_folder = rootDir,
-#'                              folders = projectDirList,
-#'                              libs = libsToLoad,
-#'                              path_prefix = "path_",
-#'                              fcts_folder = "scripts",
-#'                              alt_env_id = "COMPUTERNAME",
-#'                              alt_env_value = "PCRZP",
-#'                              alt_env_root_folder = "F:/BEN/edu")
-#'
-#' prStart(projectPath)
-#'
 
 rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
- 
-envrmt = envimaR::createEnvi(root_folder = rootdir,
-                              path_prefix = "path_",
-                              fcts_folder = "scripts",
-                              alt_env_id = "COMPUTERNAME",
-                              alt_env_value = "PCRZP",
-                              alt_env_root_folder = "F:/BEN/edu")
 
- prStart(rootDir)
+prLibrary("stars", "rgdal", "rnaturalearth","here","dplyr","ggplot2",
+            "velox","raster","sf","fasterize","link2GI","SegOptim","caret")
