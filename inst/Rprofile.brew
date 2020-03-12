@@ -5,17 +5,19 @@ library(grDevices)
 library(methods)
 library(stats)
 library(utils)
+library(devtools)
 
 options(prDefaultRepos="<%= getOption("repos") %>")
 
-if (!require(tinyProject)) {
+if (!require(envimatFrame)) {
   f <- tempfile()
   cat("", file = f)
   Sys.setenv(R_PROFILE_USER = f)
-  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= pkgDate %>")
+  devtools::install_github(repo = "gisma/envimatFrame", ref = "master")
   Sys.unsetenv("R_PROFILE_USER")
   file.remove(f)
-  library(tinyProject)
+  library(envimatFrame)
 }
 
 prStart()
+
