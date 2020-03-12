@@ -33,3 +33,5 @@ rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork =
 
 prLibrary("stars", "rgdal", "tidyverse","here","dplyr","ggplot2",
             "velox","raster","sf","fasterize","link2GI","caret")
+
+cat("NOTE: You have to adapt this file for your needs! It is automatically sourced each time you are opening the project.\n ")
