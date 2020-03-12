@@ -31,7 +31,8 @@ cat("NOTE: By default no workspace will be saved or reloaded. Take care of your 
 
 rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
 
-prLibrary("stars", "rgdal", "tidyverse","here","dplyr","ggplot2",
+prLibrary("stars", "rgdal", "tidyverse","here",
             "velox","raster","sf","fasterize","link2GI","caret")
 
+cat("NOTE: By default no workspace will be saved or reloaded. Take care of your tempfiles\n")
 cat("NOTE: You have to adapt this file for your needs! It is automatically sourced each time you are opening the project.\n ")
