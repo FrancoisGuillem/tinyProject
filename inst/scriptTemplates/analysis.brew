@@ -1,24 +1,14 @@
-#-------------------------------------------------------------------------------
-# SCRIPT <%= gsub("\\.R$", "", basename(path)) %>
-#-------------------------------------------------------------------------------
-#
-#---
-# GOAL:
-# what is the question this script tries to answer ?
-#
-#---
-# APPROACH:
-# How will you reach this goal ?
-#
-#---
-# DATA:
-# Which data will you use ?
-#
-#---
-# RESULTS:
-# what were the results of the analysis ?
-#
-#-----------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+# Type: analysis script
+# Name: <%= gsub("\\.R$", "", basename(path)) %>
+# Author: [name], [email@com]
+# Approach:
+# Data:
+# Results:
+# Copyright  GPL (>= 3)
+# URL:
+#------------------------------------------------------------------------------
+
 
 
 

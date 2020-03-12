@@ -1,5 +1,18 @@
+#------------------------------------------------------------------------------
+# Type: main control script
+# Name: <%= basename(getOption("projectRoot")) %>
+# Author: [name], [email@com]
+# Project:
+# Approach:
+# Data:
+# Results:
+# Copyright  GPL (>= 3)
+# URL:
+#------------------------------------------------------------------------------
+
+
 #-----------------------------------------------------------------------
-# PROJECT <%= basename(getOption("projectRoot")) %>
+# PROJECT
 #-----------------------------------------------------------------------
 #
 #--- NOTE
@@ -19,17 +32,6 @@
 # this file. For larger projects, you should put your analysis code in other
 # scripts and describe here what each script does. You can create a link to them
 # with function 'prScript'.
-
-#--- GOAL:
-
-
-
-#--- APPROACH:
-
-
-
-#--- DETAILS:
-
 
 #- 01
 #--- RUN ANALYSIS

@@ -1,7 +1,14 @@
-#-----------------------------------------------------------------------
-# SCRIPT <%= gsub("\\.R$", "", basename(path)) %>
-#-----------------------------------------------------------------------
-#-
+#------------------------------------------------------------------------------
+# Type: data pre-processing
+# Name: <%= gsub("\\.R$", "", basename(path)) %>
+# Author: [name], [email@com]
+# Input:
+# Output:
+# Details:
+# History:
+# Copyright  GPL (>= 3)
+# URL:
+#------------------------------------------------------------------------------
 #--- NOTE
 # In this file, you should the code that imports data and prepare it for
 # analysis.
@@ -15,18 +22,6 @@
 #
 # Finally if this script becomes too large, you can split your code in multiple
 # scripts and create a link to them with function 'prScript'.
-
-#--- INPUT:
-# what is the source data ?
-
-
-#--- OUTPUT:
-# what data objects will the script create and whatfore?
-
-
-#--- DETAILS:
-# Anything else ? Where did you get the data ? Did you do some manual
-# transformation ?
 
 #--- DATA PREPROCESSING
 

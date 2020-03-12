@@ -1,3 +1,15 @@
+#------------------------------------------------------------------------------
+# Type: main control script
+# Name: <%= basename(getOption("projectRoot")) %>
+# Author: [name], [email@com]
+# Project:
+# Approach:
+# Data:
+# Results:
+# Copyright  GPL (>= 3)
+# URL:
+#------------------------------------------------------------------------------
+
 #' Source start and tools scripts
 #'
 #' This function sources all scripts prefixed by \code{tools} or situated in a
