@@ -61,12 +61,9 @@ prInit <- function(dir = ".", instructions = TRUE,
                    git_subfolders = c("src", "doc"),
                    path_prefix = "path_",
                    global = FALSE,
-                   fcts_folder = NULL,
-                   source_functions = !is.null(fcts_folder),
                    alt_env_id = NULL,
                    alt_env_value = NULL,
                    alt_env_root_folder = NULL,
-                   lut_mode = FALSE,
                    create_folders = TRUE){
 
   # Create directories and scripts if they do not exist
@@ -83,13 +80,9 @@ prInit <- function(dir = ".", instructions = TRUE,
                         git_subfolders = git_subfolders,
                         path_prefix = path_prefix,
                         global = global,
-                        libs = libs,
-                        fcts_folder =fcts_folder,
-                        source_functions = source_functions,
                         alt_env_id = alt_env_id,
                         alt_env_value = alt_env_value,
                         alt_env_root_folder = alt_env_root_folder,
-                        lut_mode = lut_mode,
                         create_folders = create_folders)
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "projfile"),
                               package = "envimatFrame")

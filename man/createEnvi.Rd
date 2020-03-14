@@ -13,12 +13,9 @@ createEnvi(
   path_prefix = "path_",
   global = FALSE,
   libs = NULL,
-  fcts_folder = NULL,
-  source_functions = !is.null(fcts_folder),
   alt_env_id = NULL,
   alt_env_value = NULL,
   alt_env_root_folder = NULL,
-  lut_mode = FALSE,
   create_folders = TRUE
 )
 }
@@ -31,8 +28,7 @@ createEnvi(
 provided, the base paths of the folders is used.}
 
 \item{git_repository}{name of the project's git repository. Will be
-added to the folders and subfolders defined in default "lut" or supplied by
-user will be created.}
+added to the folders and subfolders defined in default envionment}
 
 \item{git_subfolders}{subdirectories within git repository that should be
 created.}
@@ -43,11 +39,6 @@ created.}
 
 \item{libs}{vector with the  names of libraries}
 
-\item{fcts_folder}{path of the folder holding the functions. All files in
-this folder will be sourced.}
-
-\item{source_functions}{logical: should functions be sourced?}
-
 \item{alt_env_id}{alternative system environment attribute used to
 check for setting an alternative \code{root_folder}.}
 
@@ -55,9 +46,6 @@ check for setting an alternative \code{root_folder}.}
 root directory of the project should be set.}
 
 \item{alt_env_root_folder}{alternative root directory.}
-
-\item{lut_mode}{use predefined environmental settings. In this case, only the
-name of the git repository must be supplied to the function.}
 
 \item{create_folders}{create folders if not existing already.}
 }

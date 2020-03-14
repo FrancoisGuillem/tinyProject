@@ -1,6 +1,6 @@
 #' Create look-up table data for defining environment defaults
 #'
-#' @details After changing something, run [lutUpdate()] to update the LUT.
+#' @details After changing something update environment
 #'
 #' @return A list containing the default project settings.
 #'
@@ -10,7 +10,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' lutUpdate()
+#' pckgDefaults()
 #'}
 
 pckgDefaults = function(){
@@ -19,10 +19,10 @@ pckgDefaults = function(){
 
     root_folder = "~/proj",
 
-    folders = c("data", "data/tmp",
-                "doc", "log"),
+    folders = c("data", "run",
+                "docs", "log"),
 
-    git_subfolders = c("src", "doc", "fcts"),
+    git_subfolders = c("src", "doc"),
 
     path_prefix = "path_",
 
@@ -30,13 +30,11 @@ pckgDefaults = function(){
 
     libs = NULL,
 
-    fcts_folder = "fcts",
-
     alt_env_id = "COMPUTERNAME",
     alt_env_value = "PCRZP",
-    alt_env_root_folder = "D:\\BEN\\plygrnd"
+    alt_env_root_folder = "F:\\BEN\\edu"
 
   )
 
-  devtools::use_data(dflt, overwrite = TRUE, internal = TRUE)
+
 }

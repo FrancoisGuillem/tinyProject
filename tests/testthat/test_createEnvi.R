@@ -3,8 +3,8 @@ library(envimaR)
 
 test_that("use default values from LUTs", {
   git_repository = "myrep1"
-  lut_mode = TRUE
-  envrmt = createEnvi(git_repository = git_repository, lut_mode = lut_mode,
+
+  envrmt = createEnvi(git_repository = git_repository,
                       create_folders = FALSE)
 
   expect_equal(envrmt$path_data, "C:/Users/tnauss/Documents/plygrnd/data")
