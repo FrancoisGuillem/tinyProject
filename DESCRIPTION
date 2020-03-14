@@ -1,15 +1,16 @@
 Package: envimatFrame
 Type: Package
-Title: Utility functions to configure standard project environments in labs
+Title: Utility functions to configure standard project environments and workflows for big data analysis
 Version: 0.1.0
 Authors@R: c(person("Chris", "Reudenbach", email = "reudenbach@uni-marburg.de", role = c("cre", "aut")),
+             person("Marvin", "Ludwig", email = "marvin.ludwig@uni-marburg.de", role = c("aut")),
              person("Thomas", "Nauss", email = "reudenbach@uni-marburg.de>", role = c("aut")),
              person("Francois Guillem", "Guillem", email = "guillem.francois@gmail.com>", role = c("aut"))
              )
 Maintainer: Chris Reudenbach <reudenbach@uni-marburg.de>
 Description: Helpers for setting up working environments which focus on using 
     the same initialization parameters across different computers and team 
-    members.
+    members.Francois Guillem is the creator of the tinyProject package which is the core of envimatFrame package.
 License: GPL (>= 2) | file LICENSE
 Imports: brew, methods, R.utils,data.tree
 Suggests: testthat, remotes, covr,devtools
