@@ -19,6 +19,7 @@
 #' @export
 #'
 prStart <- function(dir = ".", trace = TRUE) {
+  options("projectRoot" = normalizePath(dir))
   oldProjectRoot <- getOption("projectRoot")
   options("projectRoot" = normalizePath(dir))
   ok <- FALSE

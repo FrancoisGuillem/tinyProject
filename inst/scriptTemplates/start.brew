@@ -1,5 +1,5 @@
 #------------------------------------------------------------------------------
-# Type: main control script
+# Type: project initialisation script
 # Name: <%= basename(getOption("projectRoot")) %>
 # Author: [name], [email@com]
 # Project:
@@ -27,10 +27,35 @@
 #'                "ggnewscale","scico","ggrepel","hrbrthemes","OpenImageR","velox","raster","sf",
 #'                "SuperpixelImageSegmentation","envimaR","link2GI","SegOptim","caret")
 
-rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
+# 0 - clean up and set defaults
+#-----------------------------
 
-prLibrary("stars", "rgdal", "tidyverse","here",
+
+rm(list=ls())
+rootDir<-"<%= normalizePath(getOption("projectRoot"), winslash = "/", mustWork = NA) %>"
+options("projectRoot" = normalizePath(rootDir))
+
+
+# 1 - load additional packages
+#-----------------------------
+
+
+list.of.github.packes<-c("gisma/envimatFrame","r-spatial/link2GI")
+devtools::install_github(list.of.github.packes)
+devtools::install_bitbucket("joao_goncalves/SegOptim")
+envimatFrame::prLibrary("stars", "rgdal", "tidyverse","here",
             "velox","raster","sf","fasterize","link2GI","caret")
+
+
+
+
+# 2 - source additional files
+#-----------------------------
+
+
+
+#  - NOTE
+#-----------------------------
 
 cat("NOTE: By default no workspace will be saved or reloaded. Take care of your tempfiles\n")
 cat("NOTE: You have to adapt this file for your needs! It is automatically sourced each time you are opening the project.\n ")
