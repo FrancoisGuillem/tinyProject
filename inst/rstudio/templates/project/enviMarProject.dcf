@@ -1,9 +1,0 @@
-Binding: prInit
-Title: project setup using enviMar
-OpenFiles: scripts/init.R, scripts/data.R, scripts/main.R
-
-Parameter: instructions
-Widget: CheckboxInput
-Label: Add instructions
-Default: On
-Position: left

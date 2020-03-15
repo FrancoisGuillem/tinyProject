@@ -1,6 +1,6 @@
 Binding: prInit
-Title: Data analysis project with envimatFrame
-OpenFiles: scripts/start.R, scripts/data.R, scripts/main.R 
+Title: project setup using envimatFrame
+OpenFiles: scripts/start.R, scripts/data.R, scripts/main.R
 
 Parameter: instructions
 Widget: CheckboxInput
