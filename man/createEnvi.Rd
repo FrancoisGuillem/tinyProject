@@ -8,11 +8,8 @@ createEnvi(
   root_folder = tempdir(),
   folders = c("data", "data/tmp"),
   folder_names = NULL,
-  git_repository = NULL,
-  git_subfolders = c("src", "doc"),
   path_prefix = "path_",
   global = FALSE,
-  libs = NULL,
   alt_env_id = NULL,
   alt_env_value = NULL,
   alt_env_root_folder = NULL,
@@ -27,17 +24,9 @@ createEnvi(
 \item{folder_names}{names of the variables that point to subfolders. If not
 provided, the base paths of the folders is used.}
 
-\item{git_repository}{name of the project's git repository. Will be
-added to the folders and subfolders defined in default envionment}
-
-\item{git_subfolders}{subdirectories within git repository that should be
-created.}
-
 \item{path_prefix}{a prefix for the folder names.}
 
 \item{global}{logical: export path strings as global variables?}
-
-\item{libs}{vector with the  names of libraries}
 
 \item{alt_env_id}{alternative system environment attribute used to
 check for setting an alternative \code{root_folder}.}

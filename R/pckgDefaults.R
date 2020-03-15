@@ -22,7 +22,7 @@ pckgDefaults = function(){
     folders = c("data", "run",
                 "docs", "log"),
 
-    git_subfolders = c("src", "doc"),
+
 
     path_prefix = "path_",
 
