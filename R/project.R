@@ -112,10 +112,12 @@ prInit <- function(dir = ".", instructions = TRUE,
   prSave(proj_env,replace=TRUE)
 
   if (git){
-
-    git2r::init(path = ".")
-    git2r::add(path = "*")
-    git2r::commit(message = "initial commit")
+    repo<- git2r::init(path = dir)
+    git2r::add(repo = repo, paste0(basename(dir),"*.Rproj"))
+    git2r::add(repo = repo, "scripts/main.r")
+    git2r::add(repo = repo, "scripts/start.r")
+    git2r::add(repo = repo, "scripts/data.r")
+    git2r::commit(repo = repo,message = "initial commit")
 
 }
 }
