@@ -7,7 +7,7 @@
 prInit(
   dir = ".",
   instructions = TRUE,
-  folders = c("data/", "scripts/", "output", "run"),
+  folders = c("data/", "scripts/", "output/", "run/", "docs/"),
   folder_names = NULL,
   git = TRUE,
   path_prefix = "path_",

@@ -55,7 +55,7 @@
 #' @export
 #'
 prInit <- function(dir = ".", instructions = TRUE,
-                   folders = c("data/", "scripts/","output","run"),
+                   folders = c("data/", "scripts/","output/","run/","docs/"),
                    folder_names = NULL,
                    git = TRUE,
                    path_prefix = "path_",
@@ -87,6 +87,9 @@ prInit <- function(dir = ".", instructions = TRUE,
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "gitignore"),
                               package = "envimatFrame")
   brew::brew(templatePath, file.path(dir,".gitignore"))
+  templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "HowTo"),
+                              package = "envimatFrame")
+  brew::brew(templatePath, file.path(dir,"doc/HowTo.md"))
 
     #if (dir != ".") dirCreate("")
 

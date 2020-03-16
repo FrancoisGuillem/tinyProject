@@ -33,7 +33,7 @@
 #' alt_env_root_folder = "D:\\BEN\\edu")
 #'}
 
-createEnvi = function(root_folder = tempdir(), folders = c("data", "data/tmp"),
+createEnvi = function(root_folder = tempdir(), folders = c("data/", "scripts/","output/","run/","docs/"),
                       folder_names = NULL,
                       path_prefix = "path_", global = FALSE,
                       alt_env_id = NULL,

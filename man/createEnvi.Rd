@@ -6,7 +6,7 @@
 \usage{
 createEnvi(
   root_folder = tempdir(),
-  folders = c("data", "data/tmp"),
+  folders = c("data/", "scripts/", "output/", "run/", "docs/"),
   folder_names = NULL,
   path_prefix = "path_",
   global = FALSE,
