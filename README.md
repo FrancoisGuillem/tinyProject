@@ -2,10 +2,13 @@
 Environmental Informatics Lab @ Marburg University
 
 # envimatFrame
-Is a merge of the `envimaR` Helpers for setting up working environments which focus on using the same 
-initialization parameters across different computers and team members of the environmental informatics working group Marburg. 
+Basically, the `envimatFrame` package is intended to evaluate a straightforward workflow and project functionality and what is the best praxis of integration. The `tinyProject`is a great base due to it's  lean and flat organised data analysis workflow  while the former `envimaR` package provides deeper and more specific project structures, more complex working environments and a simpler handling of more diverse data sets. 
 
-It integrates the slightly modified `tinyProject` package by Francois Guillem (guillem.francois@gmail.com).  Basically, it is intended to evaluate the functionality and what is the best praxis of integration. The `tinyProject`is a great lean and flat organised project tool for data analysis while the former `envimaR` package provides deeper and more specific project structures, more complex working environments and a simpler handling of more diverse data sets. However the ``tinyProject`` supports a consistent mapping of a project workflow.
+Is a merge of the `envimaR` package and other Helpers for setting up working environments and data flows which focus on using the same initialization parameters and the same basic workflows across different computers and team members of the environmental informatics working group at Marburg University. 
+
+The core unit is provided by the the slightly modified `tinyProject` package by Francois Guillem (guillem.francois@gmail.com) which is completly integrated.  
+
+
 
 
 
