@@ -8,8 +8,6 @@
 When working with R on any kind of more complex projects as algorithm development applied data analysis or data processing chains                 data files, scripts and output files multiply very quickly. This is even more the case if one deal with remote sensing or GIS data sets.                 The purpose of this package is to support and softly force the user to keep this things first organised                  second to used well established best practice workflows and hence improve readibility, maintainability an reusability of its R projects.                 The major result of using the package is an increase in reproducible productivity. This package can also be used with the Rstudio projects system.
 }
 \details{
-The package provides some mission planning functionality for dealing with Unmanned Aerial Vehicles
-
 \tabular{ll}{
 Package: \tab envimatFrame\cr
 Type: \tab Package\cr
@@ -19,12 +17,12 @@ License: \tab GPL (>= 2)\cr}
 }
 \section{Background}{
  Basically, the \code{envimatFrame} package is intended to evaluate a straightforward workflow and project functionality
-and what is the best praxis of integration. The \code{tinyProject} is a great base due to it's lean and flat
+and what is the best praxis of integration. The \code{tinyProject} package is a great base due to it's lean and flat
 organised data analysis workflow while the former \code{envimaR} package provides deeper and more specific project structures,
 more complex working environments and a simpler handling of more diverse data sets. \cr\cr
 \code{envimatFrame} a merge of the \code{envimaR} package and other Helpers and the \code{tinyProject} package for setting up working environments
 and data flows which focus on using the same initialization parameters and the same basic workflows across
-different computers and team members of the environmental informatics working group at Marburg University.\cr\cr#'
+different computers and team members of the environmental informatics working group at Marburg University.\cr\cr
 The core unit is provided by the slightly adapted \code{tinyProject} package by Francois Guillem (guillem.francois@gmail.com)
 which is completly integrated.
 }

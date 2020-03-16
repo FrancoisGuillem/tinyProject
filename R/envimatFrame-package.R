@@ -1,4 +1,4 @@
-#' The package provides some mission planning functionality for dealing with Unmanned Aerial Vehicles
+
 #' @name envimatFrame
 #' @docType package
 #' @title Organise  R data analysis workflows and projects
@@ -13,12 +13,12 @@
 #'     Date: \tab 2020-03-15\cr
 #'     License: \tab GPL (>= 2)\cr}
 #'@section Background: Basically, the \code{envimatFrame} package is intended to evaluate a straightforward workflow and project functionality 
-#'                    and what is the best praxis of integration. The \code{tinyProject} is a great base due to it's lean and flat 
-#'                    organised data analysis workflow while the former `envimaR` package provides deeper and more specific project structures,
+#'                    and what is the best praxis of integration. The \code{tinyProject} package is a great base due to it's lean and flat 
+#'                    organised data analysis workflow while the former \code{envimaR} package provides deeper and more specific project structures,
 #'                     more complex working environments and a simpler handling of more diverse data sets. \cr\cr
 #'                     \code{envimatFrame} a merge of the \code{envimaR} package and other Helpers and the \code{tinyProject} package for setting up working environments 
 #'                     and data flows which focus on using the same initialization parameters and the same basic workflows across 
-#'                     different computers and team members of the environmental informatics working group at Marburg University.\cr\cr#'                      
+#'                     different computers and team members of the environmental informatics working group at Marburg University.\cr\cr                      
 #'                     The core unit is provided by the slightly adapted `tinyProject` package by Francois Guillem (guillem.francois@gmail.com)
 #'                     which is completly integrated.  
 
