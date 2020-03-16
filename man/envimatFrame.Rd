@@ -20,10 +20,11 @@ License: \tab GPL (>= 2)\cr}
 and what is the best praxis of integration. The \code{tinyProject} package is a great base due to it's lean and flat
 organised data analysis workflow while the former \code{envimaR} package provides deeper and more specific project structures,
 more complex working environments and a simpler handling of more diverse data sets. \cr\cr
-\code{envimatFrame} a merge of the \code{envimaR} package and other Helpers and the \code{tinyProject} package for setting up working environments
-and data flows which focus on using the same initialization parameters and the same basic workflows across
-different computers and team members of the environmental informatics working group at Marburg University.\cr\cr
-The core unit is provided by the slightly adapted \code{tinyProject} package by Francois Guillem (guillem.francois@gmail.com)
+As a result the \code{envimatFrame} is a merge of the \code{envimaR} package, an increasing number of other helper
+functions based on the \code{tinyProject} package which provides the core functionality.
+It is designed to provide reproducible environments, data flows and anaysis using the same initialization parameters and functions
+across different computers and team members of the environmental informatics working group at Marburg University.\cr\cr
+The working horse is the slightly adapted \code{tinyProject} package by Francois Guillem (guillem.francois@gmail.com)
 which is completly integrated.
 }
 
