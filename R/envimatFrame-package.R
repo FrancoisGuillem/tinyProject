@@ -1,5 +1,5 @@
 
-#' @name envimatFrame
+#' @name envimatFrame-package
 #' @docType package
 #' @title Organise  R data analysis workflows and projects
 #' @description  When working with R on any kind of more complex projects as algorithm development applied data analysis or data processing chains                 data files, scripts and output files multiply very quickly. This is even more the case if one deal with remote sensing or GIS data sets.                 The purpose of this package is to support and softly force the user to keep this things first organised                  second to used well established best practice workflows and hence improve readibility, maintainability an reusability of its R projects.                 The major result of using the package is an increase in reproducible productivity. This package can also be used with the Rstudio projects system.
