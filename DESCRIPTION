@@ -12,7 +12,7 @@ Description: Helpers for setting up working environments which focus on using
     the same initialization parameters across different computers and team 
     members.Francois Guillem is the creator of the tinyProject package which is the core of envimatFrame package.
 License: GPL (>= 2) | file LICENSE
-Imports: brew, methods, R.utils,data.tree
+Imports: brew, methods, R.utils,data.tree,git2r
 Suggests: testthat, remotes, covr,devtools
 Encoding: UTF-8
 LazyData: true

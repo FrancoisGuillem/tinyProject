@@ -74,13 +74,13 @@ prInit <- function(dir = ".", instructions = TRUE,
 
   proj_env<-createEnvi(root_folder = dir,
                        folders = folders,
-                        folder_names = folder_names,
-                        path_prefix = path_prefix,
-                        global = global,
-                        alt_env_id = alt_env_id,
-                        alt_env_value = alt_env_value,
-                        alt_env_root_folder = alt_env_root_folder,
-                        create_folders = create_folders)
+                       folder_names = folder_names,
+                       path_prefix = path_prefix,
+                       global = global,
+                       alt_env_id = alt_env_id,
+                       alt_env_value = alt_env_value,
+                       alt_env_root_folder = alt_env_root_folder,
+                       create_folders = create_folders)
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "projfile"),
                               package = "envimatFrame")
   brew::brew(templatePath, file.path(dir,paste0(basename(dir),".Rproj")))
@@ -89,9 +89,9 @@ prInit <- function(dir = ".", instructions = TRUE,
   brew::brew(templatePath, file.path(dir,".gitignore"))
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "HowTo"),
                               package = "envimatFrame")
-  brew::brew(templatePath, file.path(dir,"doc/HowTo.md"))
+  brew::brew(templatePath, file.path(dir,"docs/HowTo.md"))
 
-    #if (dir != ".") dirCreate("")
+  #if (dir != ".") dirCreate("")
 
   # dirCreate ("data")
   # dirCreate ("output")
@@ -122,5 +122,5 @@ prInit <- function(dir = ".", instructions = TRUE,
     git2r::add(repo = repo, "scripts/data.r")
     git2r::commit(repo = repo,message = "initial commit")
 
-}
+  }
 }
