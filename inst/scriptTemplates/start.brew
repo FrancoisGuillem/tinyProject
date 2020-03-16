@@ -53,9 +53,12 @@ envimatFrame::prLibrary("stars", "rgdal", "tidyverse","here",
 #-----------------------------
 
 
-
-#  - NOTE
-#-----------------------------
-
-cat("NOTE: By default no workspace will be saved or reloaded. Take care of your tempfiles\n")
-cat("NOTE: You have to adapt this file for your needs! It is automatically sourced each time you are opening the project.\n ")
+# -----------------------------------------------------------------------------
+# - NOTES
+# -
+# - NOTE: Adapt this file for your needs!
+# -       It is automatically sourced each time you are opening the project.
+# - NOTE: No workspace will be saved or reloaded by default.
+# -       Take care of your tempfiles etc.!
+# -
+# -----------------------------------------------------------------------------
