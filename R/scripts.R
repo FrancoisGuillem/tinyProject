@@ -44,16 +44,7 @@
 #' 
 #' @export
 #' 
-prScript <- function(name, template, subdir = ".", instructions = TRUE) {
-  if (missing(template)) {
-    if (grepl("^data", name, ignore.case = TRUE)) template <- "data"
-    else if (grepl("^tools", name, ignore.case = TRUE)) template <- "function"
-    else template <- "analysis"
-  }
-  
-  template <- match.arg(template[1], 
-                        c("analysis", "data", "function", "main", "start"))
-  
+prScript <- function(name, template = NULL, subdir = ".", instructions = TRUE) {
   # If parameter 'name' is missing, interactively choose a script
   if(missing(name)) {
   	files <- .lsScripts()
@@ -72,10 +63,10 @@ prScript <- function(name, template, subdir = ".", instructions = TRUE) {
   
   # If script does not exist, create it
   if(!file.exists(path)) {
-    templatePath <- system.file(sprintf("scriptTemplates/%s.brew", template), 
-                                package = "tinyProject")
+    templatePath <- .prTemplate(name, template)
     brew::brew(templatePath, path)
   }
+  
   if (interactive()) file.edit(path)
 }
 
