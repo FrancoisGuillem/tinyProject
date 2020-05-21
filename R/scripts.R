@@ -110,8 +110,9 @@ prMoveScript <- function(name, newDir, subdir = ".") {
 #' @rdname prMoveScript
 #' @export
 prRenameScript <- function(name, newName, subdir = ".") {
-  path <- .getPath(sprintf("scripts/%s/%s.R", subdir, name), create = FALSE)
-  newPath <- .getPath(sprintf("scripts/%s/%s.R", dirname(file.path(subdir, name)), newName))
+  path <- .getPath(sprintf("%s/%s.R", subdir, name), mainDir = "scripts", create = FALSE)
+  newPath <- .getPath(sprintf("%s/%s.R", dirname(file.path(subdir, name)), newName),
+                      mainDir = "scripts")
   
   if (file.exists(newPath)) stop("Script ", name, "already exists.")
   
@@ -135,7 +136,7 @@ prDeleteScript <- function(name, subdir = ".") {
 #' 
 #' @noRd
 .lsScripts <- function() {
-  files <- list.files(.getPath("scripts"), recursive = TRUE, pattern = "\\.R$")
+  files <- list.files(.getPath(".", mainDir = "scripts"), recursive = TRUE, pattern = "\\.R$")
   files <- gsub("\\.R$","", files)
   data.frame(Script = files)
 }
@@ -175,6 +176,6 @@ prDeleteScript <- function(name, subdir = ".") {
 #' 
 #' @export   
 prSource <- function(name, subdir = ".") {
-  path <- sprintf("scripts/%s/%s.R", subdir, name)
-  source(.getPath(path, create = FALSE))
+  path <- sprintf("%s/%s.R", subdir, name)
+  source(.getPath(path, mainDir = "scripts", create = FALSE))
 }

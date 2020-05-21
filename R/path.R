@@ -17,7 +17,7 @@
 #' @export
 prPath <- function(x) {
   x <- .getName(substitute(x))
-  .getPath(x, create = FALSE)
+  .getPath(x, create = FALSE, mainDir = ".")
 }
 
 # Get subdirectory of an object and create it if it does not exist
