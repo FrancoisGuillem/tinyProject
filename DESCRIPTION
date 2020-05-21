@@ -19,4 +19,4 @@ Suggests:
     testthat,
     remotes,
     covr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

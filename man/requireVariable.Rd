@@ -4,8 +4,15 @@
 \alias{requireVariable}
 \title{Ask user the value of a variable}
 \usage{
-requireVariable(name, desc = NULL, default = NULL,
-  what = character(), nmax = 1, alwaysAsk = TRUE, env = .GlobalEnv)
+requireVariable(
+  name,
+  desc = NULL,
+  default = NULL,
+  what = character(),
+  nmax = 1,
+  alwaysAsk = TRUE,
+  env = .GlobalEnv
+)
 }
 \arguments{
 \item{name}{Name of the required variable}

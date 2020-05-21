@@ -4,7 +4,7 @@
 \alias{prScript}
 \title{create and/or open R scripts}
 \usage{
-prScript(name, template, subdir = ".", instructions = TRUE)
+prScript(name, template = NULL, subdir = ".", instructions = TRUE)
 }
 \arguments{
 \item{name}{(optional) name of the script to create and/or open. This parameter can also include
