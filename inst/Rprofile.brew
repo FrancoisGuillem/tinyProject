@@ -1,3 +1,6 @@
+# This file has been generated automatically by package tinyProject.
+# If you want to customize start-up, modify the script "start.R" instead.
+
 # Load base packages
 library(datasets)
 library(graphics)
@@ -7,6 +10,11 @@ library(stats)
 library(utils)
 
 options(prDefaultRepos="<%= getOption("repos") %>")
+options(prDir = list(
+  data = "<%= data %>",
+  scripts = "<%= scripts %>",
+  output = "<%= output %>"
+))
 
 if (!require(tinyProject)) {
   f <- tempfile()

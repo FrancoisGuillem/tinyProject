@@ -20,9 +20,20 @@ prPath <- function(x) {
   .getPath(x, create = FALSE, mainDir = ".")
 }
 
+.getDir <- function(dir) {
+  if (dir %in% c("data", "scripts", "output")) {
+    if (!is.null(getOption("prDir")) && !is.null(getOption("prDir")[[dir]])) {
+      dir <- getOption("prDir")[[dir]]
+    }
+  }
+  dir
+}
+
 # Get subdirectory of an object and create it if it does not exist
 .getPath <- function(name, subdir = ".", extension = NULL, mainDir = ".", 
                      stopIfExists = FALSE, create = TRUE) {
+  mainDir <- .getDir(mainDir)
+  
   if (is.null(getOption("projectRoot"))) {
     stop("Project has not been initialized. Use 'prInit' to create a new project or 'prStart' to use an existing one")
   }

@@ -8,6 +8,10 @@
 #'   the current working directory.
 #' @param instructions Should instructions added in the scripts created by the
 #'   the function?
+#' @param data Name of the folder where data will be saved
+#' @param scripts Name of the folder that will contain R scripts
+#' @param output Name of the folder where output files will be saved.
+#' @param otherDirs Other directories to create.
 #' 
 #' @details 
 #' The function creates three folders :
@@ -54,7 +58,15 @@
 #' 
 #' @export
 #' 
-prInit <- function(dir = ".", instructions = TRUE) {
+prInit <- function(dir = ".", instructions = TRUE, scripts = "scripts", 
+                   data = "data", output = "output", otherDirs = character()) {
+  
+  options(prDir = list(
+    data = data,
+    scripts = scripts,
+    output = scripts
+  ))
+  
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
     x <- file.path(dir, x)
@@ -63,9 +75,12 @@ prInit <- function(dir = ".", instructions = TRUE) {
   
   if (dir != ".") dirCreate("")
   
-  dirCreate ("data")
-  dirCreate ("output")
-  dirCreate ("scripts")
+  dirCreate (data)
+  dirCreate (scripts)
+  dirCreate (output)
+  for (d in otherDirs) {
+    dirCreate(d)
+  }
 
   if (!is.null(packageDescription("tinyProject")$Date)) {
     pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
