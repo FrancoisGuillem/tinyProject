@@ -19,11 +19,18 @@
 #' @export
 #' 
 prStart <- function(dir = ".", trace = TRUE) {
-  oldProjectRoot <- getOption("projectRoot")
-  options("projectRoot" = normalizePath(dir))
+  calls <- vapply(sys.calls(), function(x) as.character(x)[1], character(1))
+  if (sum(calls == "prStart") > 1) return(invisible(TRUE))
+  
   ok <- FALSE
   
+  oldProjectRoot <- getOption("projectRoot")
+  options("projectRoot" = normalizePath(dir))
+  
   tryCatch({
+    cat("sourcing .Rprofile\n")
+    source(.getPath(".Rprofile", mainDir = "."))
+    
     # Source scripts with prefix "tools" or in dir "tools"
     tools <- union(
       list.files(.getPath(".", mainDir = "scripts"), pattern = "^tools.*\\.R$", recursive = TRUE),
