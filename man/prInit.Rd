@@ -4,14 +4,38 @@
 \alias{prInit}
 \title{Initialise a project}
 \usage{
-prInit(dir = ".", instructions = TRUE)
+prInit(
+  dir = ".",
+  instructions = TRUE,
+  scriptDir = "scripts",
+  dataDir = "data",
+  outputDir = "output",
+  otherDirs = character(),
+  scripts = c(data = "data", main = "main", start = "start"),
+  autoSource = c("^tools.*$", "^start$")
+)
 }
 \arguments{
 \item{dir}{Directory where project files will be stored. By default, it is 
 the current working directory.}
 
-\item{instructions}{Should instructions added in the scripts created by the
+\item{instructions}{Should instructions be added in the scripts created by the
 the function?}
+
+\item{scriptDir}{Name of the folder that will contain R scripts.}
+
+\item{dataDir}{Name of the folder where data will be saved.}
+
+\item{outputDir}{Name of the folder where output files will be saved.}
+
+\item{otherDirs}{Other directories to create.}
+
+\item{scripts}{Named vector. For each element of this vector, the function
+generate a script. The name of each element corresponds to the name of the
+script to create, the value corresponds to the template to use.}
+
+\item{autoSource}{character vector containing regular expressions. All scripts
+whose name match these pattern are automatically executed at project start-up.}
 }
 \description{
 \code{prInit} should be used in a Rstudio project. The function creates
@@ -19,7 +43,7 @@ the basic structure of a data analysis project that will help you keep your
 your work organised and increase your productivity.
 }
 \details{
-The function creates three folders :
+By default, the function creates three folders :
 
 \itemize{
   \item scripts: Folder where the scripts are stored
@@ -28,7 +52,8 @@ The function creates three folders :
 }
 
 These three folders are essential so do not remove them. But you can add any
-other folders you desire ("latex", "presentation", etc.)
+other folders you desire ("latex", "python", "presentation", etc.) manually
+or with argument `otherDirs`.
 
 Additionally, three scripts are created:
 

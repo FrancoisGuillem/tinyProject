@@ -24,11 +24,8 @@ describe("prStart", {
   it("sources scripts prefixed by 'tools'", {
     value <- sample(1e6, 2)
     cat("var1 <-", value[1], file = "scripts/toolsTest.R")
-    dir.create("scripts/test")
-    cat("var2 <-", value[2], file = "scripts/test/toolsTest.R")
     prStart(trace=FALSE)
     expect_equal(value[1], var1)
-    expect_equal(value[2], var2)
   })
   
   it("sources scripts in the 'scripts/tools' directory", {

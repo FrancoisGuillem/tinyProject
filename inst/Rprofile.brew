@@ -10,11 +10,14 @@ library(stats)
 library(utils)
 
 options(prDefaultRepos="<%= getOption("repos") %>")
-options(prDir = list(
-  data = "<%= data %>",
-  scripts = "<%= scripts %>",
-  output = "<%= output %>"
-))
+options(
+  prDir = list(
+    data = "<%= dataDir %>",
+    scripts = "<%= scriptDir %>",
+    output = "<%= outputDir %>"
+  ),
+  prAutoSource = <% dput(autoSource) %>
+)
 
 if (!require(tinyProject)) {
   f <- tempfile()

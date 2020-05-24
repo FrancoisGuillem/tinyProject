@@ -28,26 +28,22 @@ prStart <- function(dir = ".", trace = TRUE) {
   options("projectRoot" = normalizePath(dir))
   
   tryCatch({
-    cat("sourcing .Rprofile\n")
+    if (trace) cat("sourcing .Rprofile\n")
     source(.getPath(".Rprofile", mainDir = "."))
     
-    # Source scripts with prefix "tools" or in dir "tools"
-    tools <- union(
-      list.files(.getPath(".", mainDir = "scripts"), pattern = "^tools.*\\.R$", recursive = TRUE),
-      file.path("tools", list.files(.getPath("tools", mainDir = "scripts"), pattern = "\\.R$", 
-                                    recursive = TRUE))
-    )
+    # Source startup scripts
+    autoSource <- getOption("prAutoSource")
+    if (is.null(autoSource)) autoSource <- c("^tools.*$", "^start$")
     
-    if(length(tools) > 0) {
-      sapply(tools, function(s) {
-        if(trace) cat("Sourcing", s, "\n")
-        source(.getPath(s, mainDir = "scripts"))
-      })
+    scripts <- .lsScripts()$Script
+    
+    for (pattern in autoSource) {
+      for (script in scripts[grepl(pattern, scripts)]) {
+        if(trace) cat("Sourcing ", script, ".R\n", sep = "")
+        prSource(script)
+      }
     }
     
-    # Source "start.R" script
-    if(trace) cat("Sourcing start.R\n")
-    source(.getPath("start.R", mainDir = "scripts"))
     ok <- TRUE
   }, error = function(e) {
     options(projectRoot = oldProjectRoot)

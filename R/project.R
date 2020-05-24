@@ -6,15 +6,20 @@
 #' 
 #' @param dir Directory where project files will be stored. By default, it is 
 #'   the current working directory.
-#' @param instructions Should instructions added in the scripts created by the
+#' @param instructions Should instructions be added in the scripts created by the
 #'   the function?
-#' @param data Name of the folder where data will be saved
-#' @param scripts Name of the folder that will contain R scripts
-#' @param output Name of the folder where output files will be saved.
+#' @param dataDir Name of the folder where data will be saved.
+#' @param scriptDir Name of the folder that will contain R scripts.
+#' @param outputDir Name of the folder where output files will be saved.
 #' @param otherDirs Other directories to create.
+#' @param scripts Named vector. For each element of this vector, the function
+#'   generate a script. The name of each element corresponds to the name of the
+#'   script to create, the value corresponds to the template to use.
+#' @param autoSource character vector containing regular expressions. All scripts
+#'   whose name match these pattern are automatically executed at project start-up.
 #' 
 #' @details 
-#' The function creates three folders :
+#' By default, the function creates three folders :
 #' 
 #' \itemize{
 #'   \item scripts: Folder where the scripts are stored
@@ -23,7 +28,8 @@
 #' }
 #' 
 #' These three folders are essential so do not remove them. But you can add any
-#' other folders you desire ("latex", "presentation", etc.)
+#' other folders you desire ("latex", "python", "presentation", etc.) manually
+#' or with argument `otherDirs`.
 #' 
 #' Additionally, three scripts are created:
 #' 
@@ -58,14 +64,19 @@
 #' 
 #' @export
 #' 
-prInit <- function(dir = ".", instructions = TRUE, scripts = "scripts", 
-                   data = "data", output = "output", otherDirs = character()) {
+prInit <- function(dir = ".", instructions = TRUE, scriptDir = "scripts", 
+                   dataDir = "data", outputDir = "output", otherDirs = character(),
+                   scripts = c(data = "data", main = "main", start = "start"),
+                   autoSource = c("^tools.*$", "^start$")) {
   
-  options(prDir = list(
-    data = data,
-    scripts = scripts,
-    output = scripts
-  ))
+  options(
+    prDir = list(
+      data = dataDir,
+      scripts = scriptDir,
+      output = outputDir
+    ),
+    prAutoSource = autoSource
+  )
   
   # Create directories and scripts if they do not exist
   dirCreate <- function(x) {
@@ -75,9 +86,9 @@ prInit <- function(dir = ".", instructions = TRUE, scripts = "scripts",
   
   if (dir != ".") dirCreate("")
   
-  dirCreate (data)
-  dirCreate (scripts)
-  dirCreate (output)
+  dirCreate (dataDir)
+  dirCreate (scriptDir)
+  dirCreate (outputDir)
   for (d in otherDirs) {
     dirCreate(d)
   }
@@ -92,7 +103,11 @@ prInit <- function(dir = ".", instructions = TRUE, scripts = "scripts",
   
   options(projectRoot = normalizePath(dir))
   
-  prScript("data", template = "data", instructions = instructions)
-  prScript("main", template = "main", instructions = instructions)
-  prScript("start", template = "start", instructions = instructions)
+  scriptNames <- names(scripts)
+  scriptTemplates <- unname(scripts)
+  
+  for (i in seq_along(scriptNames)) {
+    prScript(scriptNames[i], template = scriptTemplates[i], 
+             instructions = instructions)
+  }
 }
