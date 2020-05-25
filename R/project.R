@@ -6,6 +6,9 @@
 #' 
 #' @param dir Directory where project files will be stored. By default, it is 
 #'   the current working directory.
+#' @param git If TRUE, then the function initializes a git repository and
+#'   create an initial commit. This feature requires the package git2r is 
+#'   already installed.
 #' @param instructions Should instructions be added in the scripts created by the
 #'   the function?
 #' @param dataDir Name of the folder where data will be saved.
@@ -64,7 +67,8 @@
 #' 
 #' @export
 #' 
-prInit <- function(dir = ".", instructions = TRUE, scriptDir = "scripts", 
+prInit <- function(dir = ".", git = TRUE, instructions = TRUE, 
+                   scriptDir = "scripts", 
                    dataDir = "data", outputDir = "output", otherDirs = character(),
                    scripts = c(data = "data", main = "main", start = "start"),
                    autoSource = c("^tools.*$", "^start$")) {
@@ -92,6 +96,14 @@ prInit <- function(dir = ".", instructions = TRUE, scriptDir = "scripts",
   for (d in otherDirs) {
     dirCreate(d)
   }
+  
+  templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "projfile"),
+                              package = "tinyProject")
+  brew::brew(templatePath, file.path(dir,paste0(basename(dir),".Rproj")))
+  
+  templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "gitignore"),
+                              package = "tinyProject")
+  brew::brew(templatePath, file.path(dir,".gitignore"))
 
   if (!is.null(packageDescription("tinyProject")$Date)) {
     pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
@@ -109,5 +121,19 @@ prInit <- function(dir = ".", instructions = TRUE, scriptDir = "scripts",
   for (i in seq_along(scriptNames)) {
     prScript(scriptNames[i], template = scriptTemplates[i], 
              instructions = instructions)
+  }
+  
+  if (git){
+    if (!requireNamespace("git2r")) {
+      warning("Package git2r is not installed.")
+    } else {
+      repo<- git2r::init(path = dir)
+      git2r::add(repo = repo, paste0(basename(dir),"*.Rproj"))
+      git2r::add(repo = repo, .getPath(".gitignore", "."))
+      for (script in scriptNames) {
+        git2r::add(repo = repo, .getPath(script, "scripts"))
+      }
+      git2r::commit(repo = repo, message = "initial commit")
+    }
   }
 }

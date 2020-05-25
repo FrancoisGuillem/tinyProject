@@ -18,5 +18,7 @@ Imports:
 Suggests:
     testthat,
     remotes,
-    covr
+    covr,
+    git2r,
+    devtools
 RoxygenNote: 7.1.0

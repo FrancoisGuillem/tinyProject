@@ -6,6 +6,7 @@
 \usage{
 prInit(
   dir = ".",
+  git = TRUE,
   instructions = TRUE,
   scriptDir = "scripts",
   dataDir = "data",
@@ -18,6 +19,10 @@ prInit(
 \arguments{
 \item{dir}{Directory where project files will be stored. By default, it is 
 the current working directory.}
+
+\item{git}{If TRUE, then the function initializes a git repository and
+create an initial commit. This feature requires the package git2r is 
+already installed.}
 
 \item{instructions}{Should instructions be added in the scripts created by the
 the function?}
