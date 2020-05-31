@@ -1,0 +1,209 @@
+#-------------------------------------------------------------------------------
+# Customize your project template
+#-------------------------------------------------------------------------------
+# 
+# Here is the list of things you can do to customize your project template 
+#
+# - Script templates
+#-------------------
+# The default templates have been copied in "/inst/scriptTemplates". You can 
+# update them and you can also add new templates. In that case, use function
+# "prRegisterTemplate()"  (see code below)
+#
+# - Project Initialization and Structure
+# --------------------------------------
+# You can modify the function prInit() below if you want to change the
+# project structure. Before writing custom code, check the documentation of
+# "tinyProject::prInit()": the function has already several arguments for
+# customization: changing the folders and scripts created, choosing which
+# files should be automatically created...
+#
+# - Package Installation
+#-----------------------
+# If your package is not available on CRAN, consider adding instructions to 
+# install it in file "inst/Rprofile.brew". In this file, you should only
+# replace line 26 ("install.packages(...)"). The rest of the code ensures that
+# user won't be stuck in an infinite loop, so you should not change it or
+# remove it.
+#
+# - Rstudio Project Template Menu
+#--------------------------------
+# Check file "/inst/rstudio/templates/project/<%= packageName %>.dcf".
+# You can modify it as much as you want, but you should at least change the
+# one line description.
+# Documentation is available here: 
+# https://rstudio.github.io/rstudio-extensions/rstudio_project_templates.html
+#
+#-------------------------------------------------------------------------------
+
+
+
+# Script Templates -------------------------------------------------------------
+# Register script templates. You are not limited to these templates. You can
+# rename them or add new ones.
+.onLoad <- function(libname, pkgname) {
+  options(prTemplates = NULL)
+  prRegisterTemplate(
+    "analysis", 
+    system.file("scriptTemplates/analysis.brew", package = pkgname),
+    default = TRUE
+  )
+  prRegisterTemplate(
+    "data", 
+    system.file("scriptTemplates/data.brew", package = pkgname),
+    pattern = "^data"
+  )
+  prRegisterTemplate(
+    "function", 
+    system.file("scriptTemplates/function.brew", package = pkgname),
+    pattern = "^tools"
+  )
+  prRegisterTemplate(
+    "main", 
+    system.file("scriptTemplates/main.brew", package = pkgname),
+  )
+  prRegisterTemplate(
+    "start", 
+    system.file("scriptTemplates/start.brew", package = pkgname),
+  )
+}
+
+
+#- Project initialization ------------------------------------------------------
+# You can cutomize this function to fit your needs. You should at least keep
+# the call of "tinyProject::prInit()", but you can change the parameter values.
+# Then you can add other instructions to further customize your project.
+# 
+# If you change anything, do not forget to modify the documentation of the
+# function too.
+
+#' Initialize a project
+#'
+#' \code{prInit} should be used in a Rstudio project. The function creates
+#' the basic structure of a data analysis project that will help you keep your
+#' your work organised and increase your productivity.
+#' 
+#' @param dir Directory where project files will be stored. By default, it is 
+#'   the current working directory.
+#' @param git If TRUE, then the function initializes a git repository and
+#'   create an initial commit. This feature requires the package git2r is 
+#'   already installed.
+#' @param instructions Should instructions be added in the scripts created by the
+#'   the function?
+#'   
+#' @details 
+#' By default, the function creates three folders :
+#' 
+#' \itemize{
+#'   \item scripts: Folder where the scripts are stored
+#'   \item data: Folder where the source and intermediate data files are stored
+#'   \item output: Folder where the output of the project are stored
+#' }
+#' 
+#' These three folders are essential so do not remove them. But you can add any
+#' other folders you desire ("latex", "python", "presentation", etc.) manually
+#' or with argument `otherDirs`.
+#' 
+#' Additionally, three scripts are created:
+#' 
+#' \itemize{
+#'   \item main.R: This is the main script of your project. Ideally, just by 
+#'   looking at this script you should remember how your project is organised
+#'   For small projects most code can go in this script. But for larger project, 
+#'   it should mostly contain comments what each script is supposed to do. You 
+#'   can use the function \code{\link{prScript}} to programatically open the 
+#'   scripts you are referring to.
+#'   
+#'   \item data.R: This script should contain inscruction to import data in the
+#'   project and/or transform the source data in processed data that will be
+#'   studied/analysed. As for the script "main", for large project, this script
+#'   should not contain code, but make reference to the scripts that do the job.
+#'   
+#'   \item start.R: script that is executed every time the project is opened. It
+#'   should load the packages used in the project, define constant values, ... 
+#'   More generally it should include all technical instructions that do not
+#'   directly participate to the creation, manipulation or analysis of data.
+#' }
+#' 
+#' @seealso 
+#' \code{\link{prLibrary}}, \code{\link{prSource}}, \code{\link{prSave}}, 
+#' \code{\link{prLoad}}, \code{\link{prScript}}
+#' 
+#' @examples 
+#' projectPath <- file.path(tempdir(), "test")
+#' prInit(projectPath)
+#' 
+#' list.files(tempdir(), recursive = TRUE, include.dirs = TRUE)
+#' 
+#' @export
+#' 
+prInit <- function(dir = ".", git = TRUE, instructions = TRUE) {
+  tinyProject::prInit(
+    dir = dir,
+    git = git,
+    instructions = instructions,
+    scriptDir = "scripts",
+    dataDir = "data",
+    outputDir = "output",
+    otherDirs = character(),
+    scripts = c(data = "data", main = "main", start = "start"),
+    autoSource = c("^tools.*$", "^start$"),
+    package = "<%= packageName %>"
+  )
+}
+
+# Reexports --------------------------------------------------------------------
+
+#' @import tinyProject
+#' @export 
+tinyProject::prBmp
+#' @export 
+tinyProject::prCairoPdf
+#' @export 
+tinyProject::prCairoPs
+#' @export 
+tinyProject::prDeleteData
+#' @export 
+tinyProject::prDeleteScript
+#' @export 
+tinyProject::prJpeg
+#' @export 
+tinyProject::prLibrary
+#' @export 
+tinyProject::prLoad
+#' @export 
+tinyProject::prMoveData
+#' @export 
+tinyProject::prMoveScript
+#' @export 
+tinyProject::prOutputDefaults
+#' @export 
+tinyProject::prPath
+#' @export 
+tinyProject::prPdf
+#' @export 
+tinyProject::prPng
+#' @export 
+tinyProject::prRegisterTemplate
+#' @export 
+tinyProject::prRenameScript
+#' @export 
+tinyProject::prSave
+#' @export 
+tinyProject::prScript
+#' @export 
+tinyProject::prSource
+#' @export 
+tinyProject::prStart
+#' @export 
+tinyProject::prSvg
+#' @export 
+tinyProject::prTiff
+#' @export 
+tinyProject::prWriteCsv
+#' @export 
+tinyProject::prWriteCsv2
+#' @export 
+tinyProject::prWriteTable
+#' @export 
+tinyProject::requireVariable

@@ -1,7 +1,7 @@
 Package: tinyProject
 Type: Package
 Title: A Lightweight Template for Data Analysis Projects
-Version: 0.6.1
+Version: 0.7.0
 Author: Francois Guillem
 Maintainer: Francois Guillem <guillem.francois@gmail.com>
 Description: Creates useful files and folders for data
@@ -20,5 +20,6 @@ Suggests:
     remotes,
     covr,
     git2r,
-    devtools
+    devtools,
+    usethis
 RoxygenNote: 7.1.0

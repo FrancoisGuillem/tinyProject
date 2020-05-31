@@ -2,7 +2,7 @@
 % Please edit documentation in R/project.R
 \name{prInit}
 \alias{prInit}
-\title{Initialise a project}
+\title{Initialize a project}
 \usage{
 prInit(
   dir = ".",
@@ -13,7 +13,8 @@ prInit(
   outputDir = "output",
   otherDirs = character(),
   scripts = c(data = "data", main = "main", start = "start"),
-  autoSource = c("^tools.*$", "^start$")
+  autoSource = c("^tools.*$", "^start$"),
+  package = "tinyProject"
 )
 }
 \arguments{

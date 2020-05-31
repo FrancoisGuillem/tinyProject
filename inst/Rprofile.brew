@@ -19,14 +19,14 @@ options(
   prAutoSource = <% dput(autoSource) %>
 )
 
-if (!require(tinyProject)) {
+if (!require(<%= package %>)) {
   f <- tempfile()
   cat("", file = f)
   Sys.setenv(R_PROFILE_USER = f)
-  install.packages("tinyProject", repos = "https://mran.microsoft.com/snapshot/<%= pkgDate %>")
+  install.packages("<%= package %>", repos = "https://mran.microsoft.com/snapshot/<%= pkgDate %>")
   Sys.unsetenv("R_PROFILE_USER")
   file.remove(f)
-  library(tinyProject)
+  library(<%= package %>)
 }
 
 prStart()

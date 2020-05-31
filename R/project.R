@@ -1,4 +1,4 @@
-#' Initialise a project
+#' Initialize a project
 #'
 #' \code{prInit} should be used in a Rstudio project. The function creates
 #' the basic structure of a data analysis project that will help you keep your
@@ -71,7 +71,7 @@ prInit <- function(dir = ".", git = TRUE, instructions = TRUE,
                    scriptDir = "scripts", 
                    dataDir = "data", outputDir = "output", otherDirs = character(),
                    scripts = c(data = "data", main = "main", start = "start"),
-                   autoSource = c("^tools.*$", "^start$")) {
+                   autoSource = c("^tools.*$", "^start$"), package = "tinyProject") {
   
   options(
     prDir = list(
@@ -98,19 +98,19 @@ prInit <- function(dir = ".", git = TRUE, instructions = TRUE,
   }
   
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "projfile"),
-                              package = "tinyProject")
+                              package = package)
   brew::brew(templatePath, file.path(dir,paste0(basename(dir),".Rproj")))
   
   templatePath <- system.file(sprintf("scriptTemplates/%s.brew", "gitignore"),
-                              package = "tinyProject")
+                              package = package)
   brew::brew(templatePath, file.path(dir,".gitignore"))
 
-  if (!is.null(packageDescription("tinyProject")$Date)) {
-    pkgDate <- as.Date(packageDescription("tinyProject")$Date) + 1
+  if (!is.null(packageDescription(package)$Date)) {
+    pkgDate <- as.Date(packageDescription(package)$Date) + 1
   } else {
     pkgDate <- as.character(Sys.Date())
   }
-  brew::brew(system.file("Rprofile.brew", package = "tinyProject"), 
+  brew::brew(system.file("Rprofile.brew", package = package), 
              file.path(dir,"./.Rprofile"))
   
   options(projectRoot = normalizePath(dir))
