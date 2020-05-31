@@ -21,7 +21,7 @@ addProjectTemplate <- function(packageName, overwrite = FALSE) {
   file.copy(file.path(basepath, "Rprofile.brew"), "inst", overwrite = overwrite)
   if (!file.exists("R/tinyProject.R") || overwrite) {
     brew::brew(file.path(basepath, "projectTemplate/tinyproject.brew"), 
-               "R/tinyProject.R")
+               "R/tinyproject.R")
   }
   
   brew::brew(
@@ -35,4 +35,8 @@ addProjectTemplate <- function(packageName, overwrite = FALSE) {
   } else {
     usethis::use_package("tinyProject", min_version = "0.7.0")
   }
+  
+  if (interactive()) file.edit("R/tinyproject.R")
+  cat("Project template added. Modify script 'R/tinyproject.R' to customize it.\n")
+  invisible()
 }
