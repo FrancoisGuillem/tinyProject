@@ -125,8 +125,14 @@ prInit <- function(dir = ".", git = TRUE, instructions = TRUE,
   
   if (git){
     if (!requireNamespace("git2r")) {
-      warning("Package git2r is not installed.")
+      warning("Git repository has not been initialized because package 'git2r' is not installed")
     } else {
+      if (is.null(git2r::config()$global) || is.null(git2r::config()$global$user.name)) {
+        warning("Git repository has not been initialized because git is not configured.
+You can configure it by running command:
+git2r::config(user.name = 'your name', user.email = 'your mail', global = TRUE)")
+      }
+      
       repo<- git2r::init(path = dir)
       git2r::add(repo = repo, paste0(basename(dir),"*.Rproj"))
       git2r::add(repo = repo, .getPath(".gitignore", "."))
