@@ -20,6 +20,8 @@
 #'   script to create, the value corresponds to the template to use.
 #' @param autoSource character vector containing regular expressions. All scripts
 #'   whose name match these pattern are automatically executed at project start-up.
+#' @param package Name of the package where to check template files. This argument is
+#'   reserved to package developers who want to create their own project template.
 #' 
 #' @details 
 #' By default, the function creates three folders :

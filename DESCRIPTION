@@ -22,4 +22,4 @@ Suggests:
     git2r,
     devtools,
     usethis
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.3
