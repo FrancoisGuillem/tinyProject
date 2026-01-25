@@ -1,7 +1,7 @@
 context("commandArgs")
 
-with_mock(
-  `R.utils::cmdArgs` = function(...) {
+with_mocked_bindings(
+  `cmdArgs` = function(...) {
     list("unnamed1", "unnamed2", Name1 = "value1", Name2 = "value2")
   },
   {

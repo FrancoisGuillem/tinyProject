@@ -1,5 +1,6 @@
+#' @importFrom R.utils cmdArgs
 readCommandArgs <- function() {
-  args <- R.utils::cmdArgs()
+  args <- cmdArgs()
   
   unnamed_args <- args[names(args) == ""]
   named_args <- args[names(args) != ""]

@@ -22,7 +22,7 @@ The functions can be used to programmatically move or delete data files.
 }
 \examples{
 projectPath <- file.path(tempdir(), "test")
-prInit(projectPath)
+prInit(projectPath, git = FALSE)
 
 x <- rnorm(100)
 

@@ -8,7 +8,7 @@ dir.create("project-test")
 setwd("project-test")
 
 test_that("prInit creates folders and files", {
-  expect_silent(prInit())
+  expect_silent(prInit(git = FALSE))
   expect_true(dir.exists("data"))
   expect_true(dir.exists("scripts"))
   expect_true(dir.exists("output"))
