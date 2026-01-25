@@ -87,11 +87,11 @@ prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
     }
     objClass <- gsub("^(.)", "\\U\\1", objClass, perl = T)
     
-    cat(sprintf("%s '%s' has been loaded%s%s\n", 
+    cat(sprintf("%s '%s' has been loaded (saved on %s)\n", 
                 objClass, 
                 name,
-                sprintf(" (saved on %s)", get("._creationTime", envir = envir)),
-                ":", "."))
+                get("._creationTime", envir = envir)
+        ))
     
     cat("   ", get("._desc", envir = envir), "\n")
   }
@@ -112,7 +112,7 @@ prLoad <- function(name, subdir = ".", trace = TRUE, envir=.GlobalEnv) {
 #'   
 #' @examples 
 #' projectPath <- file.path(tempdir(), "test")
-#' prInit(projectPath)
+#' prInit(projectPath, git = FALSE)
 #' 
 #' x <- rnorm(100)
 #' 
