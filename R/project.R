@@ -135,6 +135,8 @@ You can configure it by running command:
 git2r::config(user.name = 'your name', user.email = 'your mail', global = TRUE)")
       }
       
+      if (dir.exists(.getPath(".git", "."))) return(invisible())
+      
       repo<- git2r::init(path = dir)
       git2r::add(repo = repo, paste0(basename(dir),"*.Rproj"))
       git2r::add(repo = repo, .getPath(".gitignore", "."))
@@ -144,4 +146,5 @@ git2r::config(user.name = 'your name', user.email = 'your mail', global = TRUE)"
       git2r::commit(repo = repo, message = "initial commit")
     }
   }
+  invisible()
 }

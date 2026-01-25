@@ -8,6 +8,8 @@ addProjectTemplate(packageName, overwrite = FALSE)
 }
 \arguments{
 \item{packageName}{Name of the package}
+
+\item{overwrite}{Should existing file be overwritten?}
 }
 \value{
 Used for side effects.

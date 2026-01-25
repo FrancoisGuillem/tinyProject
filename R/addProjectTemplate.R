@@ -4,6 +4,7 @@
 #' template to a package they are developing.
 #' 
 #' @param packageName Name of the package
+#' @param overwrite Should existing file be overwritten?
 #' 
 #' @return Used for side effects.
 #' 
